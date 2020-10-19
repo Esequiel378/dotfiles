@@ -517,12 +517,10 @@ augroup END
 
 augroup FilesTypes
   " Enable spellcheck for markdown files
-  autocmd BufRead,BufNewFile *.md
-    \ set local=spell
+  autocmd BufRead,BufNewFile *.md setlocal spell
 
   " Set file type for vue files
-  autocmd BufNewFile,BufRead *.vue
-    \ set filetype=html
+  autocmd BufNewFile,BufRead *.vue setfiletype html
 
   " Python files config
   au BufNewFile,BufRead *.py
