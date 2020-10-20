@@ -86,6 +86,9 @@ Plug 'mxw/vim-jsx'
 " NERDTree syntax highlight
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+" Support too many languages
+Plug 'sheerun/vim-polyglot'
+
 " === UI === "
 
 " File explorer
