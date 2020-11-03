@@ -56,16 +56,31 @@ Plug 'APZelos/blamer.nvim'
 " Python formater
 Plug 'psf/black', { 'tag': '19.10b0' }
 
-" Use python virtualenvs
-" Plug 'jmcantrell/vim-virtualenv'
+" Python highlight
+Plug 'vim-python/python-syntax'
 
-" django support
-Plug 'tweekmonster/django-plus.vim'
+" Python indent
+Plug 'Vimjas/vim-python-pep8-indent'
+
+" Python compiler
+Plug 'tpope/vim-dispatch'
+
+if has('nvim')
+  " Adds neovim support to vim-dispatch
+  Plug 'radenling/vim-dispatch-neovim'
+endif
+
+Plug 'aliev/vim-python'
+" END PYTHON COMPILER
+
+" Python django templates autocomplete
+Plug 'mjbrownie/vim-htmldjango_omnicomplete'
 
 " === Golang Plugins === "
 
-" Go formater
+" Go formaters
 Plug 'tweekmonster/gofmt.vim'
+Plug 'fatih/vim-go'
 
 " Go language support
 Plug 'fatih/vim-go'
@@ -74,8 +89,13 @@ Plug 'fatih/vim-go'
 
 " Typescript syntax highlighting
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'posva/vim-vue'
+
+" Vue syntax and indent
+Plug 'leafOfTree/vim-vue-plugin'
 
 " Vim vuetify
+Plug 'SirVer/ultisnips'
 Plug 'albanm/vuetify-vim'
 
 " ReactJS JSX syntax highlighting
@@ -86,8 +106,8 @@ Plug 'mxw/vim-jsx'
 " NERDTree syntax highlight
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-" Support too many languages
-Plug 'sheerun/vim-polyglot'
+" Html/Jinja2
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " === UI === "
 

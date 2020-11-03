@@ -20,7 +20,12 @@
   ],
   "html.enable": true,
   "html.format.enable": true,
-  "html.filetypes": ["html", "htmldjango", "handlebars", "django"],
+  "html.filetypes": [
+    "html",
+    "htmldjango",
+    "handlebars",
+    "django"
+  ],
   "diagnostic.errorSign": "•",
   "diagnostic.warningSign": "•",
   "diagnostic.infoSign": "•"

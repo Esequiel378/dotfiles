@@ -54,6 +54,11 @@ set shortmess+=c
 " ===                           PLUGIN SETUP                               === "
 " ============================================================================ "
 
+" === Python Compiler === "
+"
+" Ignore Python warnings - useful for vim-htmldjango_omnicomplete
+let $PYTHONWARNINGS="ignore"
+
 " === Polyglot === "
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -168,6 +173,8 @@ let g:coc_global_extensions = [
       \ 'coc-markdownlint',
       \ 'coc-markmap',
       \ 'coc-html',
+      \ 'coc-css',
+      \ 'coc-scssmodules',
       \ ]
 
 let g:coc_filetype_map = {
@@ -349,8 +356,8 @@ set background=dark
 "  <leader>gh     - Get changes from left panel
 "  <leader>gl     - Get changes from rigth buffer
 nmap <leader>gs :G<CR>
-nmap <leader>gh :diffget //3<CR>
-nmap <leader>gl :diffget //2<CR>
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gj :diffget //3<CR>
 
 " === Denite shorcuts === "
 "   ;         - Browser currently open buffers
@@ -528,6 +535,7 @@ augroup FormatFiles
 
   " Format files with prettier
   " autocmd BufWritePre *.ts,*.js,*.vue,*.html,*.css :Prettier
+  autocmd BufWritePre *.ts,*.vue,*.css :Prettier
 
   " Format python on save
   " autocmd BufWritePre *.py execute ':Black'
@@ -536,9 +544,6 @@ augroup END
 augroup FilesTypes
   " Enable spellcheck for markdown files
   autocmd BufRead,BufNewFile *.md setlocal spell
-
-  " Set file type for vue files
-  autocmd BufNewFile,BufRead *.vue setfiletype html
 
   " Python files config
   au BufNewFile,BufRead *.py
@@ -550,11 +555,13 @@ augroup FilesTypes
    \ set fileformat=unix |
 
   " html js and css files config
-  au BufNewFile,BufRead *.ts,*.js,*.vue,*.html,*.css
+  au BufNewFile,BufRead *.ts,*.js,*.vue,*.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
-    " \ set formatprg=prettier
+    \ set formatprg=prettier
+
+  autocmd FileType html,htmldjango setlocal expandtab shiftwidth=2 tabstop=2
 augroup END
 
 " Set backups
@@ -578,7 +585,7 @@ augroup LargeFile
   let g:large_file = 10485760 " 10MB
 
   " Set options:
-  "   eventignore+=FileType (no syntax highlighting etc
+  "   eventignore+=FileType (no syntax hihlighting etc
   "   assumes FileType always on)
   "   noswapfile (save copy of file)
   "   bufhidden=unload (save memory when other file is viewed)
