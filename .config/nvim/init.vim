@@ -54,8 +54,9 @@ set shortmess+=c
 " ===                           PLUGIN SETUP                               === "
 " ============================================================================ "
 
+
 " === Python Compiler === "
-"
+
 " Ignore Python warnings - useful for vim-htmldjango_omnicomplete
 let $PYTHONWARNINGS="ignore"
 
@@ -175,6 +176,7 @@ let g:coc_global_extensions = [
       \ 'coc-html',
       \ 'coc-css',
       \ 'coc-scssmodules',
+      \ 'coc-python',
       \ ]
 
 let g:coc_filetype_map = {
@@ -357,7 +359,7 @@ set background=dark
 "  <leader>gl     - Get changes from rigth buffer
 nmap <leader>gs :G<CR>
 nmap <leader>gf :diffget //2<CR>
-nmap <leader>gj :diffget //3<CR>
+nmap <leader>gh :diffget //3<CR>
 
 " === Denite shorcuts === "
 "   ;         - Browser currently open buffers
@@ -563,6 +565,15 @@ augroup FilesTypes
 
   autocmd FileType html,htmldjango setlocal expandtab shiftwidth=2 tabstop=2
 augroup END
+
+" Fire Neovim
+" augroup FireNeovim
+  " au BufEnter github.com_*.txt set filetype=markdown
+  " au BufEnter txti.es_*.txt set filetype=typescript
+  " au BufEnter gitlab.com_*.txt set filetype=markdown
+  " au BufEnter localhost*.txt set filetype=json
+  " au BufEnter *tenant*.txt set filetype=json
+" augroup END
 
 " Set backups
 if has('persistent_undo')

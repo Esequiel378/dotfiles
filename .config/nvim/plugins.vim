@@ -22,6 +22,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 " === Editing Plugins === "
 
+" Neovim in the browser
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(69) } }
+
 " Highlighting yaked text
 Plug 'machakann/vim-highlightedyank'
 
@@ -102,6 +105,9 @@ Plug 'albanm/vuetify-vim'
 Plug 'mxw/vim-jsx'
 
 " === Syntax Highlighting === "
+
+" Log files
+Plug 'mtdl9/vim-log-highlighting'
 
 " NERDTree syntax highlight
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
