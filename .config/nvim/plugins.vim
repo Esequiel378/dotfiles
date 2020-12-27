@@ -22,6 +22,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 " === Editing Plugins === "
 
+" Ranger
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+
 " Neovim in the browser
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(69) } }
 
@@ -108,9 +111,6 @@ Plug 'mxw/vim-jsx'
 
 " Log files
 Plug 'mtdl9/vim-log-highlighting'
-
-" NERDTree syntax highlight
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Html/Jinja2
 Plug 'Glench/Vim-Jinja2-Syntax'
