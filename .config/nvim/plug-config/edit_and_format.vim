@@ -10,12 +10,14 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Map <leader>f to prettier file formater
 nnoremap <leader>f :Prettier<CR>
 
+" === Python === "
+" Declare PythonInterpreter command
+command! -nargs=0 PythonInterpreter :CocCommand python.setInterpreter
 
 " === Black Formater === "
 
 " Map F9 to python formater
 nnoremap <F9> :Black<CR>
-
 
 " ============================================================================ "
 " ===                             GROUPS                                   === "

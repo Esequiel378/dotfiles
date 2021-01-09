@@ -10,6 +10,7 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-scssmodules',
       \ 'coc-python',
+      \ 'coc-tailwindcss',
       \ ]
 
 let g:coc_filetype_map = {

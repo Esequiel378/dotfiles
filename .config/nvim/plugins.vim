@@ -28,6 +28,9 @@ Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 " Neovim in the browser
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(69) } }
 
+" Emmet
+Plug 'mattn/emmet-vim'
+
 " Highlighting yaked text
 Plug 'machakann/vim-highlightedyank'
 
@@ -95,17 +98,22 @@ Plug 'fatih/vim-go'
 
 " Typescript syntax highlighting
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'posva/vim-vue'
 
 " Vue syntax and indent
+Plug 'posva/vim-vue'
 Plug 'leafOfTree/vim-vue-plugin'
 
-" Vim vuetify
+" snippets
 Plug 'SirVer/ultisnips'
+
+" Vim vuetify
 Plug 'albanm/vuetify-vim'
 
-" ReactJS JSX syntax highlighting
-Plug 'mxw/vim-jsx'
+" ReactJS
+Plug 'MaxMEllon/vim-jsx-pretty'
+
+" React snippets
+Plug 'epilande/vim-react-snippets'
 
 " === Syntax Highlighting === "
 

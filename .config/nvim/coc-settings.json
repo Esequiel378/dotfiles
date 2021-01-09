@@ -1,31 +1,23 @@
 {
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
-  "prettier.formatterPriority": -1,
   "coc.preferences.formatOnSaveFiletypes": [
     "typescript",
     "typescriptreact",
     "json",
     "javascriptreact",
+    "typescriptreact",
     "typescript.tsx",
     "css",
     "markdown"
   ],
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "javascriptreact",
-    "typescript.tsx"
-  ],
+  "prettier.trailingComma": "es5",
+  "prettier.singleQuote": true,
+  "prettier.arrowParens": "avoid",
+  "prettier.printWidth": 120,
   "html.enable": true,
   "html.format.enable": true,
-  "html.filetypes": [
-    "html",
-    "htmldjango",
-    "handlebars",
-    "django"
-  ],
+  "html.filetypes": ["html", "htmldjango", "handlebars", "django"],
   "diagnostic.errorSign": "•",
   "diagnostic.warningSign": "•",
   "diagnostic.infoSign": "•"

@@ -58,10 +58,18 @@ set shortmess+=c
 
 source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/coc.vim
-source $HOME/.config/nvim/plug-config/color_schema.vim
+source $HOME/.config/nvim/plug-config/color_scheme.vim
 source $HOME/.config/nvim/plug-config/denite.vim
 source $HOME/.config/nvim/plug-config/edit_and_format.vim
 source $HOME/.config/nvim/plug-config/rnvimr.vim
+
+
+" Trigger configuration
+" let g:UltiSnipsExpandTrigger="<C-l>"
+
+" If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="vertical"
+
 
 " === Python Compiler === "
 
@@ -96,10 +104,6 @@ let g:blamer_enabled = 0
 let g:blamer_delay = 1
 let g:blamer_relative_time = 1
 let g:blamer_show_in_visual_modes = 0
-
-" === Python === "
-" Declare PythonInterpreter command
-command! -nargs=0 PythonInterpreter :CocCommand python.setInterpreter
 
 " === vim-jsx === "
 " Highlight jsx syntax even in non .jsx files
@@ -160,6 +164,9 @@ inoremap <expr> <C-l>   pumvisible() ? "" : "\<Right>"
 
 "   <leader>y - Automatically remove trailing whitespace
 nmap <leader>y :StripWhitespace<CR>
+
+" Declare PythonInterpreter command
+command! -nargs=0 PythonInterpreter :CocCommand python.setInterpreter
 
 " Map <leader>py to select Python interpreter
 nnoremap <leader>py :PythonInterpreter<CR>
