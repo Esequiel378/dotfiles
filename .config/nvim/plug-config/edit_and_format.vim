@@ -2,6 +2,14 @@
 " ===                             KEY MAPPINGS                             === "
 " ============================================================================ "
 
+" Move selection/lines up and down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
 " === Prettier === "
 
 " Declare Prettier command
@@ -31,6 +39,5 @@ augroup FormatFiles
   " autocmd BufWritePre *.ts,*.js,*.vue,*.html,*.css :Prettier
 
   " Format python on save
-  " autocmd BufWritePre *.py execute ':Black'
+  autocmd BufWritePre *.py execute ':Black'
 augroup END
-
