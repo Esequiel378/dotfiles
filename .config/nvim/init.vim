@@ -233,7 +233,8 @@ augroup FilesTypes
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
-    \ set formatprg=prettier
+    \ set formatprg=prettier |
+    \ set clipboard=unnamedplus
 
   autocmd FileType html,htmldjango setlocal expandtab shiftwidth=2 tabstop=2
 augroup END

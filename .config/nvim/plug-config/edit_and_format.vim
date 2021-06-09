@@ -19,13 +19,29 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 nnoremap <leader>f :Prettier<CR>
 
 " === Python === "
+
+" Isort
+let g:vim_isort_map = '<C-i>'
+let g:vim_isort_python_version = 'python3'
+let g:vim_isort_config_overrides = {
+  \ 'include_trailing_comma': 1,
+  \ 'multi_line_output': 3
+  \}
+
 " Declare PythonInterpreter command
 command! -nargs=0 PythonInterpreter :CocCommand python.setInterpreter
 
-" === Black Formater === "
+" Format file sort imports
+function FormatPythonFile()
+  execute "Isort"
+  execute "Black"
+endfunction
 
 " Map F9 to python formater
-nnoremap <F9> :Black<CR>
+nnoremap <F9> :call FormatPythonFile()<CR>
+
+" === Rust === "
+let g:rustfmt_autosave = 1
 
 " ============================================================================ "
 " ===                             GROUPS                                   === "
@@ -39,5 +55,5 @@ augroup FormatFiles
   " autocmd BufWritePre *.ts,*.js,*.vue,*.html,*.css :Prettier
 
   " Format python on save
-  autocmd BufWritePre *.py execute ':Black'
+  autocmd BufWritePre *.py :call FormatPythonFile()
 augroup END

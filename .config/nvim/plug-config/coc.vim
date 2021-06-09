@@ -3,14 +3,17 @@ let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-eslint',
       \ 'coc-prettier',
-      \ 'coc-vetur',
       \ 'coc-markdownlint',
+      \ 'coc-marketplace',
       \ 'coc-markmap',
       \ 'coc-html',
       \ 'coc-css',
       \ 'coc-scssmodules',
       \ 'coc-python',
       \ 'coc-tailwindcss',
+      \ 'coc-rls',
+      \ 'coc-toml',
+      \ 'coc-elixir',
       \ ]
 
 let g:coc_filetype_map = {
@@ -66,5 +69,4 @@ nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
 
 " Refresh autocomplete
 inoremap <silent><expr> <C-space> coc#refresh()
-
 

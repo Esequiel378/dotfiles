@@ -22,11 +22,17 @@ call plug#begin('~/.config/nvim/plugged')
 
 " === Editing Plugins === "
 
+" Markdown viwer
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
+" Autoread
+Plug 'djoshea/vim-autoread'
+
 " Ranger
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 
-" Neovim in the browser
-" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(69) } }
+" Toml syntax highlighting
+Plug 'cespare/vim-toml'
 
 " Emmet
 Plug 'mattn/emmet-vim'
@@ -37,7 +43,7 @@ Plug 'machakann/vim-highlightedyank'
 " Trailing whitespace highlighting & automatic fixing
 Plug 'ntpeters/vim-better-whitespace'
 
-" auto-close brackera plugin
+" auto-close brackers plugin
 Plug 'rstacruz/vim-closer'
 
 " Vim surround
@@ -62,6 +68,9 @@ Plug 'APZelos/blamer.nvim'
 
 " === Python Plugins === "
 
+" Sort imports
+Plug 'fisadev/vim-isort'
+
 " Python formater
 Plug 'psf/black', { 'tag': '19.10b0' }
 
@@ -85,6 +94,9 @@ Plug 'aliev/vim-python'
 " Python django templates autocomplete
 Plug 'mjbrownie/vim-htmldjango_omnicomplete'
 
+" === Rust plugins === "
+Plug 'rust-lang/rust.vim'
+
 " === Golang Plugins === "
 
 " Go formaters
@@ -99,21 +111,8 @@ Plug 'fatih/vim-go'
 " Typescript syntax highlighting
 Plug 'HerringtonDarkholme/yats.vim'
 
-" Vue syntax and indent
-Plug 'posva/vim-vue'
-Plug 'leafOfTree/vim-vue-plugin'
-
-" snippets
-Plug 'SirVer/ultisnips'
-
-" Vim vuetify
-Plug 'albanm/vuetify-vim'
-
 " ReactJS
 Plug 'MaxMEllon/vim-jsx-pretty'
-
-" React snippets
-Plug 'epilande/vim-react-snippets'
 
 " === Syntax Highlighting === "
 
@@ -124,9 +123,6 @@ Plug 'mtdl9/vim-log-highlighting'
 Plug 'Glench/Vim-Jinja2-Syntax'
 
 " === UI === "
-
-" File explorer
-Plug 'scrooloose/nerdtree'
 
 " Undo tree
 Plug 'mbbill/undotree'
