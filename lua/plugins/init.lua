@@ -73,6 +73,9 @@ function M.config(use)
     -- Treesitter
     require("plugins.config.treesitter").setup(use)
 
+    -- Completion
+    require("plugins.config.cmp.init").setup(use)
+
     -- Statusline
     require("plugins.config.statusline").setup(use)
 
