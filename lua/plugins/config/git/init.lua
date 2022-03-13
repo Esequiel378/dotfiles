@@ -3,8 +3,9 @@ local M = {}
 function M.setup(use)
     use {
         "tpope/vim-fugitive",
-        setup = function()
-            require("plugins.config.git.fugitive").setup()
+        keys = {" gs"},
+        config = function()
+            require("plugins.config.git.fugitive").config()
         end,
     }
     -- use {

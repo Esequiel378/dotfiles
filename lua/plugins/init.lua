@@ -59,6 +59,9 @@ end
 function M.config(use)
     use { "wbthomason/packer.nvim" }
 
+    -- Load only when require
+    use { "nvim-lua/plenary.nvim", module = "plenary" }
+
     -- Colorscheme
     require("plugins.config.colorscheme").setup(use)
 
