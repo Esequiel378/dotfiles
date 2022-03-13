@@ -4,8 +4,6 @@ local M = {}
 local packer_bootstrap = false
 
 function M.setup()
-    -- vim.cmd "packadd packer.nvim"
-
     local present, packer = pcall(require, "packer")
 
     if not present then
@@ -59,8 +57,24 @@ end
 function M.config(use)
     use { "wbthomason/packer.nvim" }
 
+    -- Markdown
+    use {
+      "iamcco/markdown-preview.nvim",
+      run = function()
+        vim.fn["mkdp#util#install"]()
+      end,
+      ft = "markdown",
+      cmd = { "MarkdownPreview" },
+    }
+
     -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
+
+    -- Better icons
+    require("plugins.config.devicons").setup(use)
+
+    -- Better Comment
+    require("plugins.config.comments").setup(use)
 
     -- Colorscheme
     require("plugins.config.colorscheme").setup(use)
