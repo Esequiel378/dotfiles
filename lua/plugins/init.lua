@@ -66,7 +66,7 @@ function M.config(use)
     require("plugins.config.colorscheme").setup(use)
 
     -- Startup screen
-    require("plugins.config.alpha").setup(use)
+    require("plugins.config.startup_screen").setup(use)
 
     -- Git
     require("plugins.config.git.init").setup(use)

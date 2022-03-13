@@ -3,7 +3,7 @@ local M = {}
 function M.setup(use)
     use {
       "goolord/alpha-nvim",
-      config = require("plugins.config.alpha").config,
+      config = require("plugins.config.startup_screen").config,
     }
 end
 
