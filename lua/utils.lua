@@ -50,4 +50,3 @@ M.map = function(mode, keys, cmd, opt)
 end
 
 return M
-

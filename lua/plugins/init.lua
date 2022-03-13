@@ -44,6 +44,10 @@ function M.setup()
             end,
             prompt_border = "single",
         },
+        profile = {
+            enable = true,
+            threshold = 0,
+        },
     }
 
     packer.init(conf)
@@ -60,6 +64,9 @@ function M.config(use)
 
     -- Startup screen
     require("plugins.config.alpha").setup(use)
+
+    -- Git
+    require("plugins.config.git.init").setup(use)
 
     if packer_bootstrap then
         print "Restart Neovim required after installation!"
