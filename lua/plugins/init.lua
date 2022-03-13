@@ -70,6 +70,12 @@ function M.config(use)
     -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
+    -- Treesitter
+    require("plugins.config.treesitter").setup(use)
+
+    -- Statusline
+    require("plugins.config.statusline").setup(use)
+
     -- Better icons
     require("plugins.config.devicons").setup(use)
 
