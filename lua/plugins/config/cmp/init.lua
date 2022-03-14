@@ -15,7 +15,12 @@ function M.setup(use)
             "hrsh7th/cmp-emoji",
             "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-path",
+            "rafamadriz/friendly-snippets",
             "saadparwaiz1/cmp_luasnip",
+            {
+                "hrsh7th/cmp-nvim-lsp",
+                module = "cmp_nvim_lsp"
+            },
             {
                 "L3MON4D3/LuaSnip",
                 wants = "friendly-snippets",
@@ -23,8 +28,6 @@ function M.setup(use)
                     require("plugins.config.cmp.snippets").config()
                 end,
             },
-            "rafamadriz/friendly-snippets",
-            disable = false,
         },
     }
 
@@ -109,7 +112,7 @@ function M.config()
             },
     },
     sources = {
-        { name = "treesitter" },
+        { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "luasnip" },
         { name = "nvim_lua" },

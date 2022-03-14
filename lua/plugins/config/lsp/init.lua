@@ -1,4 +1,3 @@
-local config = require("plugins.config.lsp.config")
 local M = {}
 
 function M.setup(use)
@@ -7,12 +6,12 @@ function M.setup(use)
         opt = true,
         event = "BufReadPre",
         wants = { "nvim-lsp-installer" },
-        config = function()
-            require("plugins.config.lsp").config()
-        end,
         requires = {
             "williamboman/nvim-lsp-installer",
         },
+        config = function()
+            require("plugins.config.lsp").config()
+        end,
     }
 end
 
@@ -27,7 +26,7 @@ function M.config()
         vimls = {},
     }
 
-    local opts = config.default_config()
+    local opts = require("plugins.config.lsp.config").default_config()
 
     require("plugins.config.lsp.installer").setup(servers, opts)
 end
