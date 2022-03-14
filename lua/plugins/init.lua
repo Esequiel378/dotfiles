@@ -60,9 +60,38 @@ end
 function M.config(use)
     use { "wbthomason/packer.nvim" }
     use { "nvim-lua/plenary.nvim", module = "plenary" }
+
     -- Performance
     use { "nathom/filetype.nvim" }
     use { "lewis6991/impatient.nvim" }
+
+    -- TODO: Organize them
+    use "tpope/vim-surround"
+	  use "andymass/vim-matchup"
+    use "shmup/vim-sql-syntax"
+    use 'folke/lsp-colors.nvim'
+    use {
+      "norcalli/nvim-colorizer.lua",
+      event = "BufRead",
+      config = function ()
+        require('colorizer').setup()
+      end
+    }
+
+    use {
+      "simrat39/symbols-outline.nvim",
+      config = function()
+        local map = require("utils").map
+        map("n", "<leader>s", ":SymbolsOutline <CR>")
+
+        require("symbols-outline").setup({
+          auto_preview = false,
+          position = 'left',
+          show_numbers = true,
+          show_relative_numbers = true,
+        })
+      end,
+    }
 
     -- Markdown
     use {
@@ -73,6 +102,7 @@ function M.config(use)
       ft = "markdown",
       cmd = { "MarkdownPreview" },
     }
+    -- END OF TODO!
 
     -- Notification
     require("plugins.config.notification").setup(use)
@@ -112,6 +142,12 @@ function M.config(use)
 
     -- Golang
     require("plugins.config.golang").setup(use)
+
+    -- Trouble
+    require("plugins.config.troubl").setup(use)
+
+    -- Editorconfig
+    require("plugins.config.editorconfig").setup(use)
 
     if packer_bootstrap then
         print "Restart Neovim required after installation!"
