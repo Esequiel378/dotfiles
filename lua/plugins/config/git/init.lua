@@ -8,13 +8,15 @@ function M.setup(use)
             require("plugins.config.git.fugitive").config()
         end,
     }
-    -- use {
-    --     "lewis6991/gitsigns.nvim",
-    --     config = function() require "plugins.configs.gitsigns" end,
-    --     setup = function()
-    --         require("core.utils").packer_lazy_load "gitsigns.nvim"
-    --     end,
-    -- }
+    use {
+        "lewis6991/gitsigns.nvim",
+        requires = {
+            'nvim-lua/plenary.nvim'
+        },
+        config = function()
+            require("plugins.config.git.signs").config()
+        end,
+    }
 end
 
 return M

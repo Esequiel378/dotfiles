@@ -76,6 +76,9 @@ function M.config(use)
     -- Treesitter
     require("plugins.config.treesitter").setup(use)
 
+    -- Telescope
+    require("plugins.config.telescop").setup(use)
+
     -- LSP
     require("plugins.config.lsp.init").setup(use)
 
