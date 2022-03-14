@@ -15,7 +15,7 @@ map("i", "<C-e>", "<End>")
 map("i", "<C-l>", "<Right>")
 map("i", "<C-k>", "<Up>")
 map("i", "<C-j>", "<Down>")
-map("i", "<C-i>", "<ESC>^i")
+map("i", "<C-a>", "<ESC>^i")
 
 -- Easier navigation between windows
 map("n", "<C-h>", "<C-w>h")
