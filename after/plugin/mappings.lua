@@ -38,7 +38,7 @@ map("i", "}", "}<C-g>u")
 map("v", "p", '"_dP')
 
 -- use `ESC` or `C-c` to turn off search highlighting
-map("n", {"<Esc>", "<C-c>"}, ":noh <CR>")
+map("n", { "<Esc>", "<C-c>" }, ":noh <CR>")
 -- Find and replace word under cursor without ask
 
 map("n", "<leader>rw", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>")
