@@ -2,6 +2,11 @@ local M = {}
 
 function M.setup(use)
     use {
+        "onsails/lspkind-nvim",
+        module = "lspkind",
+    }
+
+    use {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         opt = true,
@@ -33,12 +38,12 @@ function M.setup(use)
 
     -- Auto pairs
     use {
-      "windwp/nvim-autopairs",
-      wants = "nvim-treesitter",
-      module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
-      config = function()
-        require("plugins.config.cmp.autopairs").config()
-      end,
+        "windwp/nvim-autopairs",
+        wants = "nvim-treesitter",
+        module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+        config = function()
+            require("plugins.config.cmp.autopairs").config()
+        end,
     }
 
     -- Auto tag
@@ -60,8 +65,9 @@ function M.setup(use)
 end
 
 function M.config()
-    local luasnip = require "luasnip"
-    local cmp = require "cmp"
+    local lspkind = require("lspkind")
+    local luasnip = require("luasnip")
+    local cmp = require("cmp")
 
     cmp.setup {
         completion = {
@@ -74,17 +80,6 @@ function M.config()
         snippet = {
             expand = function(args)
                 luasnip.lsp_expand(args.body)
-            end,
-        },
-        formatting = {
-            format = function(entry, vim_item)
-                vim_item.menu = ({
-                    buffer = "[Buffer]",
-                    luasnip = "[Snip]",
-                    nvim_lua = "[Lua]",
-                    treesitter = "[Treesitter]",
-                })[entry.source.name]
-                return vim_item
             end,
         },
         mapping = {
@@ -110,40 +105,80 @@ function M.config()
                     end
                 end,
             },
-    },
-    sources = {
-        { name = "nvim_lsp" },
-        { name = "buffer" },
-        { name = "luasnip" },
-        { name = "nvim_lua" },
-        { name = "path" },
-        { name = "emoji" },
-    },
-    documentation = {
-        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-        winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
-    },
-}
+        },
+        sorting = {
+            comparators = {
+                cmp.config.compare.offset,
+                cmp.config.compare.exact,
+                cmp.config.compare.score,
 
--- Use buffer source for `/`
-cmp.setup.cmdline("/", {
-    sources = {
-        { name = "buffer" },
-    },
-})
+                -- copied from cmp-under, but I don't think I need the plugin for this.
+                -- I might add some more of my own.
+                function(entry1, entry2)
+                    local _, entry1_under = entry1.completion_item.label:find "^_+"
+                    local _, entry2_under = entry2.completion_item.label:find "^_+"
+                    entry1_under = entry1_under or 0
+                    entry2_under = entry2_under or 0
+                    if entry1_under > entry2_under then
+                        return false
+                    elseif entry1_under < entry2_under then
+                        return true
+                    end
+                end,
 
--- Use cmdline & path source for ':'
-cmp.setup.cmdline(":", {
-    sources = cmp.config.sources({
-        { name = "path" },
-    }, {
-        { name = "cmdline" },
-    }),
-})
+                cmp.config.compare.kind,
+                cmp.config.compare.sort_text,
+                cmp.config.compare.length,
+                cmp.config.compare.order,
+            },
+        },
+        formatting = {
+            format = lspkind.cmp_format {
+                with_text = true,
+                maxwidth = 50,
+                menu = {
+                    luasnip = "[Snip]",
+                    nvim_lsp = "[LSP]",
+                    buffer = "[buf]",
+                    nvim_lua = "[api]",
+                    path = "[path]",
+                    emoji = "[Emoji]",
+                },
+            },
+        },
+        sources = {
+            { name = "nvim_lsp" },
+            { name = "buffer" },
+            { name = "luasnip" },
+            { name = "nvim_lua" },
+            { name = "path" },
+            { name = "emoji" },
+        },
+        documentation = {
+            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+        },
+    }
 
--- Auto pairs
-local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+    -- Use buffer source for `/`
+    cmp.setup.cmdline("/", {
+        sources = {
+            { name = "buffer" },
+        },
+    })
+
+    -- Use cmdline & path source for ':'
+    cmp.setup.cmdline(":", {
+        sources = cmp.config.sources({
+            { name = "path" },
+        }, {
+            { name = "cmdline" },
+        }),
+    })
+
+    -- Auto pairs
+    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 end
 
 return M
