@@ -15,24 +15,11 @@ function M.setup(use)
             "plenary.nvim",
             "popup.nvim",
             "telescope-fzf-native.nvim",
-            "telescope-project.nvim",
-            "telescope-repo.nvim",
-            "telescope-file-browser.nvim",
-            "project.nvim",
         },
         requires = {
             "nvim-lua/popup.nvim",
             "nvim-lua/plenary.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-            "nvim-telescope/telescope-project.nvim",
-            "cljoly/telescope-repo.nvim",
-            "nvim-telescope/telescope-file-browser.nvim",
-            {
-                "ahmedkhalf/project.nvim",
-                config = function()
-                    require("project_nvim").setup {}
-                end,
-            },
         },
     }
 end
@@ -131,11 +118,6 @@ function M.config()
     }
 
     telescope.load_extension "fzf"
-    telescope.load_extension "project" -- telescope-project.nvim
-    telescope.load_extension "repo"
-    telescope.load_extension "file_browser"
-    telescope.load_extension "projects" -- project.nvim
-
 end
 
 return M

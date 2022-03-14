@@ -36,7 +36,6 @@ function M.config()
   dashboard.section.buttons.val = {
     dashboard.button("t", "Find file", ":Telescope find_files hidden=true <CR>"),
     dashboard.button("e", "New file", ":ene <BAR> startinsert <CR>"),
-    dashboard.button("p", "Find project", ":Telescope projects <CR>"),
     dashboard.button("o", "Recently used files", ":Telescope oldfiles <CR>"),
     dashboard.button("ps", "Find text", ":Telescope live_grep <CR>"),
     dashboard.button("c", "Configuration", ":e $MYVIMRC<CR>"),
