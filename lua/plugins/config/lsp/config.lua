@@ -1,6 +1,6 @@
 local M = {}
 
-local function on_attach(client, bufnr)
+local function on_attach(_, bufnr)
    local function buf_set_keymap(...)
       vim.api.nvim_buf_set_keymap(bufnr, ...)
    end
@@ -29,15 +29,6 @@ local function on_attach(client, bufnr)
    buf_set_keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 
    buf_set_keymap("n", "sd", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-
-   if client.resolved_capabilities.document_formatting then
-      vim.cmd [[
-        augroup LspFormatting
-          autocmd! * <buffer>
-          autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-        augroup END
-      ]]
-   end
 end
 
 -- Setup lspconfig.
