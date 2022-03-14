@@ -48,6 +48,9 @@ function M.setup()
         },
     }
 
+    -- Performance
+    pcall(require, "impatient")
+
     packer.init(conf)
     packer.startup(M.config)
 
@@ -56,8 +59,10 @@ end
 
 function M.config(use)
     use { "wbthomason/packer.nvim" }
-    use { "nathom/filetype.nvim" }
     use { "nvim-lua/plenary.nvim", module = "plenary" }
+    -- Performance
+    use { "nathom/filetype.nvim" }
+    use { "lewis6991/impatient.nvim" }
 
     -- Markdown
     use {
