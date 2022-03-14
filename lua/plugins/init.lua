@@ -79,6 +79,9 @@ function M.config(use)
     -- Telescope
     require("plugins.config.telescop").setup(use)
 
+    -- Ranger
+    require("plugins.config.ranger").setup(use)
+
     -- LSP
     require("plugins.config.lsp.init").setup(use)
 
