@@ -5,10 +5,18 @@ function M.setup(use)
         "neovim/nvim-lspconfig",
         opt = true,
         event = "BufReadPre",
-        wants = { "nvim-lsp-installer", "lua-dev.nvim" },
+        wants = { "nvim-lsp-installer", "lua-dev.nvim", "vim-illuminate", "null-ls.nvim" },
         requires = {
             "williamboman/nvim-lsp-installer",
-             "folke/lua-dev.nvim",
+            "folke/lua-dev.nvim",
+            "RRethy/vim-illuminate",
+            "jose-elias-alvarez/null-ls.nvim",
+            {
+                "j-hui/fidget.nvim",
+                config = function()
+                    require("fidget").setup {}
+                end,
+            },
         },
         config = function()
             require("plugins.config.lsp").config()
@@ -51,6 +59,7 @@ function M.config()
 
     local opts = require("plugins.config.lsp.config").default_config()
 
+    require("plugins.config.lsp.null-ls").setup(opts)
     require("plugins.config.lsp.installer").setup(servers, opts)
 end
 
