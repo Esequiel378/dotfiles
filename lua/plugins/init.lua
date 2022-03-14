@@ -110,6 +110,9 @@ function M.config(use)
     -- Git
     require("plugins.config.git.init").setup(use)
 
+    -- Golang
+    require("plugins.config.golang").setup(use)
+
     if packer_bootstrap then
         print "Restart Neovim required after installation!"
         require("packer").sync()
