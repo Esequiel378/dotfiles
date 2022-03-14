@@ -5,12 +5,19 @@ function M.setup(use)
         "neovim/nvim-lspconfig",
         opt = true,
         event = "BufReadPre",
-        wants = { "nvim-lsp-installer", "lua-dev.nvim", "vim-illuminate", "null-ls.nvim" },
+        wants = {
+            "nvim-lsp-installer",
+            "lua-dev.nvim",
+            "vim-illuminate",
+            "null-ls.nvim",
+            "schemastore.nvim",
+        },
         requires = {
             "williamboman/nvim-lsp-installer",
             "folke/lua-dev.nvim",
             "RRethy/vim-illuminate",
             "jose-elias-alvarez/null-ls.nvim",
+             "b0o/schemastore.nvim",
             {
                 "j-hui/fidget.nvim",
                 config = function()
@@ -28,7 +35,13 @@ function M.config()
     local servers = {
         gopls = {},
         html = {},
-        jsonls = {},
+        jsonls = {
+            settings = {
+                json = {
+                    schemas = require("schemastore").json.schemas(),
+                },
+            },
+        },
         pyright = {},
         sumneko_lua = {
             settings = {

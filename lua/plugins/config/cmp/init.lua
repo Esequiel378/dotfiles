@@ -90,13 +90,7 @@ function M.config()
             ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
             ["<C-e>"] = cmp.mapping { i = cmp.mapping.close(), c = cmp.mapping.close() },
             ["<C-y>"] = cmp.mapping {
-                i = function()
-                    if luasnip.expand_or_jumpable() then
-                        luasnip.expand_or_jump()
-                    else
-                        cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
-                    end
-                end,
+                i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false },
                 c = function(fallback)
                     if cmp.visible() then
                         cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
