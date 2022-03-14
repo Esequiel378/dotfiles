@@ -56,6 +56,8 @@ end
 
 function M.config(use)
     use { "wbthomason/packer.nvim" }
+    use { "nathom/filetype.nvim" }
+    use { "nvim-lua/plenary.nvim", module = "plenary" }
 
     -- Markdown
     use {
@@ -66,9 +68,6 @@ function M.config(use)
       ft = "markdown",
       cmd = { "MarkdownPreview" },
     }
-
-    -- Load only when require
-    use { "nvim-lua/plenary.nvim", module = "plenary" }
 
     -- Notification
     require("plugins.config.notification").setup(use)
