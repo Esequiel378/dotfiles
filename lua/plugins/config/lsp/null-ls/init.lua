@@ -22,7 +22,7 @@ end
 
 local sources = {
   -- formatting
-  b.formatting.prettierd,
+  b.formatting.prettier,
   b.formatting.shfmt,
   b.formatting.fixjson,
   b.formatting.black.with { extra_args = { "--fast" } },
@@ -31,8 +31,7 @@ local sources = {
 
   -- diagnostics
   b.diagnostics.write_good,
-  -- b.diagnostics.markdownlint,
-  -- b.diagnostics.eslint_d,
+  b.diagnostics.eslint_d,
   b.diagnostics.flake8,
   b.diagnostics.tsc,
   with_root_file(b.diagnostics.selene, "selene.toml"),
@@ -47,7 +46,9 @@ local sources = {
 }
 
 function M.setup(opts)
-  map("n", "<leader>f", ":lua vim.lsp.buf.formatting_sync() <CR>")
+  map("n", "<leader>fm", ":lua vim.lsp.buf.formatting_sync() <CR>")
+  map("v", "<leader>fm", ":lua vim.lsp.buf.range_formatting() <CR>")
+
   nls.setup {
     debounce = 150,
     save_after_format = false,
