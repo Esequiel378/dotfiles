@@ -1,6 +1,6 @@
 local M = {}
 
-local nls_utils = require "plugins.config.lsp.null-ls.utils"
+local nls_utils = require("null-ls.utils")
 
 local method = require("null-ls").methods.HOVER
 

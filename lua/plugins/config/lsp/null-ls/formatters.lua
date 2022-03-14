@@ -1,8 +1,8 @@
 local M = {}
 
-local utils = require "utils"
-local nls_utils = require "plugins.config.lsp.null-ls.utils"
-local nls_sources = require "null-ls.sources"
+local utils = require("utils")
+local nls_utils = require("plugins.config.lsp.null-ls.utils")
+local nls_sources = require("null-ls.sources")
 
 local method = require("null-ls").methods.FORMATTING
 
