@@ -1,6 +1,6 @@
-local M = {}
-
 local map = require("utils").map
+
+local M = {}
 
 function M.config()
     map("n", "<leader>gs", ":G<CR>")
