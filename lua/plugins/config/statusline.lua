@@ -66,20 +66,9 @@ function M.setup(use)
             require("plugins.config.statusline").config()
         end,
     }
-
-    use {
-        "SmiteshP/nvim-gps",
-        module = "nvim-gps",
-        requires = "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require("nvim-gps").setup()
-        end,
-    }
 end
 
 function M.config()
-    local gps = require "nvim-gps"
-
     require("lualine").setup {
         options = {
             icons_enabled = true,
@@ -94,11 +83,6 @@ function M.config()
             lualine_b = { "branch", "diff", "diagnostics" },
             lualine_c = {
                 { "filename" },
-                {
-                    gps.get_location,
-                    cond = gps.is_available,
-                    color = { fg = colors.green },
-                },
                 { separator },
                 { lsp_client, icon = " ", color = { fg = colors.violet, gui = "bold" } },
             },
