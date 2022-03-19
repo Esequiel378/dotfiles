@@ -21,3 +21,21 @@ vim.cmd [[
     autocmd BufNewFile,BufRead *.esl* set syntax=pascal
   augroup end
 ]]
+
+-- env
+vim.cmd [[
+  augroup env
+    autocmd!
+    autocmd BufNewFile,BufRead *.env* set syntax=sh
+  augroup end
+]]
+
+-- nginx
+vim.cmd [[
+  augroup nginx
+    autocmd!
+    autocmd BufNewFile,BufRead *nginx* set ft=nginx
+  augroup end
+]]
+
+
