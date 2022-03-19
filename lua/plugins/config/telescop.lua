@@ -7,7 +7,7 @@ function M.setup(use)
       opt = true,
       cmd = { "Telescope" },
       module = "telescope",
-      keys = { " t", " ps" },
+      keys = { "<leader>t", "<leader>ps" },
       config = function()
          require("plugins.config.telescop").config()
       end,

@@ -14,7 +14,7 @@ opt.completeopt = "menu,menuone,noselect"
 opt.cursorline = true
 opt.errorbells = false
 opt.fillchars:append "vert:|"
-opt.guicursor = "i:ver25-iCursor"
+opt.guicursor = "i:block"
 opt.hlsearch = true
 opt.incsearch = true
 opt.ruler = false
