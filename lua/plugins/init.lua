@@ -62,7 +62,17 @@ function M.config(use)
   use { "nvim-lua/plenary.nvim", module = "plenary" }
 
   -- Copilot yay!
-  use { "github/copilot.vim" }
+  use {
+    "github/copilot.vim",
+    config = function()
+      local map = require("utils").map
+
+      map("i", "<C-y>", "copilot#Accept(\"\")", { silent = true, script = true, expr = true })
+      map("i", "<C-n>", "<Plug>(copilot-next)")
+      map("i", "<C-p>", "<Plug>(copilot-previous)")
+      vim.g.copilot_no_tab_map = "v:true"
+    end,
+  }
 
   -- Performance
   use { "nathom/filetype.nvim" }
