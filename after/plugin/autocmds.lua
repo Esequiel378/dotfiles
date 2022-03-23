@@ -38,4 +38,4 @@ vim.cmd [[
   augroup end
 ]]
 
-
+vim.cmd [[ hi WinSeparator guibg=None ]]

@@ -6,6 +6,7 @@ local bo = vim.bo
 opt.cul = true -- cursor line
 bo.swapfile = false
 g.backup = false
+g.laststatus = 3
 opt.mouse = "nv"
 opt.autoread = true
 opt.backup = false
