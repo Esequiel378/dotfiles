@@ -61,6 +61,9 @@ function M.config(use)
   use { "wbthomason/packer.nvim" }
   use { "nvim-lua/plenary.nvim", module = "plenary" }
 
+  -- Copilot yay!
+  use { "github/copilot.vim" }
+
   -- Performance
   use { "nathom/filetype.nvim" }
   use { "lewis6991/impatient.nvim" }
@@ -149,6 +152,9 @@ function M.config(use)
 
   -- Editorconfig
   require("plugins.config.editorconfig").setup(use)
+
+  -- Debugging
+  -- require("plugins.config.debugging.init").setup(use)
 
   if packer_bootstrap then
     print "Restart Neovim required after installation!"

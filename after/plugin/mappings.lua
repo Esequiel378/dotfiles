@@ -1,6 +1,6 @@
 local map = require("utils").map
 
--- Keep cursor centered while jumping arround
+-- Keep cursor centered while jumping around
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("n", "J", "mzJ`z")
@@ -47,8 +47,8 @@ map("n", "<leader>rw", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>")
 -- Resizing panes
 map("n", "<Left>", ":vertical resize +1<CR>")
 map("n", "<Right>", ":vertical resize -1<CR>")
-map("n", "<Up>", ":resize -1<CR>")
-map("n", "<Down>", ":resize +1<CR>")
+map("n", "<Up>", ":resize +1<CR>")
+map("n", "<Down>", ":resize -1<CR>")
 
 -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
 -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -56,5 +56,3 @@ map("n", "<Down>", ":resize +1<CR>")
 -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
 map("", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
 map("", "k", 'v:count || mode(2)[0:1] == "no" ? "k" : "gk"', { expr = true })
-map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
-map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })

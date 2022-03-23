@@ -20,7 +20,7 @@ opt.incsearch = true
 opt.ruler = false
 opt.scrolloff = 8
 opt.shiftwidth = 4
-opt.shortmess:append "c" -- Don't give completion messages like 'match 1 of 2' or 'The only match'
+opt.shortmess:append "FWc" -- Don't give completion messages like 'match 1 of 2' or 'The only match'
 opt.showcmd = false
 opt.showmode = false
 opt.signcolumn = "yes"
