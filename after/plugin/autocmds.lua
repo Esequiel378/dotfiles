@@ -6,36 +6,12 @@ vim.cmd [[
   augroup end
 ]]
 
--- Dockerfile
-vim.cmd [[
-  augroup Dockerfile
-    autocmd!
-    autocmd BufNewFile,BufRead *Dockerfile* set ft=Dockerfile
-  augroup end
-]]
-
--- eslang
-vim.cmd [[
-  augroup eslang
-    autocmd!
-    autocmd BufNewFile,BufRead *.esl* set syntax=pascal
-  augroup end
-]]
-
--- env
-vim.cmd [[
-  augroup env
-    autocmd!
-    autocmd BufNewFile,BufRead *.env* set syntax=sh
-  augroup end
-]]
-
 -- nginx
-vim.cmd [[
-  augroup nginx
-    autocmd!
-    autocmd BufNewFile,BufRead *nginx* set ft=nginx
-  augroup end
-]]
+-- vim.cmd [[
+--   augroup nginx
+--     autocmd!
+--     autocmd BufNewFile,BufRead *nginx* set ft=nginx
+--   augroup end
+-- ]]
 
 vim.cmd [[ hi WinSeparator guibg=None ]]
