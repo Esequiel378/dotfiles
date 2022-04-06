@@ -4,6 +4,9 @@ function M.setup(use)
   use {
     "ray-x/go.nvim",
     ft = { "go" },
+    requires = {
+      "ray-x/guihua.lua",
+    },
     config = function()
       require("plugins.config.golang").config()
     end,
@@ -24,7 +27,7 @@ function M.config()
       capabilities = opts.capabilities,
     }, -- false: use your own lspconfig
     lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
-    lsp_on_attach = opts.on_attach, -- use on_attach from go.nvim
+    lsp_on_attach = opts.on_attach,
     dap_debug = true,
   }
 
