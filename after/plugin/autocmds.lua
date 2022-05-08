@@ -14,4 +14,12 @@ vim.cmd [[
 --   augroup end
 -- ]]
 
+vim.cmd [[
+  augroup Dockerfile
+    autocmd!
+    autocmd BufNewFile,BufRead *Dockerfile* set ft=Dockerfile
+  augroup end
+]]
+
+
 vim.cmd [[ hi WinSeparator guibg=None ]]
