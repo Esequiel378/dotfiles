@@ -141,9 +141,8 @@ function M.config()
       { name = "path" },
       { name = "emoji" },
     },
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-      winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+    window = {
+      documentation = cmp.config.window.bordered(),
     },
   }
 
