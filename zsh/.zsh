@@ -28,7 +28,6 @@ plugins=(
     node
     brew
     tmux
-    zsh-z
     zsh-autosuggestions
 )
 
