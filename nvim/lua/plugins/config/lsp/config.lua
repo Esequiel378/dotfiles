@@ -34,7 +34,7 @@ local function on_attach(client, bufnr)
     client.resolved_capabilities.document_range_formatting = false
   end
 
-  buf_set_keymap("n", "sd", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  buf_set_keymap("n", "sd", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 end
 
 -- Setup lspconfig.
