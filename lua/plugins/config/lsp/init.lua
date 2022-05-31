@@ -29,6 +29,14 @@ function M.setup(use)
       require("plugins.config.lsp").config()
     end,
   }
+
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" }
+    }
+  }
 end
 
 function M.config()
