@@ -92,6 +92,8 @@ function M.config(use)
     end,
   }
 
+  use { "tribela/vim-transparent" }
+
   use {
     "simrat39/symbols-outline.nvim",
     config = function()
