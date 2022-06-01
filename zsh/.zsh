@@ -1,6 +1,8 @@
 export PATH="/Users/esequielalbornoz/Library/Python/3.8/bin/:$PATH"
 # This fixes the the problem `gpg failed to sign the data fatal`
 export GPG_TTY=$(tty)
+export GOPATH="$HOME/go"
+export PATH=$PATH:$GOPATH/bin
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
