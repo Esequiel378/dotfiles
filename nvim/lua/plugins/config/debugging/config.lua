@@ -48,7 +48,7 @@ end
 
 local function configure_debuggers()
   require("plugins.config.debugging.lua").setup()
-  require("plugins.config.debugging.go").setup()
+  require("plugins.config.debugging.golang").setup()
 end
 
 function M.config()
