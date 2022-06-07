@@ -40,7 +40,7 @@ local function lsp_client(msg)
   end
 
   -- add linter
-  local linters = require "plugins.config.lsp.null-ls.linters"
+  local linters = require "plugins.config.lsp.nul-ls.linters"
   local supported_linters = linters.list_registered(buf_ft)
   vim.list_extend(buf_client_names, supported_linters)
 

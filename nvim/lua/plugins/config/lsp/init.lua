@@ -104,7 +104,7 @@ function M.config()
 
   local opts = require("plugins.config.lsp.config").default_config()
 
-  require("plugins.config.lsp.null-ls").setup(opts)
+  require("plugins.config.lsp.nul-ls").setup(opts)
   require("plugins.config.lsp.installer").setup(servers, opts)
 end
 
