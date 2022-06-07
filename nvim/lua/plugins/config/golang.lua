@@ -22,7 +22,8 @@ function M.config()
     max_line_len = 120,
     tag_transform = false,
     test_dir = "",
-    comment_placeholder = "   ",
+    -- 
+    comment_placeholder = "- ",
     lsp_cfg = {
       capabilities = opts.capabilities,
     }, -- false: use your own lspconfig
