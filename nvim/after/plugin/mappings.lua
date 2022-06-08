@@ -39,10 +39,13 @@ map("v", "p", '"_dP')
 
 -- use `ESC` or `C-c` to turn off search highlighting
 map("n", { "<Esc>", "<C-c>" }, ":noh <CR>")
--- Find and replace word under cursor without ask
 
+-- Find and replace word under cursor without ask
 map("n", "<leader>rw", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>")
 -- map("v", "<leader>rw", ":%s/\\%V<c-r><c-w>//g<left><left>")
+
+-- Remove extra blank lines from file
+map("n", "<leader>rbl", ":%s/\\(\\n\\n\\)\\n\\+/\\1/<CR>")
 
 -- Resizing panes
 map("n", "<Left>", ":vertical resize +1<CR>")
