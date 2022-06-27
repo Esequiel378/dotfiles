@@ -112,6 +112,7 @@ function M.config(use)
   require("plugins.config.cmp").setup(use)
   require("plugins.config.statusline").setup(use)
   require("plugins.config.golang").setup(use)
+  require("plugins.config.dap").setup(use)
 
   if packer_bootstrap then
     print "Restart Neovim required after installation!"
