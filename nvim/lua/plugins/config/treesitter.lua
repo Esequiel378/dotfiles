@@ -15,6 +15,7 @@ function M.config()
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
     ensure_installed = {
       "lua",
+      "go",
     },
 
     -- Install languages synchronously (only applied to `ensure_installed`)
@@ -25,7 +26,7 @@ function M.config()
     highlight = {
       enable = true,
       use_languagetree = true,
-      additional_vim_regex_highlighting = true,
+      additional_vim_regex_highlighting = false,
     },
     context_commentstring = {
       enable = true,

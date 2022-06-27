@@ -60,6 +60,25 @@ end
 function M.config(use)
   use { "wbthomason/packer.nvim" }
   use { "nvim-lua/plenary.nvim", module = "plenary" }
+  use { "lewis6991/impatient.nvim" }
+
+  -- TODO: Move plugins with configuration to it's own files
+  use {
+    "norcalli/nvim-colorizer.lua",
+    event = "BufRead",
+    config = function()
+      require("colorizer").setup()
+    end,
+  }
+  use { "tribela/vim-transparent" }
+
+  -- Performance
+  use { "nathom/filetype.nvim" }
+  use { "chr4/nginx.vim" }
+  use { "tpope/vim-surround" }
+  use { "andymass/vim-matchup" }
+  use { "shmup/vim-sql-syntax" }
+  use { "folke/lsp-colors.nvim" }
 
   -- Copilot yay!
   use {
@@ -74,25 +93,6 @@ function M.config(use)
     end,
   }
 
-  -- Performance
-  use { "nathom/filetype.nvim" }
-  use { "lewis6991/impatient.nvim" }
-
-  -- TODO: Move plugins with configuration to it's own files
-  use { "chr4/nginx.vim" }
-  use { "tpope/vim-surround" }
-  use { "andymass/vim-matchup" }
-  use { "shmup/vim-sql-syntax" }
-  use { "folke/lsp-colors.nvim" }
-  use {
-    "norcalli/nvim-colorizer.lua",
-    event = "BufRead",
-    config = function()
-      require("colorizer").setup()
-    end,
-  }
-
-  use { "tribela/vim-transparent" }
 
   use {
     "simrat39/symbols-outline.nvim",

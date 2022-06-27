@@ -35,7 +35,9 @@ local sources = {
   b.diagnostics.misspell,
   b.diagnostics.eslint_d,
   b.diagnostics.tsc,
-  b.diagnostics.flake8,
+  -- b.diagnostics.flake8,
+  b.diagnostics.pyproject_flake8,
+
   with_root_file(b.diagnostics.selene, "selene.toml"),
   with_diagnostics_code(b.diagnostics.shellcheck),
 
