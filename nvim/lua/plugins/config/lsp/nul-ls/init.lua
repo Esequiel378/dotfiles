@@ -1,6 +1,5 @@
 local nls = require "null-ls"
 local nls_utils = require "null-ls.utils"
-local map = require("utils").map
 
 local M = {}
 
@@ -50,7 +49,9 @@ local sources = {
   b.hover.dictionary,
 }
 
-function M.setup(opts)
+M.setup = function(opts)
+  local map = require("core.utils").map
+
   map("n", "<leader>fm", ":lua vim.lsp.buf.formatting_sync() <CR>")
   map("v", "<leader>fm", ":lua vim.lsp.buf.range_formatting() <CR>")
 

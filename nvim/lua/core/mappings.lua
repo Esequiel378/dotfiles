@@ -1,4 +1,4 @@
-local map = require("utils").map
+local map = require("core.utils").map
 
 -- Keep cursor centered while jumping around
 map("n", "n", "nzzzv")
@@ -39,6 +39,9 @@ map("v", "p", '"_dP')
 
 -- use `ESC` or `C-c` to turn off search highlighting
 map("n", { "<Esc>", "<C-c>" }, ":noh <CR>")
+
+-- map ctr-c to Esc
+map("i", "<C-c>", "<Esc>")
 
 -- Find and replace word under cursor without ask
 map("n", "<leader>rw", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>")

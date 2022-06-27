@@ -40,3 +40,4 @@ hi link eslInterger Number
 
 syn match eslFloat "\d\+\.\d\+"
 hi link eslFloat Number
+

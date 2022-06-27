@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(use)
+M.setup = function(use)
   use {
     "onsails/lspkind-nvim",
     module = "lspkind",
@@ -10,9 +10,7 @@ function M.setup(use)
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     opt = true,
-    config = function()
-      require("plugins.config.cmp").config()
-    end,
+    config = M.config,
     wants = { "LuaSnip" },
     requires = {
       "hrsh7th/cmp-buffer",
@@ -29,9 +27,7 @@ function M.setup(use)
       {
         "L3MON4D3/LuaSnip",
         wants = "friendly-snippets",
-        config = function()
-          require("plugins.config.cmp.snippets").config()
-        end,
+        config = require("plugins.config.cmp.snippets").config
       },
     },
   }
@@ -57,7 +53,7 @@ function M.setup(use)
   }
 end
 
-function M.config()
+M.config = function()
   local lspkind = require "lspkind"
   local luasnip = require "luasnip"
   local cmp = require "cmp"

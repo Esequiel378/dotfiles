@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(use)
+M.setup = function(use)
   use {
     "bluz71/vim-moonfly-colors",
     config = function()

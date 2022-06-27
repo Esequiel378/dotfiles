@@ -1,9 +1,9 @@
-local lsp_installer_servers = require "nvim-lsp-installer.servers"
-local utils = require "utils"
+local lsp_installer_servers = require("nvim-lsp-installer.servers")
+local utils = require("core.utils")
 
 local M = {}
 
-function M.setup(servers, options)
+M.setup = function(servers, options)
    for server_name, _ in pairs(servers) do
       local server_available, server = lsp_installer_servers.get_server(server_name)
 

@@ -22,7 +22,7 @@ function M.setup()
       packer_path,
     }
 
-    vim.cmd "packadd packer.nvim"
+    vim.cmd [[packadd packer.nvim]]
     present, packer = pcall(require, "packer")
 
     if present then
@@ -32,7 +32,7 @@ function M.setup()
     end
   end
 
-  vim.cmd "autocmd BufWritePost plugins.lua source <afile> | PackerCompile"
+  vim.cmd "autocmd BufWritePost plugins.init.lua source <afile> | PackerCompile"
 
   -- packer.nvim configuration
   local conf = {
@@ -48,9 +48,6 @@ function M.setup()
     },
   }
 
-  -- Performance
-  pcall(require, "impatient")
-
   packer.init(conf)
   packer.startup(M.config)
 
@@ -58,33 +55,45 @@ function M.setup()
 end
 
 function M.config(use)
-  use { "wbthomason/packer.nvim" }
-  use { "nvim-lua/plenary.nvim", module = "plenary" }
-  use { "lewis6991/impatient.nvim" }
-
-  -- TODO: Move plugins with configuration to it's own files
+  -- Performance
   use {
-    "norcalli/nvim-colorizer.lua",
-    event = "BufRead",
+    "lewis6991/impatient.nvim",
     config = function()
-      require("colorizer").setup()
+      require "impatient"
     end,
   }
-  use { "tribela/vim-transparent" }
-
-  -- Performance
   use { "nathom/filetype.nvim" }
-  use { "chr4/nginx.vim" }
-  use { "tpope/vim-surround" }
-  use { "andymass/vim-matchup" }
-  use { "shmup/vim-sql-syntax" }
-  use { "folke/lsp-colors.nvim" }
+
+  use { "wbthomason/packer.nvim" }
+  use { "nvim-lua/plenary.nvim", module = "plenary" }
+
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  }
+
+  -- Lua
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end,
+  }
 
   -- Copilot yay!
   use {
     "github/copilot.vim",
     config = function()
-      local map = require("utils").map
+      local map = require("core.utils").map
 
       map("i", "<C-y>", 'copilot#Accept("")', { silent = true, script = true, expr = true })
       map("i", "<C-n>", "<Plug>(copilot-next)")
@@ -93,81 +102,16 @@ function M.config(use)
     end,
   }
 
-
-  use {
-    "simrat39/symbols-outline.nvim",
-    config = function()
-      local map = require("utils").map
-      map("n", "<leader>s", ":SymbolsOutline <CR>")
-
-      require("symbols-outline").setup {
-        auto_preview = false,
-        position = "left",
-        show_numbers = true,
-        show_relative_numbers = true,
-      }
-    end,
-  }
-
-  -- Markdown
-  use {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
-    ft = { "markdown" },
-    cmd = { "MarkdownPreview" },
-  }
-  -- END OF TODO!
-
-  -- Notification
-  require("plugins.config.notification").setup(use)
-
-  -- Treesitter
-  require("plugins.config.treesitter").setup(use)
-
-  -- Telescope
-  require("plugins.config.telescop").setup(use)
-
-  -- Ranger
+  require("plugins.config.ui-ux").setup(use)
+  require("plugins.config.git").setup(use)
   require("plugins.config.ranger").setup(use)
-
-  -- LSP
-  require("plugins.config.lsp.init").setup(use)
-
-  -- Completion
-  require("plugins.config.cmp.init").setup(use)
-
-  -- Statusline
-  require("plugins.config.statusline").setup(use)
-
-  -- Better icons
-  require("plugins.config.devicons").setup(use)
-
-  -- Better Comment
-  require("plugins.config.comments").setup(use)
-
-  -- Colorscheme
-  require("plugins.config.colorscheme").setup(use)
-
-  -- Startup screen
-  require("plugins.config.startup_screen").setup(use)
-
-  -- Git
-  require("plugins.config.git.init").setup(use)
-
-  -- Golang
-  require("plugins.config.golang").setup(use)
-
-  -- Trouble
-  require("plugins.config.troubl").setup(use)
-
-  -- Editorconfig
+  require("plugins.config.trouble").setup(use)
   require("plugins.config.editorconfig").setup(use)
-
-  -- Debugging
-  -- require("plugins.config.debugging.init").setup(use)
+  require("plugins.config.telescope").setup(use)
+  require("plugins.config.lsp").setup(use)
+  require("plugins.config.cmp").setup(use)
+  require("plugins.config.statusline").setup(use)
+  require("plugins.config.golang").setup(use)
 
   if packer_bootstrap then
     print "Restart Neovim required after installation!"

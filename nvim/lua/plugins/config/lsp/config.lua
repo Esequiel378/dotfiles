@@ -1,5 +1,15 @@
 local M = {}
 
+local disabled_clients = {
+  tsserver = true,
+  sumneko_lua = true,
+  jsonls = true,
+}
+
+local should_disable_format = function(name)
+  return disabled_clients[name]
+end
+
 local function on_attach(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -29,7 +39,7 @@ local function on_attach(client, bufnr)
   buf_set_keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 
   -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
-  if client.name == "tsserver" then
+  if should_disable_format(client.name) then
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
   end
@@ -48,7 +58,7 @@ local lsp_publish_diagnostics_options = {
   signs = true,
   underline = true,
   -- update diagnostics insert mode
-  update_in_insert = false,
+  update_in_insert = true,
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -56,7 +66,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   lsp_publish_diagnostics_options
 )
 
-function M.default_config()
+M.default_config = function()
   return {
     -- enable snippet support
     capabilities = capabilities,

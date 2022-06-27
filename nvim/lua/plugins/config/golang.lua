@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(use)
+M.setup = function(use)
   use {
     "ray-x/go.nvim",
     ft = { "go" },
@@ -13,7 +13,7 @@ function M.setup(use)
   }
 end
 
-function M.config()
+M.config = function()
   local opts = require("plugins.config.lsp.config").default_config()
 
   require("go").setup {

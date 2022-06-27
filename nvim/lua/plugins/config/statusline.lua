@@ -47,7 +47,7 @@ local function lsp_client(msg)
   return "[" .. table.concat(buf_client_names, ", ") .. "]"
 end
 
-function M.setup(use)
+M.setup = function(use)
   use {
     "nvim-lualine/lualine.nvim",
     event = "VimEnter",
@@ -58,7 +58,7 @@ function M.setup(use)
   }
 end
 
-function M.config()
+M.config = function()
   require("lualine").setup {
     options = {
       icons_enabled = true,
@@ -95,3 +95,4 @@ function M.config()
 end
 
 return M
+

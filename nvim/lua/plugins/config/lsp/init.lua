@@ -1,9 +1,8 @@
 local M = {}
 
-function M.setup(use)
+M.setup = function(use)
   use {
     "neovim/nvim-lspconfig",
-    opt = true,
     event = "BufReadPre",
     wants = {
       "nvim-lsp-installer",
@@ -39,7 +38,7 @@ function M.setup(use)
   }
 end
 
-function M.config()
+M.config = function()
   local servers = {
     gopls = {
       staticcheck = false,

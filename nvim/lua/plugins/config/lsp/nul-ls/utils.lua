@@ -1,6 +1,6 @@
 local M = {}
 
-function M.list_registered_providers_names(filetype)
+M.list_registered_providers_names = function(filetype)
    local s = require "null-ls.sources"
    local available_sources = s.get_available(filetype)
    local registered = {}

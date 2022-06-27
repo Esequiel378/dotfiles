@@ -3,6 +3,11 @@ local opt = vim.opt
 local wo = vim.wo
 local bo = vim.bo
 
+-- Remap leader and local leader to <Space>
+vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+g.mapleader = " "
+g.maplocalleader = " "
+
 opt.cul = true -- cursor line
 bo.swapfile = false
 g.backup = false

@@ -1,16 +1,14 @@
 local M = {}
 
-function M.setup(use)
+M.setup = function(use)
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
-    config = function()
-      require("plugins.config.treesitter").config()
-    end,
+    config = M.config,
   }
 end
 
-function M.config()
+M.config = function()
   require("nvim-treesitter.configs").setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
     ensure_installed = {
