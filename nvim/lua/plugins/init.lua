@@ -102,17 +102,17 @@ function M.config(use)
     end,
   }
 
-  require("plugins.config.ui-ux").setup(use)
-  require("plugins.config.git").setup(use)
+  require("plugins.config.ui-ux.init").setup(use)
+  require("plugins.config.git.init").setup(use)
   require("plugins.config.ranger").setup(use)
   require("plugins.config.trouble").setup(use)
   require("plugins.config.editorconfig").setup(use)
   require("plugins.config.telescope").setup(use)
-  require("plugins.config.lsp").setup(use)
-  require("plugins.config.cmp").setup(use)
+  require("plugins.config.lsp.init").setup(use)
+  require("plugins.config.cmp.init").setup(use)
   require("plugins.config.statusline").setup(use)
   require("plugins.config.golang").setup(use)
-  require("plugins.config.dap").setup(use)
+  require("plugins.config.dap.init").setup(use)
 
   if packer_bootstrap then
     print "Restart Neovim required after installation!"

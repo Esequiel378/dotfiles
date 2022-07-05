@@ -27,7 +27,7 @@ M.setup = function(use)
       {
         "L3MON4D3/LuaSnip",
         wants = "friendly-snippets",
-        config = require("plugins.config.cmp.snippets").config
+        config = require("plugins.config.cmp.snippets").config,
       },
     },
   }

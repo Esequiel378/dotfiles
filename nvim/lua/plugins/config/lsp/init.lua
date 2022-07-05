@@ -33,8 +33,8 @@ M.setup = function(use)
     "ThePrimeagen/refactoring.nvim",
     requires = {
       { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" }
-    }
+      { "nvim-treesitter/nvim-treesitter" },
+    },
   }
 end
 
