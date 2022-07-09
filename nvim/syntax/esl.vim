@@ -7,8 +7,6 @@ if exists("b:current_syntax")
     finish
 endif
 
-echom "Eslang syntax highlighting on."
-
 let b:current_syntax = "esl"
 
 syntax match eslSpecialSymbol "+\|-\|\*\|<\|>\|&\||\|!\|%\|=\|\.\|\/"

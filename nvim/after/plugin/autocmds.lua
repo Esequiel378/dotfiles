@@ -12,4 +12,11 @@ vim.cmd [[
   augroup end
 ]]
 
+vim.cmd [[
+  augroup gitignore
+    au!
+    au BufNewFile,BufRead .gitignore set ft=gitignore
+  augroup end
+]]
+
 vim.cmd [[ hi WinSeparator guibg=None ]]
