@@ -9,6 +9,7 @@ M.setup = function(use)
   use { "chr4/nginx.vim" }
   -- ENDOF TODO!
 
+  use { "mechatroner/rainbow_csv" }
   use { "tpope/vim-surround" }
   use { "andymass/vim-matchup" }
   use { "folke/lsp-colors.nvim" }
@@ -19,7 +20,7 @@ M.setup = function(use)
     event = "BufRead",
     config = function()
       require("colorizer").setup()
-    end
+    end,
   }
 
   use {
@@ -41,13 +42,11 @@ M.setup = function(use)
     config = function()
       vim.notify = require "notify"
 
-      require("notify").setup({
+      require("notify").setup {
         background_colour = "#000000",
-      })
-
+      }
     end,
   }
-
 end
 
 return M
