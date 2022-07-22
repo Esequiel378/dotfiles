@@ -6,7 +6,7 @@ TMP=./.tmp
 # check if $NVIM/plugin folder exists
 if [ -d $NVIM/plugin ]; then
     mkdir -p $TMP/plugin
-    cp -r $NVIM/plugin/* $TMP/plugin
+    cp -r $NVIM/plugin $TMP
 fi
 
 # empty $NVIM folder
@@ -19,7 +19,7 @@ cp ./stylua.toml $NVIM
 
 # check if $TMP/plugin folder exists
 if [ -d $TMP/plugin ]; then
-    cp -r $TMP/plugin $NVIM/plugin
+    cp -r $TMP/plugin $NVIM
 fi
 
 rm -rf $TMP
