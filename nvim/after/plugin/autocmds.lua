@@ -20,3 +20,10 @@ vim.cmd [[
 ]]
 
 vim.cmd [[ hi WinSeparator guibg=None ]]
+
+vim.cmd [[
+  augroup makefiles
+    au!
+    au BufNewFile,BufRead Makefile setlocal noexpandtab
+  augroup end
+]]
