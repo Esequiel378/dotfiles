@@ -58,6 +58,7 @@ M.config = function()
             "run",
             "--enable-all",
             "--disable",
+            "--allow-parallel-runners",
             "lll",
             "--out-format",
             "json",
@@ -88,7 +89,9 @@ M.config = function()
             globals = { "vim" },
           },
           workspace = {
-            -- Make the server aware of Neovim runtime files
+            maxPreload = 10000, -- Add this if missing or increase it
+            preloadFileSize = 10000, -- Add this if missing or increase it
+           -- Make the server aware of Neovim runtime files
             library = {
               [vim.fn.expand "$VIMRUNTIME/lua"] = true,
               [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
