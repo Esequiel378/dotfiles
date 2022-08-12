@@ -7,9 +7,7 @@ M.setup = function(use)
     requires = {
       "ray-x/guihua.lua",
     },
-    config = function()
-      require("plugins.config.golang").config()
-    end,
+    config = M.config,
   }
 end
 

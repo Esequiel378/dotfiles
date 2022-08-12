@@ -1,7 +1,6 @@
 local M = {}
 
 M.setup = function()
-  print("lua")
   local dap = require "dap"
   dap.configurations.lua = {
     {
