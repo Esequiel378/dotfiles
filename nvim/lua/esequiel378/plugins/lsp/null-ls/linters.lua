@@ -1,20 +1,20 @@
 local M = {}
 
-local sources = require("null-ls.sources")
+local sources = require "null-ls.sources"
 local disgnostics_method = require("null-ls").methods.DIAGNOSTICS
 
 M.list_registered_providers_names = function(filetype)
-   local available_sources = sources.get_available(filetype)
-   local registered = {}
+  local available_sources = sources.get_available(filetype)
+  local registered = {}
 
-   for source in pairs(available_sources) do
-      for method in pairs(source.methods) do
-         registered[method] = registered[method] or {}
-         table.insert(registered[method], source.name)
-      end
-   end
+  for _, source in ipairs(available_sources) do
+		for method in pairs(source.methods) do
+			registered[method] = registered[method] or {}
+			table.insert(registered[method], source.name)
+		end
+  end
 
-   return registered
+  return registered
 end
 
 M.list_registered = function(filetype)
