@@ -7,10 +7,11 @@ M.setup = function(use)
 		requires = {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			"b0o/schemastore.nvim",
-			"neovim/nvim-lspconfig",
-			"williamboman/mason-lspconfig.nvim",
 			"folke/lua-dev.nvim",
 			"neovim/nvim-lspconfig",
+			"neovim/nvim-lspconfig",
+			"williamboman/mason-lspconfig.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
 		}
 	}
 

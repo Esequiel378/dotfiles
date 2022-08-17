@@ -38,10 +38,6 @@ M.config = function(client, bufnr)
   buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
-	if client.server_capabilities.documentFormattingProvider then
-		buf_set_keymap( "n", "<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
-	end
-
 	-- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
   if should_disable_format(client.name) then
     client.resolved_capabilities.document_formatting = false

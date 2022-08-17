@@ -179,6 +179,8 @@ M.config = function()
 			}
 		end,
 	}
+
+	require("esequiel378.plugins.lsp.null-ls.init").setup(options)
 end
 
 return M
