@@ -17,6 +17,7 @@ M.setup = function(use)
 	}
 
 	-- colorscheme
+  -- use { "tribela/vim-transparent" }
 	use {
 		"bluz71/vim-moonfly-colors",
 		config = function()
