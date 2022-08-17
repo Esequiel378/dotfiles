@@ -1,6 +1,6 @@
 -- Set mapleader
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", {
-  noremap = true, silent = ture 
+  noremap = true, silent = true
 })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -8,7 +8,7 @@ vim.g.maplocalleader = " "
 -- UI
 vim.wo.rnu = true
 vim.wo.nu = true
-vim.g.laststatus = 3
+vim.opt.laststatus = 3
 vim.opt.fillchars:append "vert:|"
 vim.opt.scrolloff = 8
 vim.opt.isfname:append "@-@"
@@ -16,7 +16,7 @@ vim.opt.shortmess:append "FWc"
 vim.opt.signcolumn = "yes"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.bri = true 
+vim.opt.bri = true
 vim.opt.title = true
 vim.winbl = 10
 vim.cmdheigh = 1
