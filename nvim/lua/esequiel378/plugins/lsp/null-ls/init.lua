@@ -65,4 +65,3 @@ M.setup = function(options)
 end
 
 return M
-
