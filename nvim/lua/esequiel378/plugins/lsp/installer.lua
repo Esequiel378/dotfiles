@@ -46,25 +46,26 @@ local servers = {
 				},
 				diagnostics = {
 					-- Get the language server to recognize the `vim` global
-					globals = { "vim", "describe", "it", "before_each", "after_each" },
-					-- disable = { "lowercase-global", "undefined-global", "unused-local", "unused-vararg", "trailing-space" },
+					globals = { "vim" },
 				},
 				workspace = {
+          maxPreload = 2000,
+          preloadFileSize = 50000,
 					-- Make the server aware of Neovim runtime files
-          -- library = vim.api.nvim_get_runtime_file("", true),
-					library = {
-						[vim.fn.expand "$VIMRUNTIME/lua"] = true,
-						[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-					},
-					maxPreload = 2000,
-					preloadFileSize = 50000,
+					library = vim.api.nvim_get_runtime_file("", true),
+					-- library = {
+					-- 	[vim.fn.expand "$VIMRUNTIME/lua"] = true,
+					-- 	[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+					-- },
 				},
-				completion = { callSnippet = "Both" },
 				telemetry = { enable = false },
 			},
 		},
 	},
-	tsserver = { disable_formatting = true },
+	tsserver = {
+		disable_formatting = true,
+		debug = false,
+	},
 	vimls = {},
 	yamlls = {
 		schemastore = {
@@ -88,7 +89,6 @@ local servers = {
 
 
 M.default_config = function()
-	print("default_config")
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	--capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
 
@@ -166,7 +166,7 @@ M.config = function()
 	require("mason-lspconfig").setup_handlers {
 		function(server_name)
 			local opts = vim.tbl_deep_extend("force", options, servers[server_name] or {})
-			lspconfig[server_name].setup { opts }
+			lspconfig[server_name].setup(opts)
 		end,
 		["sumneko_lua"] = function()
 			local opts = vim.tbl_deep_extend("force", options, servers["sumneko_lua"] or {})
@@ -175,8 +175,6 @@ M.config = function()
 		["tsserver"] = function()
 			local opts = vim.tbl_deep_extend("force", options, servers["tsserver"] or {})
 			require("typescript").setup {
-				disable_commands = false,
-				debug = false,
 				server = opts,
 			}
 		end,
