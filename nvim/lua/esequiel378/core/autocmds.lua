@@ -1,23 +1,23 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-local yank_group = augroup('HighlightYank', {})
+local yank_group = augroup("HighlightYank", {})
 
-autocmd('TextYankPost', {
+autocmd("TextYankPost", {
     group = yank_group,
-    pattern = '*',
+    pattern = "*",
     callback = function()
         vim.highlight.on_yank({
-            higroup = 'IncSearch',
+            higroup = "IncSearch",
             timeout = 40,
         })
     end,
 })
 
-local trim_whitespace_group = augroup('TrimWhitespace', {})
+local trim_whitespace_group = augroup("TrimWhitespace", {})
 
-autocmd('BufWritePre', {
+autocmd("BufWritePre", {
 	group = trim_whitespace_group,
-  pattern = '*',
+  pattern = "*",
   command = [[%s/\s\+$//e]],
 })
