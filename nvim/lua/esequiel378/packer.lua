@@ -79,6 +79,7 @@ function M.config(use)
 	require("esequiel378.plugins.telescope").setup(use)
 	require("esequiel378.plugins.git.init").setup(use)
 	require("esequiel378.plugins.lsp.init").setup(use)
+	require("esequiel378.plugins.cmp").setup(use)
 
 	if packer_bootstrap then
 		print "Restart Neovim required after installation!"
