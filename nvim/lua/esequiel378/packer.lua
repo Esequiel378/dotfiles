@@ -71,54 +71,7 @@ function M.config(use)
 	use { "wbthomason/packer.nvim" }
 	use { "nvim-lua/plenary.nvim", module = "plenary" }
 
-	-- extend vim's builtins
-	use { "tpope/vim-surround" }
-	use { "andymass/vim-matchup" }
-
-	-- colors
-	use { "folke/lsp-colors.nvim" }
-	use {
-		"shmup/vim-sql-syntax",
-		ft = "sql",
-	}
-	use {
-		"mechatroner/rainbow_csv",
-		ft = "csv",
-	}
-	use {
-		"norcalli/nvim-colorizer.lua",
-		event = "BufRead",
-		config = function()
-			require("colorizer").setup()
-		end,
-	}
-
-	use {
-		"bluz71/vim-moonfly-colors",
-		config = function()
-			vim.cmd [[colorscheme moonfly]]
-			-- vim.cmd "hi Normal guibg=0000"
-		end,
-	}
-
-	use {
-		"tpope/vim-commentary",
-		keys = { "gc", "gcc", "gbc" },
-	}
-
-	use {
-		"rcarriga/nvim-notify",
-		event = "VimEnter",
-		config = function()
-			vim.notify = require "notify"
-
-			require("notify").setup {
-				background_colour = "#000000",
-			}
-		end,
-	}
-
-
+	require("esequiel378.plugins.common").setup(use)
 	require("esequiel378.plugins.treesitter").setup(use)
 	require("esequiel378.plugins.alpha-nvim").setup(use)
 	require("esequiel378.plugins.editorconfig").setup(use)
