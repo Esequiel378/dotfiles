@@ -37,8 +37,7 @@ M.config = function()
 
   local preview_maker = function(filepath, bufnr, opts)
     filepath = vim.fn.expand(filepath)
-    Job
-    :new({
+    Job:new({
       command = "file",
       args = { "--mime-type", "-b", filepath },
       on_exit = function(j)
@@ -62,8 +61,7 @@ M.config = function()
           end)
         end
       end,
-    })
-    :sync()
+    }):sync()
   end
 
   telescope.setup {

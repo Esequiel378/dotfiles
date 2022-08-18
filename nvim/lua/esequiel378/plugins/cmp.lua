@@ -27,16 +27,16 @@ M.setup = function(use)
       {
         "L3MON4D3/LuaSnip",
         wants = "friendly-snippets",
-				config = function()
-					local luasnip = require "luasnip"
+        config = function()
+          local luasnip = require "luasnip"
 
-					luasnip.config.set_config {
-						history = false,
-						updateevents = "TextChanged,TextChangedI",
-					}
+          luasnip.config.set_config {
+            history = false,
+            updateevents = "TextChanged,TextChangedI",
+          }
 
-					require("luasnip/loaders/from_vscode").load()
-				end,
+          require("luasnip/loaders/from_vscode").load()
+        end,
       },
     },
   }
@@ -49,13 +49,13 @@ M.setup = function(use)
     "RRethy/nvim-treesitter-endwise",
     wants = "nvim-treesitter",
     event = "InsertEnter",
-		config = function()
-			require('nvim-treesitter.configs').setup {
-				endwise = {
-					enable = true,
-				},
-			}
-		end
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        endwise = {
+          enable = true,
+        },
+      }
+    end,
   }
 end
 
@@ -92,7 +92,7 @@ M.config = function()
           end
         end,
       },
-   },
+    },
     sorting = {
       comparators = {
         cmp.config.compare.offset,

@@ -10,10 +10,10 @@ function M.config()
 
     diagnostic = {
       virtual_text = {
-				severity = vim.diagnostic.severity.ERROR,
-				spacing = 1,
-			},
-			signs = true,
+        severity = vim.diagnostic.severity.ERROR,
+        spacing = 1,
+      },
+      signs = true,
       underline = true,
       update_in_insert = false,
       severity_sort = true,
