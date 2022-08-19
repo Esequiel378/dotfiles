@@ -15,6 +15,7 @@ M.setup = function(use)
     requires = {
       "nvim-lua/popup.nvim",
       "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-dap.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     },
   }
@@ -114,6 +115,7 @@ M.config = function()
   }
 
   telescope.load_extension "fzf"
+  telescope.load_extension "dap"
 end
 
 return M

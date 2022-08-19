@@ -51,6 +51,10 @@ vim.opt.backup = false
 vim.opt.undodir = vim.fn.expand "~/.vim/undodir"
 vim.opt.undofile = true
 
+-- Remove sql wire stuffs
+vim.g.omni_sql_no_default_maps = true
+vim.g.pascal_delphi = true
+
 -- Disable some builtin vim plugins
 local disabled_built_ins = {
   "2html_plugin",

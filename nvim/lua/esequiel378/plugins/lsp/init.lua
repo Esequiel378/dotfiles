@@ -12,6 +12,7 @@ M.setup = function(use)
       "neovim/nvim-lspconfig",
       "williamboman/mason-lspconfig.nvim",
       "jose-elias-alvarez/null-ls.nvim",
+      "jose-elias-alvarez/typescript.nvim",
     },
   }
 

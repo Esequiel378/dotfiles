@@ -42,7 +42,6 @@ local sources = {
 
   -- code actions
   b.code_actions.eslint_d,
-  b.code_actions.refactoring,
   b.code_actions.proselint,
 
   -- hover
