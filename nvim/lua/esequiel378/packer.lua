@@ -80,6 +80,7 @@ function M.config(use)
   require("esequiel378.plugins.statusline").setup(use)
   require("esequiel378.plugins.ranger").setup(use)
   require("esequiel378.plugins.go").setup(use)
+  require("esequiel378.plugins.dbg").setup(use)
 
   if packer_bootstrap then
     print "Restart Neovim required after installation!"
