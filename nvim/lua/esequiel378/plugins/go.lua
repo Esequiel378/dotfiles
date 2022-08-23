@@ -27,6 +27,9 @@ M.config = function()
     lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
     lsp_on_attach = opts.on_attach,
     dap_debug = true,
+    lsp_inlay_hints = {
+      enable = true,
+    },
   }
 
   -- Run gofmt + goimport on save
