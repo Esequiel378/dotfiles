@@ -17,7 +17,7 @@ M.setup = function(use)
   }
 
   -- colorscheme
-  -- use { "tribela/vim-transparent" }
+  use { "tribela/vim-transparent" }
   use {
     "bluz71/vim-moonfly-colors",
     config = function()
@@ -40,7 +40,7 @@ M.setup = function(use)
       vim.notify = require "notify"
 
       require("notify").setup {
-        background_colour = "#000000",
+        background_colour = "#14191e",
       }
     end,
   }
