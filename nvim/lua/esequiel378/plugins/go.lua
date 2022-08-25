@@ -28,7 +28,7 @@ M.config = function()
     lsp_on_attach = opts.on_attach,
     dap_debug = true,
     lsp_inlay_hints = {
-      enable = true,
+      enable = false,
     },
   }
 

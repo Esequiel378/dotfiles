@@ -20,7 +20,8 @@ vim.opt.bri = true
 vim.opt.title = true
 vim.winbl = 10
 vim.cmdheigh = 1
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "90"
+vim.opt.pumheight = 10
 
 -- Search
 vim.opt.hlsearch = true
