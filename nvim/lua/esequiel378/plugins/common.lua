@@ -51,14 +51,14 @@ M.setup = function(use)
     config = function()
       local map = require("esequiel378.utils").map
 
-      map("i", "<C-y>", 'copilot#Accept("")', { script = true, expr = true })
+      -- Copilot and cmp can not use <C-y> at the same time - https://github.com/hrsh7th/nvim-cmp/issues/459
+      -- map("i", "<C-y>", 'copilot#Accept("")', { script = true, expr = true })
       map("i", "<C-n>", "<Plug>(copilot-next)")
       map("i", "<C-p>", "<Plug>(copilot-previous)")
       map("i", "<C-e>", "<Plug>(copilot-dismiss)")
 
       vim.g.copilot_filetypes = { esl = false }
-      -- TODO: this is not working, maybe submit a PR/issue
-      vim.g.copilot_no_tab_map = true
+      -- vim.g.copilot_no_tab_map = true
     end,
   }
 

@@ -82,16 +82,14 @@ M.config = function()
       ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-e>"] = cmp.mapping { i = cmp.mapping.close(), c = cmp.mapping.close() },
-      ["<C-y>"] = cmp.mapping {
-        i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false },
-        c = function(fallback)
-          if cmp.visible() then
-            cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
-          else
-            fallback()
-          end
-        end,
-      },
+      -- Copilot and cmp can not use <C-y> at the same time - https://github.com/hrsh7th/nvim-cmp/issues/459
+      ["<C-y>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
+        else
+          fallback()
+        end
+      end, { "i", "c" }),
     },
     sorting = {
       comparators = {
