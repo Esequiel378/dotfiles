@@ -27,6 +27,7 @@ local sources = {
   b.formatting.fixjson,
   b.formatting.black.with { extra_args = { "--fast" } },
   b.formatting.isort,
+  b.formatting.sql_formatter,
   with_root_file(b.formatting.stylua, "stylua.toml"),
 
   -- diagnostics
