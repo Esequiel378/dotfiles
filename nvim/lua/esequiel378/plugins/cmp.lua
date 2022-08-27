@@ -42,7 +42,7 @@ M.setup = function(use)
   }
 
   -- Auto close
-  use { "rstacruz/vim-closer" }
+  -- use { "rstacruz/vim-closer" }
 
   -- End wise
   use {
