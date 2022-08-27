@@ -27,7 +27,9 @@ local sources = {
   b.formatting.fixjson,
   b.formatting.black.with { extra_args = { "--fast" } },
   b.formatting.isort,
-  b.formatting.sql_formatter,
+  b.formatting.sql_formatter.with {
+    extra_args = { "--config", vim.fn.expand "~/.config/nvim/lua/esequiel378/plugins/lsp/null-ls/config/sql-formatter.json" },
+  },
   with_root_file(b.formatting.stylua, "stylua.toml"),
 
   -- diagnostics
