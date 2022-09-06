@@ -51,7 +51,7 @@ vim.opt.whichwrap:append "<>[]hl"
 vim.opt.clipboard:append "unnamedplus"
 
 -- File history
-vim.bo.swapfile = false
+vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = vim.fn.expand "~/.vim/undodir"
 vim.opt.undofile = true
