@@ -5,6 +5,10 @@ vim.api.nvim_set_keymap("", "<Space>", "<Nop>", {
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Indent
+vim.opt.si = true
+vim.opt.ai = true
+
 -- UI
 vim.wo.rnu = true
 vim.wo.nu = true
