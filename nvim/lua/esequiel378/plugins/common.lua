@@ -4,6 +4,7 @@ M.setup = function(use)
   -- extend vim's builtins
   use { "tpope/vim-surround" }
   use { "andymass/vim-matchup" }
+  use { "mbbill/undotree" }
 
   -- colors
   use { "folke/lsp-colors.nvim" }
