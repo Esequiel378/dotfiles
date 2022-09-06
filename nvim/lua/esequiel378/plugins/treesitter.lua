@@ -6,6 +6,14 @@ M.setup = function(use)
     run = ":TSUpdate",
     config = M.config,
   }
+
+  use {
+    "nvim-treesitter/nvim-treesitter-context",
+    requires = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("treesitter-context").setup {}
+    end,
+  }
 end
 
 M.config = function()
