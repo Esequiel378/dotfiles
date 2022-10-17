@@ -24,11 +24,14 @@ local sources = {
   b.formatting.prettier,
   b.formatting.nginx_beautifier,
   b.formatting.shfmt,
-  b.formatting.fixjson,
+  b.formatting.fixjson.with { extra_args = { "-i", "2" } },
   b.formatting.black.with { extra_args = { "--fast" } },
   b.formatting.isort,
   b.formatting.sql_formatter.with {
-    extra_args = { "--config", vim.fn.expand "~/.config/nvim/lua/esequiel378/plugins/lsp/null-ls/config/sql-formatter.json" },
+    extra_args = {
+      "--config",
+      vim.fn.expand "~/.config/nvim/lua/esequiel378/plugins/lsp/null-ls/config/sql-formatter.json",
+    },
   },
   with_root_file(b.formatting.stylua, "stylua.toml"),
 

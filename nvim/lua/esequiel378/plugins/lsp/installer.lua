@@ -169,7 +169,7 @@ M.config = function()
     end,
     ["sumneko_lua"] = function()
       local opts = vim.tbl_deep_extend("force", options, servers["sumneko_lua"] or {})
-      lspconfig.sumneko_lua.setup(require("lua-dev").setup { lspconfig = opts })
+      lspconfig.sumneko_lua.setup(require("neodev").setup { lspconfig = opts })
     end,
     ["tsserver"] = function()
       local opts = vim.tbl_deep_extend("force", options, servers["tsserver"] or {})
