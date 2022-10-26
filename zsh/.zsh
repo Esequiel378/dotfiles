@@ -1,4 +1,3 @@
-export PATH="/Users/esequielalbornoz/Library/Python/3.8/bin/:$PATH"
 # This fixes the the problem `gpg failed to sign the data fatal`
 export GPG_TTY=$(tty)
 export GOPATH="$HOME/go"
@@ -25,10 +24,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( 
+plugins=(
     git
     node
-    brew
     tmux
     zsh-autosuggestions
 )
@@ -55,8 +53,5 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="/Users/esequielalbornoz/go/bin/:$PATH"
-
+# Load `.profile` config if exists
+[[ ! -f ~/.profile ]] || source ~/.profile
