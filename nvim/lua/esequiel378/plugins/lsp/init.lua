@@ -5,6 +5,13 @@ M.setup = function(use)
     "williamboman/mason.nvim",
     config = M.config,
     requires = {
+      {
+        "folke/neodev.nvim",
+        config = function()
+          -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+          require("neodev").setup {}
+        end,
+      },
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "b0o/schemastore.nvim",
       "folke/neodev.nvim",

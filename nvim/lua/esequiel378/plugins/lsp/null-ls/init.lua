@@ -57,7 +57,7 @@ local sources = {
 M.setup = function(options)
   local map = require("esequiel378.utils").map
 
-  map("n", "<leader>fm", ":lua vim.lsp.buf.formatting_sync() <CR>")
+  map("n", "<leader>fm", ":lua vim.lsp.buf.format() <CR>")
   map("v", "<leader>fm", ":lua vim.lsp.buf.range_formatting() <CR>")
 
   nls.setup {
