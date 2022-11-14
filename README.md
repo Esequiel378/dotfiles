@@ -16,7 +16,7 @@
     + [fixjson](https://github.com/rhysd/fixjson)
     + [black](https://github.com/psf/black)
     + [isort](https://github.com/PyCQA/isort)
-    + [sql_formatter]()
+    + [sql_formatter](https://github.com/sql-formatter-org/sql-formatter)
     + [write_good](https://github.com/btford/write-good)
     + [misspell](https://github.com/client9/misspell)
     + [eslint_d](https://github.com/mantoni/eslint_d.js)
