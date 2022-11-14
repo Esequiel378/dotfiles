@@ -10,19 +10,18 @@
     + [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 1. Install [NerdFont](https://www.nerdfonts.com/font-downloads)
 1. Install [neovim](https://github.com/neovim/neovim/wiki/Building-Neovim#quick-start) and it's dependencies
-    + prettier
-    + nginx_beautifier
-    + shfmt
-    + fixjson
-    + black
-    + isort
-    + sql_formatter
-    + write_good
-    + misspell
-    + eslint_d
-    + tsc
-    + pyproject_flake8
-    + selene
-    + shellcheck
-    + proselint
-    + dictionary
+    + [prettier](https://github.com/prettier/prettier)
+    + [nginx_beautifier](https://github.com/vasilevich/nginxbeautifier)
+    + [shfmt](https://github.com/mvdan/sh)
+    + [fixjson](https://github.com/rhysd/fixjson)
+    + [black](https://github.com/psf/black)
+    + [isort](https://github.com/PyCQA/isort)
+    + [sql_formatter]()
+    + [write_good](https://github.com/btford/write-good)
+    + [misspell](https://github.com/client9/misspell)
+    + [eslint_d](https://github.com/mantoni/eslint_d.js)
+    + [tsc](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+    + [pyproject_flake8](https://github.com/csachs/pyproject-flake8)
+    + [selene](https://kampfkarren.github.io/selene/)
+    + [shellcheck](https://www.shellcheck.net/)
+    + [proselint](https://github.com/amperser/proselint)
