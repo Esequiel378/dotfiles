@@ -9,6 +9,7 @@
     + [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
     + [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 1. Install [NerdFont](https://www.nerdfonts.com/font-downloads)
+1. Install [ripgrep](https://github.com/BurntSushi/ripgrep)
 1. Install [neovim](https://github.com/neovim/neovim/wiki/Building-Neovim#quick-start) and it's dependencies
     + [prettier](https://github.com/prettier/prettier)
     + [nginx_beautifier](https://github.com/vasilevich/nginxbeautifier)
