@@ -7,6 +7,7 @@ export PATH=$PATH:$GOPATH/bin
 
 # Add home binaries to path
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
