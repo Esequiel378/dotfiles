@@ -45,6 +45,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+DISABLE_AUTO_TITLE="true"
 
 # Set default editor to nvim
 export EDITOR='nvim'
