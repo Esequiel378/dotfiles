@@ -20,7 +20,7 @@ M.config = function()
     gofmt = "gopls", -- if set to gopls will use golsp format
     tag_transform = false,
     test_dir = "",
-    comment_placeholder = "- ",
+    comment_placeholder = "",
     lsp_cfg = {
       capabilities = opts.capabilities,
     }, -- false: use your own lspconfig
@@ -32,9 +32,16 @@ M.config = function()
     },
   }
 
-  -- Run gofmt + goimport on save
-  vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
   vim.cmd "autocmd FileType go nmap <Leader>gc :lua require('go.comment').gen()<CR>"
+
+  -- Run gofmt + goimport on save
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+      require("go.format").goimport()
+    end,
+    group = format_sync_grp,
+  })
 end
 
 return M
