@@ -22,8 +22,17 @@ M.setup = function(use)
   use {
     "bluz71/vim-moonfly-colors",
     config = function()
-      vim.cmd [[colorscheme moonfly]]
+      -- vim.cmd [[colorscheme moonfly]]
       -- vim.cmd "hi Normal guibg=0000"
+    end,
+  }
+
+  use {
+    "morhetz/gruvbox",
+    config = function()
+      vim.g.gruvbox_invert_selection = 0
+
+      vim.cmd [[colorscheme gruvbox]]
     end,
   }
 
@@ -65,7 +74,9 @@ M.setup = function(use)
 
   use {
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
     setup = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
