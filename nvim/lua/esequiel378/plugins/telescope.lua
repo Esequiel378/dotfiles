@@ -4,6 +4,7 @@ M.setup = function(use)
   use {
     "nvim-telescope/telescope.nvim",
     cmd = { "Telescope" },
+    event = "VimEnter",
     module = "telescope",
     keys = { "<leader>t", "<leader>ps" },
     config = M.config,
@@ -25,6 +26,7 @@ M.config = function()
   local map = require("esequiel378.utils").map
 
   map("n", "<leader>t", ":Telescope find_files hidden=false <CR>")
+  map("n", "<leader>ts", ":Telescope lsp_document_symbols <CR>")
   map("n", "<leader>ps", ":Telescope live_grep <CR>")
   map("n", "<leader>fw", ":Telescope grep_string <CR>")
   map("n", "<leader>fb", ":Telescope buffers <CR>")

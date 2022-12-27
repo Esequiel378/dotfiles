@@ -38,6 +38,16 @@ M.setup = function(use)
       require("fidget").setup {}
     end,
   }
+
+  use {
+    "simrat39/symbols-outline.nvim",
+    config = function()
+      require("symbols-outline").setup {}
+      local map = require("esequiel378.utils").map
+
+      map("n", "<leader>s", "<cmd>SymbolsOutline<cr>")
+    end,
+  }
 end
 
 M.config = function()
