@@ -32,7 +32,13 @@ M.config = function()
     },
   }
 
-  vim.cmd "autocmd FileType go nmap <Leader>gc :lua require('go.comment').gen()<CR>"
+  local map = require("esequiel378.utils").map
+
+  map("n", "<Leader>gc", ":lua require('go.comment').gen()<CR>")
+  map("n", "<Leader>ga", ":GoAlt<CR>")
+  map("n", "<Leader>gd", ":GoDoc<CR>")
+  map("n", "<Leader>gt", ":GoTest<CR>")
+  map("n", "<Leader>gtf", ":GoTestFunc<CR>")
 
   -- Run gofmt + goimport on save
   vim.api.nvim_create_autocmd("BufWritePre", {
