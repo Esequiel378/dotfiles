@@ -30,7 +30,7 @@
 
 
 ```shell
-npm i -g prettier nginxbeautfier fixjson sql-formatter write-good eslint_d tsc
+npm i -g prettier nginxbeautifier fixjson sql-formatter write-good eslint_d tsc
 ```
 
 ```shell
