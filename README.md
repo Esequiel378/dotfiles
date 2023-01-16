@@ -29,17 +29,25 @@
     + [proselint](https://github.com/amperser/proselint)
 
 
+**Node**
+
 ```shell
 npm i -g prettier nginxbeautifier fixjson sql-formatter write-good eslint_d tsc
 ```
+
+**Python**
 
 ```shell
 pip install proselint black isort pyproject-flake8
 ```
 
+**Golang**
+
 ```shell
 go install mvdan.cc/sh/v3/cmd/shfmt@latest github.com/client9/misspell/cmd/misspell@latest
 ```
+
+**Rust**
 
 ```shell
 cargo install selene
