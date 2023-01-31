@@ -36,6 +36,7 @@ M.config = function()
 
   map("n", "<Leader>gc", ":lua require('go.comment').gen()<CR>")
   map("n", "<Leader>ga", ":GoAlt<CR>")
+  map("n", "<Leader>gg", ":GoGenerate<CR>")
   map("n", "<Leader>gd", ":GoDoc<CR>")
   map("n", "<Leader>gt", ":GoTest<CR>")
   map("n", "<Leader>gtf", ":GoTestFunc<CR>")

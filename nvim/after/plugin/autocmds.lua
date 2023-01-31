@@ -1,7 +1,7 @@
 vim.cmd [[
   augroup Dockerfile
     autocmd!
-    autocmd BufNewFile,BufRead *Dockerfile* set ft=Dockerfile
+    autocmd BufNewFile,BufRead *Dockerfile* set ft=dockerfile
   augroup end
 ]]
 

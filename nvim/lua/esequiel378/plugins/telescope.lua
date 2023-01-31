@@ -25,7 +25,7 @@ end
 M.config = function()
   local map = require("esequiel378.utils").map
 
-  map("n", "<leader>t", ":Telescope find_files hidden=false <CR>")
+  map("n", "<leader>tt", ":Telescope find_files hidden=false <CR>")
   map("n", "<leader>ts", ":Telescope lsp_document_symbols <CR>")
   map("n", "<leader>ps", ":Telescope live_grep <CR>")
   map("n", "<leader>fw", ":Telescope grep_string <CR>")
@@ -112,6 +112,11 @@ M.config = function()
         "--line-number",
         "--column",
         "--smart-case",
+      },
+    },
+    pickers = {
+      colorscheme = {
+        enable_preview = true,
       },
     },
   }
