@@ -6,6 +6,7 @@ export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
 
 # Add home binaries to path
+export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.cargo/bin
 

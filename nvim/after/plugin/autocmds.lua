@@ -27,3 +27,10 @@ vim.cmd [[
     au BufNewFile,BufRead Makefile setlocal noexpandtab
   augroup end
 ]]
+
+vim.cmd [[
+  augroup html2
+    autocmd!
+    autocmd BufNewFile,BufRead *.html2 set ft=html
+  augroup end
+]]
