@@ -45,6 +45,7 @@ M.setup = function(use)
   -- notification
   use {
     "rcarriga/nvim-notify",
+    disable = true,
     event = "VimEnter",
     config = function()
       vim.notify = require "notify"
