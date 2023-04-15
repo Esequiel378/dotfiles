@@ -1,5 +1,5 @@
 {
-  "language": "sql",
+  "language": "mysql",
   "tabWidth": 2,
   "keywordCase": "upper",
   "linesBetweenQueries": 1,

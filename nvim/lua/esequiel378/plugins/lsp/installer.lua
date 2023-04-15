@@ -149,9 +149,7 @@ M.config = function()
     },
   }
 
-  require("mason-lspconfig").setup {
-    ensure_installed = { "sumneko_lua" },
-  }
+  require("mason-lspconfig").setup {}
 
   require("mason-tool-installer").setup {
     ensure_installed = { "stylua", "shfmt", "shellcheck", "black", "isort", "prettierd" },
@@ -166,12 +164,6 @@ M.config = function()
     function(server_name)
       local opts = vim.tbl_deep_extend("force", options, servers[server_name] or {})
       lspconfig[server_name].setup(opts)
-    end,
-    ["sumneko_lua"] = function()
-      local opts = vim.tbl_deep_extend("force", options, servers["sumneko_lua"] or {})
-      lspconfig.sumneko_lua.setup {
-        settings = opts.settings,
-      }
     end,
     ["tsserver"] = function()
       local opts = vim.tbl_deep_extend("force", options, servers["tsserver"] or {})
