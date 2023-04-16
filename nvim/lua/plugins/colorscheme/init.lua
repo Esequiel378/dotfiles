@@ -5,12 +5,9 @@ return {
     config = function()
       require("styler").setup {
         themes = {
-          help = { colorscheme = "catppuccin-mocha", background = "dark" },
+          help = { colorscheme = "gruvbox", background = "dark" },
         },
       }
-
-      vim.o.background = "dark"
-      vim.cmd "colorscheme gruvbox"
     end,
   },
   {
@@ -22,12 +19,6 @@ return {
       tokyonight.setup { style = "storm" }
       tokyonight.load()
     end,
-  },
-  {
-    "catppuccin/nvim",
-    lazy = false,
-    name = "catppuccin",
-    priority = 1000,
   },
   {
     "ellisonleao/gruvbox.nvim",

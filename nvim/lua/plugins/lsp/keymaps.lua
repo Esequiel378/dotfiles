@@ -24,8 +24,8 @@ function M.on_attach(client, buffer)
   self:map("<leader>fm", format, { desc = "Format Range", mode = "v", has = "documentRangeFormatting" })
   self:map("<leader>rn", M.rename, { expr = true, desc = "Rename", has = "rename" })
 
-  self:map("<leader>s", require("telescope.builtin").lsp_document_symbols, { desc = "Document Symbols" })
-  self:map("<leader>S", require("telescope.builtin").lsp_dynamic_workspace_symbols, { desc = "Workspace Symbols" })
+  self:map("<leader>ts", require("telescope.builtin").lsp_document_symbols, { desc = "Document Symbols" })
+  self:map("<leader>tS", require("telescope.builtin").lsp_dynamic_workspace_symbols, { desc = "Workspace Symbols" })
 end
 
 function M.new(client, buffer)
