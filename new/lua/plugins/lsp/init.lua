@@ -13,10 +13,34 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      "b0o/schemastore.nvim",
     },
-    config = function(plugin)
-      require("plugins.lsp.servers").setup(plugin)
+    opts = {
+      servers = {
+        lua_ls = {
+          settings = {
+            Lua = {
+              workspace = {
+                checkThirdParty = false,
+              },
+              completion = { callSnippet = "Replace" },
+              telemetry = { enable = false },
+              hint = {
+                enable = false,
+              },
+            },
+          },
+        },
+        dockerls = {},
+        bashls = {},
+        omnisharp = {},
+        emmet_ls = {},
+        marksman = {},
+        html = {},
+      },
+      setup = {},
+    },
+    config = function(plugin, opts)
+      require("plugins.lsp.servers").setup(plugin, opts)
     end,
   },
   {

@@ -14,7 +14,7 @@ return {
           disabled_filetypes = {
             statusline = { "alpha", "lazy" },
             winbar = {
-              "help",
+              "vimdoc",
               "alpha",
               "lazy",
             },

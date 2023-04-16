@@ -4,14 +4,14 @@ return {
   config = function()
     local wk = require "which-key"
     wk.setup {
-      show_help = false,
+      show_help = true,
       plugins = { spelling = true },
       key_labels = { ["<leader>"] = "SPC" },
       triggers = "auto",
     }
     wk.register({
       w = { "<cmd>update!<CR>", "Save" },
-      q = { "<cmd>lua require('util').smart_quit()<CR>", "Quit" },
+      q = { "<cmd>lua require('utils').quit()<CR>", "Quit" },
       f = { name = "+File" },
       g = { name = "+Git" },
       c = {
@@ -27,6 +27,21 @@ return {
           f = "Function",
           p = "Parameter",
           c = "Class",
+        },
+      },
+      s = {
+        name = "+Search",
+        c = {
+          function()
+            require("utils.cht").cht()
+          end,
+          "Cheatsheets",
+        },
+        s = {
+          function()
+            require("utils.cht").stack_overflow()
+          end,
+          "Stack Overflow",
         },
       },
     }, { prefix = "<leader>" })
