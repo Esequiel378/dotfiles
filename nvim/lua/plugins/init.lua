@@ -56,16 +56,6 @@ return {
     config = true,
   },
   {
-    "TimUntersberger/neogit",
-    cmd = "Neogit",
-    config = {
-      integrations = { diffview = true },
-    },
-    keys = {
-      { "<leader>gs", "<cmd>Neogit<cr>", desc = "Status" },
-    },
-  },
-  {
     "monaqa/dial.nvim",
     event = "BufReadPre",
     config = function()

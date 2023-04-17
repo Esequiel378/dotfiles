@@ -71,16 +71,18 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
+          { name = "emoji" },
         },
         formatting = {
           fields = { "kind", "abbr", "menu" },
           format = function(entry, item)
             local max_width = 0
             local source_names = {
-              nvim_lsp = "(LSP)",
-              path = "(Path)",
-              luasnip = "(Snippet)",
-              buffer = "(Buffer)",
+              nvim_lsp = "[LSP]",
+              path = "[Path]",
+              luasnip = "[Snippet]",
+              buffer = "[Buffer]",
+              emoji = "[Emoji]",
             }
             local duplicates = {
               buffer = 1,
