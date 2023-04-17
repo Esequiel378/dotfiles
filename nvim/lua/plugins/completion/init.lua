@@ -6,6 +6,8 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-emoji",
+      "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
     },
@@ -34,7 +36,7 @@ return {
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<c-y>"] = cmp.mapping.confirm { select = true },
-          ["<C-j>"] = cmp.mapping(function(fallback)
+          ["<C-n>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
@@ -49,7 +51,7 @@ return {
             "s",
             "c",
           }),
-          ["<C-k>"] = cmp.mapping(function(fallback)
+          ["<C-p>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
