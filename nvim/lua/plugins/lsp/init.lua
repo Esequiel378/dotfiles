@@ -23,9 +23,9 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
-      { "folke/neoconf.nvim",      cmd = "Neoconf", config = true },
-      { "folke/neodev.nvim",       config = true },
-      { "j-hui/fidget.nvim",       config = true },
+      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+      { "folke/neodev.nvim", config = true },
+      { "j-hui/fidget.nvim", config = true },
       { "smjonas/inc-rename.nvim", config = true },
       "simrat39/rust-tools.nvim",
       "rust-lang/rust.vim",
@@ -89,7 +89,12 @@ return {
     dependencies = { "mason.nvim" },
     config = function()
       local nls = require "null-ls"
+      local nls_utils = require "null-ls.utils"
+
       nls.setup {
+        debounce = 150,
+        save_after_format = false,
+        root_dir = nls_utils.root_pattern ".git",
         sources = {
           -- formatting
           nls.builtins.formatting.stylua,
