@@ -10,13 +10,9 @@ keymap("n", "N", "Nzzzv")
 keymap("n", "g,", "g,zvzz")
 keymap("n", "g;", "g;zvzz")
 
--- Better escape using jk in insert and terminal mode
-keymap("i", "jk", "<ESC>")
-keymap("t", "jk", "<C-\\><C-n>")
-keymap("t", "<C-h>", "<C-\\><C-n><C-w>h")
+-- Better escape in terminal mode
 keymap("t", "<C-j>", "<C-\\><C-n><C-w>j")
 keymap("t", "<C-k>", "<C-\\><C-n><C-w>k")
-keymap("t", "<C-l>", "<C-\\><C-n><C-w>l")
 
 -- Navigation within insert mode
 keymap("i", "<C-h>", "<Left>")
