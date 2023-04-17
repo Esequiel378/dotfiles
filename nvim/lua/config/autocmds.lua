@@ -72,3 +72,10 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
     end
   end,
 })
+
+local trim_whitespace_group = vim.api.nvim_create_augroup("TrimWhitespace", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = trim_whitespace_group,
+  pattern = "*",
+  command = [[%s/\s\+$//e]],
+})
