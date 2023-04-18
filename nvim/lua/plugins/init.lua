@@ -5,11 +5,13 @@ return {
   "mbbill/undotree",
   {
     "github/copilot.vim",
+    cmd = "Telescope",
     config = function()
       local keymap = vim.keymap.set
       keymap("i", "<C-n>", "<Plug>(copilot-next)")
       keymap("i", "<C-p>", "<Plug>(copilot-previous)")
       keymap("i", "<C-e>", "<Plug>(copilot-dismiss)")
+      keymap("i", "<leader><Space>", "<Plug>(copilot-suggest)")
 
       vim.g.copilot_filetypes = { esl = false }
       -- Copilot and cmp can not use <C-y> at the same time - https://github.com/hrsh7th/nvim-cmp/issues/459
