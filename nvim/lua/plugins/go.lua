@@ -28,12 +28,12 @@ return {
 
       local keymap = vim.keymap.set
 
-      keymap("n", "<Leader>gc", ":lua require('go.comment').gen()<CR>")
-      keymap("n", "<Leader>ga", ":GoAlt<CR>")
-      keymap("n", "<Leader>gg", ":GoGenerate<CR>")
-      keymap("n", "<Leader>gd", ":GoDoc<CR>")
-      keymap("n", "<Leader>gt", ":GoTest<CR>")
-      keymap("n", "<Leader>gtf", ":GoTestFunc<CR>")
+      keymap("n", "<leader>gc", ":lua require('go.comment').gen()<CR>")
+      keymap("n", "<leader>ga", ":GoAlt<CR>")
+      keymap("n", "<leader>gg", ":GoGenerate<CR>")
+      keymap("n", "<leader>gd", ":GoDoc<CR>")
+      keymap("n", "<leader>gt", ":GoTest<CR>")
+      keymap("n", "<leader>gtf", ":GoTestFunc<CR>")
 
       -- Run gofmt + goimport on save
       local format_sync_grp = vim.api.nvim_create_augroup("format_sync", { clear = true })
