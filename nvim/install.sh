@@ -1,13 +1,10 @@
 #!/usr/bin/sh
 
-MODERN_NEOVIM=~/.config/modern-neovim
-export MODERN_NEOVIM
+NEOVIM=~/.config/nvim
+export NEOVIM
 
-rm -rf "$MODERN_NEOVIM"
+rm -rf "$NEOVIM"
 
-mkdir -p "$MODERN_NEOVIM"/share
-mkdir -p "$MODERN_NEOVIM"/nvim
+mkdir -p "$NEOVIM"
 
-stow --restow --target="$MODERN_NEOVIM"/nvim .
-
-alias mnv="XDG_DATA_HOME=$MODERN_NEOVIM/share XDG_CACHE_HOME=$MODERN_NEOVIM XDG_CONFIG_HOME=$MODERN_NEOVIM nvim"
+cp -r ./. $NEOVIM

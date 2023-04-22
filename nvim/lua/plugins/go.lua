@@ -7,7 +7,7 @@ return {
       { "ray-x/guihua.lua" },
     },
     config = function()
-      local utils = require "plugin.lsp.utils"
+      local utils = require "plugins.lsp.utils"
 
       require("go").setup {
         goimport = "gopls", -- if set to 'gopls' will use golsp format
