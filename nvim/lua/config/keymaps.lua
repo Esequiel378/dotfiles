@@ -53,3 +53,7 @@ keymap("n", "<Up>", "<cmd>resize +2<CR>")
 keymap("n", "<Down>", "<cmd>resize -2<CR>")
 keymap("n", "<Left>", "<cmd>vertical resize -2<CR>")
 keymap("n", "<Right>", "<cmd>vertical resize +2<CR>")
+
+-- Switching tabs
+keymap("n", "<C-Left>", ":tabprevious<CR>")
+keymap("n", "<C-Right>", ":tabnext<CR>")

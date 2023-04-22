@@ -1,11 +1,12 @@
 return {
   "nvim-lua/plenary.nvim",
   "MunifTanjim/nui.nvim",
-  "tpope/vim-surround",
+  { "tpope/vim-surround", event = "VeryLazy" },
   "mbbill/undotree",
   {
     "github/copilot.vim",
-    cmd = "Telescope",
+    event = "VeryLazy",
+    cmd = "Copilot",
     config = function()
       local keymap = vim.keymap.set
       keymap("i", "<C-n>", "<Plug>(copilot-next)")
@@ -29,7 +30,7 @@ return {
   },
   {
     "tpope/vim-commentary",
-    keys = { "gc", "gcc", "gbc" },
+    event = "VeryLazy",
   },
 
   {
