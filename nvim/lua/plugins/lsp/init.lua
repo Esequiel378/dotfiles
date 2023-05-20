@@ -108,7 +108,7 @@ return {
           with_root_file(nls.builtins.formatting.stylua, "stylua.toml"),
           with_extra_args(nls.builtins.formatting.sql_formatter, {
             "--config",
-            vim.fn.expand "~/.config/nvim/lua/esequiel378/plugins/lsp/config/sql-formatter.json",
+            vim.fn.expand "~/.config/nvim/lua/plugins/lsp/config/sql-formatter.json",
           }),
 
           -- diagnostics

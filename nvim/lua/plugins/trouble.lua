@@ -12,4 +12,14 @@ return {
       { "<leader>cT", "<cmd>TodoTelescope<cr>", desc = "ToDo" },
     },
   },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = { "TroubleToggle", "Trouble" },
+    event = "VeryLazy",
+    keys = {
+      { "<leader>qf", "<cmd>TroubleToggle<CR>", desc = "Trouble" },
+    },
+    config = true,
+  },
 }

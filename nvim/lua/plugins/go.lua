@@ -18,8 +18,6 @@ return {
         lsp_cfg = {
           capabilities = utils.capabilities(),
         }, -- false: use your own lspconfig
-        lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
-        lsp_on_attach = utils.on_attach,
         dap_debug = true,
         lsp_inlay_hints = {
           enable = false,

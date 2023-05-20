@@ -1,5 +1,6 @@
 return {
   "goolord/alpha-nvim",
+  commit = "effcde1c41ccf82b77354e70598c60d7e5f7ab7d",
   lazy = false,
   config = function()
     local dashboard = require "alpha.themes.dashboard"
