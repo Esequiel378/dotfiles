@@ -1,62 +1,88 @@
--- Set mapleader
-vim.api.nvim_set_keymap("", "<Space>", "<Nop>", {
-  noremap = true,
-  silent = true,
-})
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+local opt = vim.opt
 
 -- Indent
-vim.opt.si = true
-vim.opt.ai = true
+opt.tabstop = 2
+opt.autoindent = true
+opt.smartindent = true
+opt.smartcase = true
+opt.breakindent = true
+opt.expandtab = true
+opt.ignorecase = true
+opt.shiftround = true
+opt.shiftwidth = 2
 
 -- UI
-vim.wo.rnu = true
-vim.wo.nu = true
-vim.opt.laststatus = 3
-vim.opt.fillchars:append "vert:|"
-vim.opt.scrolloff = 8
-vim.opt.isfname:append "@-@"
-vim.opt.shortmess:append "FWc"
-vim.opt.signcolumn = "yes"
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.bri = true
-vim.opt.title = true
-vim.winbl = 10
-vim.cmdheigh = 1
-vim.opt.colorcolumn = "90"
-vim.opt.pumheight = 10
+opt.number = true
+opt.relativenumber = true
+opt.laststatus = 3
+opt.fillchars:append "vert:|"
+opt.scrollback = 100000
+opt.scrolloff = 8
+opt.sidescrolloff = 8
+opt.isfname:append "@-@"
+opt.signcolumn = "yes"
+opt.shortmess:append "FWc"
+opt.splitbelow = true
+opt.splitkeep = "screen"
+opt.splitright = true
+opt.title = true
+opt.winbl = 10
+opt.cmdheight = 0
+opt.termguicolors = true
+opt.colorcolumn = "90"
+opt.pumblend = 10
+opt.pumheight = 10
+opt.completeopt = "menuone,noselect"
+opt.conceallevel = 0
+opt.showcmd = false
+opt.showmode = false
+-- opt.list = true
 
--- Search
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
+opt.joinspaces = false
 
--- Backgropund?
-vim.opt.autoread = true
-vim.opt.errorbells = false
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-vim.opt.updatetime = 50
+-- Search & Replace
+opt.hlsearch = true
+opt.incsearch = true
+opt.inccommand = "nosplit"
+
+-- System
+opt.clipboard = "unnamedplus" -- Access system clipboard
+opt.confirm = true
+opt.formatoptions = "jqlnt" -- tcqj
+opt.hidden = true
+opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+opt.wildmode = "longest:full,full"
+opt.timeoutlen = 300
+opt.undofile = true
+opt.updatetime = 200
 
 -- Cursor
-vim.opt.cul = true
-vim.opt.tgc = true
-vim.opt.guicursor = "i:block"
-vim.opt.mouse = "nv"
+opt.cursorline = true
+opt.mouse = "a"
+opt.guicursor = "i:block"
 
--- Go to previous/next line when cursor reaches end/beginning of line
-vim.opt.whichwrap:append "<>[]hl"
-
--- Enable vim to interact with the system clipboard
-vim.opt.clipboard:append "unnamedplus"
+-- Fold
+opt.foldcolumn = "1" -- '0' is not bad
+opt.foldenable = true
+opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+opt.foldlevelstart = 99
 
 -- File history
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = vim.fn.expand "~/.vim/undodir"
-vim.opt.undofile = true
+opt.swapfile = false
+opt.backup = false
+opt.undodir = { vim.fn.expand "~/.vim/undodir" }
+opt.undofile = true
+
+-- Go to previous/next line when cursor reaches end/beginning of line
+opt.whichwrap:append "<>[]hl"
 
 -- Remove sql wire stuffs
 vim.g.omni_sql_no_default_maps = true
 vim.g.pascal_delphi = true
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
+vim.g.markdown_recommended_style = 0
+
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })

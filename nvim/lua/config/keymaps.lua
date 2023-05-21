@@ -10,10 +10,6 @@ keymap("n", "N", "Nzzzv")
 keymap("n", "g,", "g,zvzz")
 keymap("n", "g;", "g;zvzz")
 
--- Better escape in terminal mode
-keymap("t", "<C-j>", "<C-\\><C-n><C-w>j")
-keymap("t", "<C-k>", "<C-\\><C-n><C-w>k")
-
 -- Navigation within insert mode
 keymap("i", "<C-h>", "<Left>")
 keymap("i", "<C-e>", "<End>")
@@ -28,6 +24,10 @@ keymap("n", "<C-l>", "<C-w>l")
 keymap("n", "<C-k>", "<C-w>k")
 keymap("n", "<C-j>", "<C-w>j")
 
+-- Scrolling
+keymap("n", "<C-d>", "<C-d>zz")
+keymap("n", "<C-u>", "<C-u>zz")
+
 -- Add undo break-points
 keymap("i", ",", ",<c-g>u")
 keymap("i", ".", ".<c-g>u")
@@ -38,15 +38,7 @@ keymap("v", "<", "<gv")
 keymap("v", ">", ">gv")
 
 -- Paste over currently selected text without yanking it
-keymap("v", "p", '"_dP')
-
--- Move Lines
-keymap("n", "<A-j>", ":m .+1<CR>==")
-keymap("v", "<A-j>", ":m '>+1<CR>gv=gv")
-keymap("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
-keymap("n", "<A-k>", ":m .-2<CR>==")
-keymap("v", "<A-k>", ":m '<-2<CR>gv=gv")
-keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
+keymap("v", "p", '"_dp')
 
 -- Resize window using arrow keys
 keymap("n", "<Up>", "<cmd>resize +2<CR>")
@@ -57,3 +49,12 @@ keymap("n", "<Right>", "<cmd>vertical resize +2<CR>")
 -- Switching tabs
 keymap("n", "<C-Left>", ":tabprevious<CR>")
 keymap("n", "<C-Right>", ":tabnext<CR>")
+
+-- Auto indent
+keymap("n", "i", function()
+  if #vim.fn.getline "." == 0 then
+    return [["_cc]]
+  else
+    return "i"
+  end
+end, { expr = true })
