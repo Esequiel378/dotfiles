@@ -12,10 +12,18 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-      vim.list_extend(
-        opts.ensure_installed,
-        { "delve", "gotests", "golangci-lint", "gofumpt", "goimports", "golangci-lint-langserver", "impl", "gomodifytags", "iferr", "gotestsum" }
-      )
+      vim.list_extend(opts.ensure_installed, {
+        "delve",
+        "gotests",
+        "golangci-lint",
+        "gofumpt",
+        "goimports",
+        "golangci-lint-langserver",
+        "impl",
+        "gomodifytags",
+        "iferr",
+        "gotestsum",
+      })
     end,
   },
   {
@@ -57,7 +65,26 @@ return {
             },
           },
         },
-        golangci_lint_ls = {},
+        golangci_lint_ls = {
+          default_config = {
+            cmd = { "golangci-lint-langserver" },
+            root_dir = function()
+              return vim.loop.cwd()
+            end,
+            init_options = {
+              command = {
+                "golangci-lint",
+                "run",
+                "--enable-all",
+                "--disable",
+                "--allow-parallel-runners",
+                "lll",
+                "--out-format",
+                "json",
+              },
+            },
+          },
+        },
       },
       setup = {
         gopls = function(_, _)
@@ -71,11 +98,10 @@ return {
             end
             -- stylua: ignore
             if client.name == "gopls" then
-              map("n", "<leader>ly", "<cmd>GoModTidy<cr>", "Go Mod Tidy")
-              map("n", "<leader>lc", "<cmd>GoCoverage<Cr>", "Go Test Coverage")
-              map("n", "<leader>lt", "<cmd>GoTest<Cr>", "Go Test")
-              map("n", "<leader>lR", "<cmd>GoRun<Cr>", "Go Run")
-              map("n", "<leader>dT", "<cmd>lua require('dap-go').debug_test()<cr>", "Go Debug Test")
+              map("n", "<leader>gg", "<cmd>GoGenerate<Cr>", "Go Generate")
+              map("n", "<leader>ga", "<cmd>GoAlt<Cr>", "Go Alt Test")
+              map("n", "<leader>gR", "<cmd>GoCodeLenAct<Cr>", "Go Run")
+              map("n", "<leader>gT", "<cmd>lua require('dap-go').debug_test()<cr>", "Go Debug Test")
             end
           end)
         end,
@@ -85,5 +111,23 @@ return {
   {
     "mfussenegger/nvim-dap",
     dependencies = { "leoluz/nvim-dap-go", opts = {} },
+  },
+  {
+    "rafaelsq/nvim-goc.lua",
+    event = "VeryLazy",
+    -- stylua: ignore
+    keys = {
+      { "<leader>gcr", function() require("nvim-goc").Coverage() end, desc = "Go Coverage", },
+      { "<leader>gcc", function() require("nvim-goc").ClearCoverage() end, desc = "Go Clear Coverage", },
+      { "<leader>gcf", function() require("nvim-goc").CoverageFunc() end, desc = "Go Coverage Function", },
+    },
+    config = function()
+      -- if set, when we switch between buffers, it will not split more than once. It will switch to the existing buffer instead
+      vim.opt.switchbuf = "useopen"
+
+      require("nvim-goc").setup {
+        verticalSplit = false,
+      }
+    end,
   },
 }

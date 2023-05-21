@@ -5,5 +5,7 @@ return {
     cpp = true,
     go = true,
     rust = true,
+    typescript = true,
+    json = true,
   },
 }
