@@ -34,6 +34,7 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
+    ft = { "c", "cpp" },
     opts = {
       setup = {
         codelldb = function()

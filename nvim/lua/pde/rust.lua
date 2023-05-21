@@ -35,6 +35,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    ft = { "rust" },
     dependencies = { "simrat39/rust-tools.nvim", "rust-lang/rust.vim" },
     opts = {
       servers = {

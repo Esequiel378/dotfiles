@@ -12,6 +12,7 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+    ft = { "json" },
     dependencies = { "b0o/SchemaStore.nvim" },
     opts = {
       servers = {

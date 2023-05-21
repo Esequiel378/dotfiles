@@ -19,11 +19,12 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "debugpy", "black" })
+      vim.list_extend(opts.ensure_installed, { "debugpy", "black", "isort", "pyright", "mypy" })
     end,
   },
   {
     "neovim/nvim-lspconfig",
+    ft = { "python" },
     opts = {
       servers = {
         ruff_lsp = {
@@ -60,9 +61,6 @@ return {
             -- stylua: ignore
             if client.name == "pyright" then
               map("n", "<leader>lo", "<cmd>PyrightOrganizeImports<cr>",  "Organize Imports" )
-              map("n", "<leader>lC", function() require("dap-python").test_class() end,  "Debug Class" )
-              map("n", "<leader>lM", function() require("dap-python").test_method() end,  "Debug Method" )
-              map("v", "<leader>lE", function() require("dap-python").debug_selection() end, "Debug Selection" )
             end
           end)
         end,

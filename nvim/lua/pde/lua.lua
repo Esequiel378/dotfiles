@@ -24,6 +24,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    ft = { "lua" },
     dependencies = {
       "folke/neodev.nvim",
       opts = {},

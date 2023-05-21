@@ -11,6 +11,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
     dependencies = { "jose-elias-alvarez/typescript.nvim" },
     opts = {
       servers = {
@@ -18,15 +19,11 @@ return {
       },
       setup = {
         tsserver = function(_, opts)
-          local lsp_utils = require "plugins.lsp.utils"
+          local lsp_utils = require "base.lsp.utils"
           require("typescript").setup { server = opts }
           return true
         end,
       },
-    },
-    keys = {
-      { "<leader>oi", "TypescriptOrganizeImports", desc = "Organize Imports" },
-      { "<leader>rf", "TypescriptRenameFile", desc = "Rename File" },
     },
   },
 }

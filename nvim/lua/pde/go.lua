@@ -43,6 +43,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    ft = { "go", "gomod" },
     opts = {
       servers = {
         gopls = {
