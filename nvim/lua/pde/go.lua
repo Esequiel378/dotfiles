@@ -35,7 +35,32 @@ return {
     },
     opts = {},
     config = function(_, opts)
-      require("go").setup(opts)
+      local utils = require "base.lsp.utils"
+
+      require("go").setup {
+        goimport = "goimports",
+        gofmt = "gofumpt",
+        max_line_len = 90,
+        comment_placeholder = "",
+        lsp_cfg = {
+          capabilities = utils.capabilities(),
+        },
+        dap_debug = true,
+        lsp_codelens = true,
+        lsp_inlay_hints = {
+          enable = false,
+        },
+      }
+
+      -- Run gofmt + goimport on save
+      local format_sync_grp = vim.api.nvim_create_augroup("format_sync", { clear = true })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*.go",
+        callback = function()
+          require("go.format").goimport()
+        end,
+        group = format_sync_grp,
+      })
     end,
     event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
@@ -102,7 +127,9 @@ return {
               map("n", "<leader>gg", "<cmd>GoGenerate<Cr>", "Go Generate")
               map("n", "<leader>ga", "<cmd>GoAlt<Cr>", "Go Alt Test")
               map("n", "<leader>gR", "<cmd>GoCodeLenAct<Cr>", "Go Run")
-              map("n", "<leader>gT", "<cmd>lua require('dap-go').debug_test()<cr>", "Go Debug Test")
+              map("n", "<leader>gD", "<cmd>lua require('dap-go').debug_test()<cr>", "Go Debug Test")
+              map("n", "<leader>gt", "<cmd>GoTest<cr>", "Go Test File")
+              map("n", "<leader>gtf", "<cmd>GoTestFunc<cr>", "Go Test Function")
             end
           end)
         end,
