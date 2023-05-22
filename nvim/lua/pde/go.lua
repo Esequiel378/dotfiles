@@ -56,10 +56,11 @@ return {
       }
 
       -- Run gofmt + goimport on save
-      local format_sync_grp = vim.api.nvim_create_augroup("format_sync", { clear = true })
-      vim.api.nvim_create_autocmd("BufWritePre", {
+      local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
+      vim.api.nvim_create_autocmd("BufWritePost", {
         pattern = "*.go",
         callback = function()
+          require("go.format").gofmt()
           require("go.format").goimport()
         end,
         group = format_sync_grp,
