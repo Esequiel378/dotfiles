@@ -33,6 +33,9 @@ return {
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
     opts = {},
     config = function(_, opts)
       local utils = require "base.lsp.utils"
@@ -62,9 +65,6 @@ return {
         group = format_sync_grp,
       })
     end,
-    event = { "CmdlineEnter" },
-    ft = { "go", "gomod" },
-    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
   {
     "neovim/nvim-lspconfig",
@@ -157,5 +157,18 @@ return {
         verticalSplit = false,
       }
     end,
+  },
+  {
+    "jeniasaigak/goplay.nvim",
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    config = function()
+      require("goplay").setup()
+    end,
+    -- stylua: ignore
+    keys = {
+      { "<leader>gp", function() require("goplay").goPlaygroundToggle() end, desc = "Go Playground", },
+      { "<leader>gpr", "<cmd>GPExec<cr>" , desc = "Go Exec Playground", },
+    },
   },
 }

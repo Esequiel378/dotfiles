@@ -7,13 +7,13 @@ return {
     cmd = "Telescope",
     -- stylua: ignore
     keys = {
-      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+      { "<leader>tt", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
       { "<leader>ps", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
-      { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+      { "<leader>tg", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
+      { "<leader>tb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "Help" },
       {
-        "<leader>fc",
+        "<leader>tc",
         function()
           require("telescope.builtin").colorscheme { enable_preview = true }
         end,
@@ -47,7 +47,7 @@ return {
       plugins = { spelling = true },
       defaults = {
         mode = { "n", "v" },
-        ["<leader>f"] = { name = "+File" },
+        -- ["<leader>f"] = { name = "+File" },
         ["<leader>q"] = { name = "+Quit/Session" },
         ["<leader>qq"] = { cmd = "<cmd>q<cr>", desc = "Quit" },
         ["<leader>w"] = { cmd = "<cmd>update!<cr>", desc = "Save" },
