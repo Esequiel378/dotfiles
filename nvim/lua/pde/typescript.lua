@@ -10,6 +10,24 @@ return {
     end,
   },
   {
+    "jose-elias-alvarez/null-ls.nvim",
+    opts = function(_, opts)
+      local nls = require "null-ls"
+
+      vim.list_extend(opts.sources, {
+        -- formatting
+        nls.builtins.formatting.prettier,
+
+        -- diagnostics
+        nls.builtins.diagnostics.eslint_d,
+        nls.builtins.diagnostics.tsc,
+
+        -- code actions
+        nls.builtins.code_actions.eslint_d,
+      })
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
     dependencies = { "jose-elias-alvarez/typescript.nvim" },
@@ -19,7 +37,6 @@ return {
       },
       setup = {
         tsserver = function(_, opts)
-          local lsp_utils = require "base.lsp.utils"
           require("typescript").setup { server = opts }
           return true
         end,

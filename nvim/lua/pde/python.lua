@@ -12,8 +12,19 @@ return {
   {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function(_, opts)
+      local lsp_utils = require "base.lsp.utils"
       local nls = require "null-ls"
-      table.insert(opts.sources, nls.builtins.formatting.black)
+
+      vim.list_extend(opts.sources, {
+        -- formatting
+        nls.builtins.formatting.isort,
+        lsp_utils.with_extra_args(nls.builtins.formatting.black, { "--fast" }),
+
+        -- diagnostics
+        nls.builtins.diagnostics.pydocstyle,
+        nls.builtins.diagnostics.mypy,
+        lsp_utils.with_extra_args(nls.builtins.diagnostics.ruff, { "--max-line-length=90" }),
+      })
     end,
   },
   {

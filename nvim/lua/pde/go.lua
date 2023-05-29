@@ -10,6 +10,17 @@ return {
     end,
   },
   {
+    "jose-elias-alvarez/null-ls.nvim",
+    opts = function(_, opts)
+      local nls = require "null-ls"
+
+      vim.list_extend(opts.sources, {
+        -- formatting
+        nls.builtins.formatting.gofumpt,
+      })
+    end,
+  },
+  {
     "williamboman/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
@@ -43,7 +54,7 @@ return {
       require("go").setup {
         goimport = "goimports",
         gofmt = "gofumpt",
-        max_line_len = 90,
+        max_line_len = 120,
         comment_placeholder = "",
         lsp_cfg = {
           capabilities = utils.capabilities(),
@@ -146,9 +157,9 @@ return {
     event = "VeryLazy",
     -- stylua: ignore
     keys = {
-      { "<leader>gcr", function() require("nvim-goc").Coverage() end, desc = "Go Coverage", },
+      { "<leader>gcr", function() require("nvim-goc").Coverage() end,      desc = "Go Coverage", },
       { "<leader>gcc", function() require("nvim-goc").ClearCoverage() end, desc = "Go Clear Coverage", },
-      { "<leader>gcf", function() require("nvim-goc").CoverageFunc() end, desc = "Go Coverage Function", },
+      { "<leader>gcf", function() require("nvim-goc").CoverageFunc() end,  desc = "Go Coverage Function", },
     },
     config = function()
       -- if set, when we switch between buffers, it will not split more than once. It will switch to the existing buffer instead
@@ -168,8 +179,8 @@ return {
     end,
     -- stylua: ignore
     keys = {
-      { "<leader>gp", function() require("goplay").goPlaygroundToggle() end, desc = "Go Playground", },
-      { "<leader>gpr", "<cmd>GPExec<cr>" , desc = "Go Exec Playground", },
+      { "<leader>gp",  function() require("goplay").goPlaygroundToggle() end, desc = "Go Playground", },
+      { "<leader>gpr", "<cmd>GPExec<cr>",                                     desc = "Go Exec Playground", },
     },
   },
 }

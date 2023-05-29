@@ -37,9 +37,6 @@ keymap("i", ";", ";<c-g>u")
 keymap("v", "<", "<gv")
 keymap("v", ">", ">gv")
 
--- Paste over currently selected text without yanking it
-keymap("v", "p", '"_dp')
-
 -- Resize window using arrow keys
 keymap("n", "<Up>", "<cmd>resize +2<CR>")
 keymap("n", "<Down>", "<cmd>resize -2<CR>")

@@ -15,13 +15,10 @@ opt.shiftwidth = 2
 opt.number = true
 opt.relativenumber = true
 opt.laststatus = 3
-opt.fillchars:append "vert:|"
 opt.scrollback = 100000
 opt.scrolloff = 8
 opt.sidescrolloff = 8
-opt.isfname:append "@-@"
 opt.signcolumn = "yes"
-opt.shortmess:append "FWc"
 opt.splitbelow = true
 opt.splitkeep = "screen"
 opt.splitright = true
@@ -36,6 +33,9 @@ opt.completeopt = "menuone,noselect"
 opt.conceallevel = 0
 opt.showcmd = false
 opt.showmode = false
+opt.fillchars:append "vert:|"
+opt.isfname:append "@-@"
+opt.shortmess:append "FWc"
 -- opt.list = true
 
 opt.joinspaces = false
@@ -54,7 +54,7 @@ opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 opt.wildmode = "longest:full,full"
 opt.timeoutlen = 300
 opt.undofile = true
-opt.updatetime = 200
+opt.updatetime = 100
 
 -- Cursor
 opt.cursorline = true

@@ -18,8 +18,16 @@ return {
   {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function(_, opts)
+      local lsp_utils = require "base.lsp.utils"
       local nls = require "null-ls"
-      table.insert(opts.sources, nls.builtins.formatting.stylua)
+
+      vim.list_extend(opts.sources, {
+        -- formatting
+        lsp_utils.with_root_file(nls.builtins.formatting.stylua, "stylua.toml"),
+
+        -- diagnostics
+        lsp_utils.with_root_file(nls.builtins.diagnostics.selene, "selene.toml"),
+      })
     end,
   },
   {

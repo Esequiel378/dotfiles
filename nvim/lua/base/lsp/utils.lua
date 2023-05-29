@@ -34,4 +34,24 @@ function M.toggle_diagnostics()
   end
 end
 
+function M.with_diagnostics_code(builtin)
+  return builtin.with {
+    diagnostics_format = "#{m} [#{c}]",
+  }
+end
+
+function M.with_root_file(builtin, file)
+  return builtin.with {
+    condition = function(utils)
+      return utils.root_has_file(file)
+    end,
+  }
+end
+
+function M.with_extra_args(builtin, args)
+  return builtin.with {
+    extra_args = args,
+  }
+end
+
 return M
