@@ -107,10 +107,10 @@ return {
         },
         sources = cmp.config.sources {
           { name = "nvim_lsp", group_index = 1 },
-          { name = "luasnip", group_index = 1 },
-          { name = "buffer", group_index = 2 },
-          { name = "emoji", group_index = 2 },
-          { name = "path", group_index = 2 },
+          { name = "luasnip",  group_index = 1 },
+          { name = "buffer",   group_index = 2 },
+          { name = "emoji",    group_index = 2 },
+          { name = "path",     group_index = 2 },
         },
         formatting = {},
         fields = { "kind", "abbr", "menu" },
@@ -177,7 +177,8 @@ return {
     -- stylua: ignore
     keys = {
       {
-        "<Tab>",
+        -- TODO: define a better keymap for this
+        "<C-Tab>",
         function()
           return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<Tab>"
         end,
@@ -186,7 +187,8 @@ return {
         silent = true,
         mode = "i",
       },
-      { "<Tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
+      -- TODO: define a better keymap for this
+      { "<C-Tab>", function() require("luasnip").jump(1) end,  mode = "s" },
       { "<S-Tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
     config = function(_, opts)
@@ -198,16 +200,22 @@ return {
     event = "VeryLazy",
     cmd = "Copilot",
     config = function()
-      local keymap = vim.keymap.set
-      keymap("i", "<C-n>", "<Plug>(copilot-next)")
-      keymap("i", "<C-p>", "<Plug>(copilot-previous)")
-      keymap("i", "<C-e>", "<Plug>(copilot-dismiss)")
+      -- local keymap = vim.keymap.set
+      -- keymap("i", "<C-n>", "<Plug>(copilot-next)")
+      -- keymap("i", "<C-p>", "<Plug>(copilot-previous)")
+      -- keymap("i", "<C-e>", "<Plug>(copilot-dismiss)")
 
       vim.g.copilot_filetypes = { esl = false }
       -- Copilot and cmp can not use <C-y> at the same time - https://github.com/hrsh7th/nvim-cmp/issues/459
       -- keymap("i", "<C-y>", 'copilot#Accept("")')
       -- vim.g.copilot_no_tab_map = true
     end,
+    keys = {
+      -- { "<C-y>", mode = { "i" }, "<Plug>(copilot-accept)", desc = "Accept Copilot suggestion" },
+      { "<C-n>", mode = { "i" }, "<Plug>(copilot-next)",     desc = "Next Copilot suggestion" },
+      { "<C-p>", mode = { "i" }, "<Plug>(copilot-previous)", desc = "Previous Copilot suggestion" },
+      { "<C-e>", mode = { "i" }, "<Plug>(copilot-dismiss)",  desc = "Dismiss Copilot suggestion" },
+    },
   },
   {
     {

@@ -74,7 +74,11 @@ return {
   {
     "numToStr/Comment.nvim",
     dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
-    keys = { { "gc", mode = { "n", "v" } }, { "gcc", mode = { "n", "v" } }, { "gbc", mode = { "n", "v" } } },
+    keys = {
+      { "gc", mode = { "n", "v" } },
+      { "gcc", mode = { "n", "v" } },
+      { "gbc", mode = { "n", "v" } },
+    },
     config = function(_, _)
       local opts = {
         ignore = "^$",

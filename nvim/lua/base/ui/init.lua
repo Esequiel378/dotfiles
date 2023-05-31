@@ -20,6 +20,18 @@ return {
     end,
   },
   {
+    "catppuccin/nvim",
+    lazy = false,
+    name = "catppuccin",
+    config = function()
+      require("catppuccin").setup {
+        flavour = "mocha",
+      }
+
+      vim.cmd.colorscheme "catppuccin"
+    end,
+  },
+  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
@@ -49,43 +61,7 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     config = function()
-      local components = require "base.ui.components"
-
-      require("lualine").setup {
-        options = {
-          icons_enabled = true,
-          theme = "auto",
-          component_separators = { left = "", right = "" },
-          section_separators = { left = "", right = "" },
-          disabled_filetypes = {
-            statusline = { "alpha", "lazy" },
-            winbar = {
-              "vimdoc",
-              "alpha",
-              "lazy",
-            },
-          },
-          always_divide_middle = true,
-          globalstatus = true,
-        },
-        sections = {
-          lualine_a = { "mode" },
-          lualine_b = { components.git_repo, "branch" },
-          lualine_c = { components.diff, components.diagnostics, components.separator, components.lsp_client },
-          lualine_x = { "filename", components.spaces, "encoding", "fileformat", "filetype", "progress" },
-          lualine_y = {},
-          lualine_z = { "location" },
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { "filename" },
-          lualine_x = { "location" },
-          lualine_y = {},
-          lualine_z = {},
-        },
-        extensions = { "nvim-tree", "toggleterm", "quickfix" },
-      }
+      require("lualine").setup()
     end,
   },
   {
