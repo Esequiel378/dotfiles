@@ -48,7 +48,7 @@ return {
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
     opts = {},
-    config = function(_, opts)
+    config = function(_, _)
       local utils = require "base.lsp.utils"
 
       require("go").setup {

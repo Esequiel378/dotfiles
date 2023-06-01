@@ -9,18 +9,6 @@ return {
     end,
   },
   {
-    "catppuccin/nvim",
-    lazy = false,
-    name = "catppuccin",
-    config = function()
-      require("catppuccin").setup {
-        flavour = "mocha",
-      }
-
-      vim.cmd.colorscheme "catppuccin"
-    end,
-  },
-  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,

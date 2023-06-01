@@ -54,7 +54,6 @@ opt.hidden = true
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 opt.wildmode = "longest:full,full"
 opt.timeoutlen = 300
-opt.undofile = true
 opt.updatetime = 100
 
 -- Cursor
