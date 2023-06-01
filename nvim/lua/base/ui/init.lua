@@ -9,17 +9,6 @@ return {
     end,
   },
   {
-    "folke/styler.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("styler").setup {
-        themes = {
-          help = { colorscheme = "gruvbox", background = "dark" },
-        },
-      }
-    end,
-  },
-  {
     "catppuccin/nvim",
     lazy = false,
     name = "catppuccin",
@@ -105,7 +94,6 @@ return {
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 
-          -- local now = os.date "%d-%m-%Y %H:%M:%S"
           local version = "   v" .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
           local fortune = require "alpha.fortune"
           local quote = table.concat(fortune(), "\n")

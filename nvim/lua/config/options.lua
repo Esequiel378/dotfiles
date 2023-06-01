@@ -33,9 +33,10 @@ opt.completeopt = "menuone,noselect"
 opt.conceallevel = 0
 opt.showcmd = false
 opt.showmode = false
-opt.fillchars:append "vert:|"
-opt.isfname:append "@-@"
-opt.shortmess:append "FWc"
+opt.fillchars = "vert:|"
+-- opt.fillchars:append "vert:|"
+-- opt.isfname:append "@-@"
+-- opt.shortmess:append "FWc"
 -- opt.list = true
 
 opt.joinspaces = false
@@ -74,7 +75,8 @@ opt.undodir = { vim.fn.expand "~/.vim/undodir" }
 opt.undofile = true
 
 -- Go to previous/next line when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
+vim.g.whichwrap = "<>[]hl"
+-- opt.whichwrap:append "<>[]hl"
 
 -- Remove sql wire stuffs
 vim.g.omni_sql_no_default_maps = true
