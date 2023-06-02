@@ -56,6 +56,7 @@ return {
         gofmt = "gofumpt",
         max_line_len = 120,
         comment_placeholder = "",
+        lsp_keymaps = false,
         lsp_cfg = {
           capabilities = utils.capabilities(),
         },
