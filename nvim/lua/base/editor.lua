@@ -121,4 +121,12 @@ return {
       require("barbecue").setup()
     end,
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = "markdown",
+    cmd = { "MarkdownPreview" },
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
 }

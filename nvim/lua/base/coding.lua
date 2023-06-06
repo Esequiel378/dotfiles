@@ -220,6 +220,7 @@ return {
   {
     {
       "editorconfig/editorconfig-vim",
+      lazy = false,
       config = function()
         vim.g.EditorConfig_exclude_patterns = { "fugitive://.*", "scp://.*" }
       end,

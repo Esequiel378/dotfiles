@@ -28,7 +28,7 @@ return {
   },
   {
     "tpope/vim-fugitive",
-    cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
+    cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit", "G" },
     keys = {
       { "<leader>gs", "<cmd>:G<CR><C-w>T", desc = "Git Status" },
     },
