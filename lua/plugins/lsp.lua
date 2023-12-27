@@ -27,6 +27,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "neovim/nvim-lspconfig", "williamboman/mason.nvim" },
+    requires = { "niuiic/format.nvim" },
     build = ":MasonUpdate",
     event = { "BufReadPre", "BufNewFile" },
     config = function(_, _)
