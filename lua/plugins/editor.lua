@@ -8,6 +8,9 @@ return {
     lazy = false,
     config = function()
       vim.g.EditorConfig_exclude_patterns = { "fugitive://.*", "scp://.*" }
+      vim.api.nvim_del_user_command('EditorConfigEnable')
+      vim.api.nvim_del_user_command('EditorConfigReload')
+      vim.api.nvim_del_user_command('EditorConfigDisable')
     end,
   },
   {
