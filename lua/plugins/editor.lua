@@ -38,34 +38,15 @@ return {
 		end,
 	},
 	{
-		"zbirenbaum/copilot.lua",
+		"github/copilot.vim",
+		event = "VeryLazy",
 		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				suggestion = {
-					auto_trigger = false,
-					accept = false,
-					debounce = 75,
-					keymap = {
-						next = "<C-]>",
-						prev = "<C-[>",
-						dismiss = "<C-e>",
-					},
-				},
-			})
-
-			vim.keymap.set("i", "<Tab>", function()
-				if require("copilot.suggestion").is_visible() then
-					require("copilot.suggestion").accept()
-					return
-				end
-
-				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
-			end, {
-				silent = true,
-			})
-		end,
+		keys = {
+			-- { "<C-y>", mode = { "i" }, "<Plug>(copilot-accept)", desc = "Accept Copilot suggestion" },
+			{ "<C-n>", mode = { "i" }, "<Plug>(copilot-next)", desc = "Next Copilot suggestion" },
+			{ "<C-p>", mode = { "i" }, "<Plug>(copilot-previous)", desc = "Previous Copilot suggestion" },
+			{ "<C-e>", mode = { "i" }, "<Plug>(copilot-dismiss)", desc = "Dismiss Copilot suggestion" },
+		},
 	},
 	{
 		"tpope/vim-fugitive",
