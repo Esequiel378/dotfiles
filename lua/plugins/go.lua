@@ -42,7 +42,8 @@ return {
 		keys = {
 			{ "<leader>gcr", function() require("nvim-goc").Coverage() end,      desc = "Go Coverage", },
 			{ "<leader>gcc", function() require("nvim-goc").ClearCoverage() end, desc = "Go Clear Coverage", },
-			{ "<leader>gcf", function() require("nvim-goc").CoverageFunc() end,  desc = "Go Coverage Function", },
+			{ "<leader>gct", function() require("nvim-goc").CoverageFunc() end,  desc = "Go Coverage Function", },
+			{ "<leader>gcf", function() require("nvim-goc").Coverage() end,  desc = "Go Coverage File", },
 			{ "<leader>ga", function() require("nvim-goc").Alternate() end,      desc = "Go Coverage", },
 		},
 		config = function()
