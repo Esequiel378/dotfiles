@@ -4,6 +4,22 @@ return {
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
 	{ "tpope/vim-repeat", event = "VeryLazy" },
+	-- {
+	-- 	"stevearc/oil.nvim",
+	-- 	---@module 'oil'
+	-- 	---@type oil.SetupOpts
+	-- 	opts = {
+	-- 		view_options = {
+	-- 			show_hidden = true,
+	-- 		},
+	-- 		win_options = {
+	-- 			winbar = "%#@attribute.builtin#%{substitute(v:lua.require('oil').get_current_dir(), '^' . $HOME, '~', '')}",
+	-- 		},
+	-- 	},
+	-- 	-- Optional dependencies
+	-- 	dependencies = { { "echasnovski/mini.icons", opts = {} } },
+	-- 	-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+	-- },
 	{
 		"editorconfig/editorconfig-vim",
 		lazy = false,
