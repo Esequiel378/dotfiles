@@ -4,21 +4,21 @@ return {
     lazy = true,
   },
   {
-		"numToStr/Comment.nvim",
-		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
-		keys = {
-			{ "gc", mode = { "n", "v" } },
-			{ "gcc", mode = { "n", "v" } },
-			{ "gbc", mode = { "n", "v" } },
-		},
-		config = function(_, _)
-			local opts = {
-				ignore = "^$",
-				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-			}
-			require("Comment").setup(opts)
-		end,
-	},
+    "numToStr/Comment.nvim",
+    dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+    keys = {
+      { "gc", mode = { "n", "v" } },
+      { "gcc", mode = { "n", "v" } },
+      { "gbc", mode = { "n", "v" } },
+    },
+    config = function(_, _)
+      local opts = {
+        ignore = "^$",
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      }
+      require("Comment").setup(opts)
+    end,
+  },
   {
     "folke/tokyonight.nvim",
     priority = 1000,
@@ -68,5 +68,25 @@ return {
         return '%2l:%-2v'
       end
     end,
+  },
+  {
+    "linux-cultist/venv-selector.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      { "nvim-telescope/telescope.nvim" },
+    },
+    lazy = false,
+    branch = "regexp",
+    config = function()
+      require("venv-selector").setup({
+        stay_on_this_version = true,
+      })
+    end,
+    keys = {
+			-- Keymap to open VenvSelector to pick a venv.
+			{ "<leader>vs", "<cmd>VenvSelect<cr>" },
+			-- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+			{ "<leader>vc", "<cmd>VenvSelectCached<cr>" },
+    },
   },
 }

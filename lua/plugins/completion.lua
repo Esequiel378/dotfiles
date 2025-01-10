@@ -19,7 +19,7 @@ return {
         -- example: 'foo_|_bar' will match 'foo_' for 'prefix' and 'foo__bar' for 'full'
         keyword = { range = 'full' },
         menu = {
-          auto_show = false,
+          auto_show = true,
         },
         -- Show documentation when selecting a completion item
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
