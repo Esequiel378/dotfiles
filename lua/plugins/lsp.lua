@@ -134,7 +134,7 @@ return {
         'stylua',
         -- Python
         "pyright",
-        "ruff_lsp",
+        "ruff",
         -- Svelte / React / Typescript
         "svelte-language-server",
         "typescript-language-server",
@@ -144,7 +144,7 @@ return {
         "tailwindcss-language-server",
         -- Go
         "gopls",
-        "golangci-lint-langserver",
+        "golangci-lint",
         -- Docker
         "dockerfile-language-server",
         "docker-compose-language-service",
