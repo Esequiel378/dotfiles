@@ -93,15 +93,15 @@ return {
             },
           },
         },
-        tsserver = {
-          settings = {
-            completions = { completeFunctionCalls = true },
-          },
-          on_attach = function(client)
-            -- Disable formatting from tsserver
-            client.server_capabilities.documentFormattingProvider = false
-          end,
-        },
+        -- tsserver = {
+        --   settings = {
+        --     completions = { completeFunctionCalls = true },
+        --   },
+        --   on_attach = function(client)
+        --     -- Disable formatting from tsserver
+        --     client.server_capabilities.documentFormattingProvider = false
+        --   end,
+        -- },
         eslint = {
           settings = {
             codeAction = {
