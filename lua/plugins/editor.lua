@@ -87,9 +87,7 @@ return {
     ft = "python",
     keys = {
       -- Keymap to open VenvSelector to pick a venv.
-      { "<leader>vs", "<cmd>VenvSelectCached<cr>" },
-      -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-      { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
+      { "<leader>vs", "<cmd>VenvSelect<cr>" },
     },
   },
 }
