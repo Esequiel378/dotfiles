@@ -8,11 +8,10 @@ return {
 		},
 		event = { "CmdlineEnter" },
 		ft = { "go", "gomod" },
-		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-		opts = {},
-		config = function(_, _)
+		build = ':lua require("go.install").update_all_sync()',
+		config = function()
 			require("go").setup({
-				goimports = "goimports",
+				goimports = "gopls",
 				gofmt = "gofumpt",
 				comment_placeholder = "",
 				lsp_keymaps = false,
@@ -23,13 +22,12 @@ return {
 				},
 			})
 
-			-- Run gofmt + goimport on save
-			local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
-			vim.api.nvim_create_autocmd("BufWritePost", {
+			-- Format and organize imports on save
+			local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+			vim.api.nvim_create_autocmd("BufWritePre", {
 				pattern = "*.go",
 				callback = function()
-					require("go.format").gofmt()
-					require("go.format").goimport()
+					require("go.format").goimports()
 				end,
 				group = format_sync_grp,
 			})
@@ -37,19 +35,16 @@ return {
 	},
 	{
 		"rafaelsq/nvim-goc.lua",
-		event = "VeryLazy",
+		ft = { "go" },
 		-- stylua: ignore
 		keys = {
-			{ "<leader>gcr", function() require("nvim-goc").Coverage() end,      desc = "Go Coverage", },
-			{ "<leader>gcc", function() require("nvim-goc").ClearCoverage() end, desc = "Go Clear Coverage", },
+			{ "<leader>gcr", function() require("nvim-goc").Coverage() end,      desc = "Go Coverage Run", },
+			{ "<leader>gcc", function() require("nvim-goc").ClearCoverage() end, desc = "Go Coverage Clear", },
 			{ "<leader>gct", function() require("nvim-goc").CoverageFunc() end,  desc = "Go Coverage Function", },
-			{ "<leader>gcf", function() require("nvim-goc").Coverage() end,  desc = "Go Coverage File", },
-			{ "<leader>ga", function() require("nvim-goc").Alternate() end,      desc = "Go Coverage", },
+			{ "<leader>ga",  function() require("nvim-goc").Alternate() end,     desc = "Go Alternate File", },
 		},
 		config = function()
-			-- if set, when we switch between buffers, it will not split more than once. It will switch to the existing buffer instead
 			vim.opt.switchbuf = "useopen"
-
 			require("nvim-goc").setup({
 				verticalSplit = false,
 			})
