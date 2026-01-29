@@ -51,6 +51,15 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+-- [[ Command Line Completion ]]
+vim.keymap.set("c", "<C-y>", function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-y>"
+  else
+    return "<C-z>"
+  end
+end, { expr = true, desc = "Trigger or accept command-line completion" })
+
 -- [[ Auto Indent in Normal Mode ]]
 vim.keymap.set("n", "i", function()
   if #vim.fn.getline "." == 0 then
