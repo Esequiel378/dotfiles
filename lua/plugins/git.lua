@@ -1,5 +1,14 @@
 return {
   {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
+    keys = {
+      { "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Diff view open" },
+      { "<leader>gh", "<cmd>DiffviewFileHistory %<CR>", desc = "File history" },
+      { "<leader>gq", "<cmd>DiffviewClose<CR>", desc = "Diff view close" },
+    },
+  },
+  {
     "tpope/vim-fugitive",
     cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit", "G" },
     keys = {
@@ -33,6 +42,7 @@ return {
         map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = 'git [u]ndo stage hunk' })
         map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
         map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
+        map('n', '<leader>hn', gitsigns.next_hunk, { desc = 'git [n]ext hunk' })
       end,
     },
   },
