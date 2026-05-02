@@ -35,6 +35,9 @@ return {
   {
     "andymass/vim-matchup",
     lazy = false,
+    init = function()
+      vim.g.matchup_treesitter_enabled = false
+    end,
     config = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end,

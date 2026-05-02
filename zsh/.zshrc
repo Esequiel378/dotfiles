@@ -36,6 +36,7 @@ path_add "$HOME/.pulumi/bin"
 
 # oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
     git
     node
@@ -61,8 +62,7 @@ export NVM_DIR="$HOME/.nvm"
 src "$NVM_DIR/nvm.sh"
 src "$NVM_DIR/bash_completion"
 
-# powerlevel10k
-src "$HOME/powerlevel10k/powerlevel10k.zsh-theme"
+# powerlevel10k user config (theme itself is loaded via ZSH_THEME above)
 src "$HOME/.p10k.zsh"
 
 # pnpm
