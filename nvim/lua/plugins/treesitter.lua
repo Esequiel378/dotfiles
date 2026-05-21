@@ -1,6 +1,7 @@
 return {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'master', -- archived; main branch is a rewrite with a different API
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup({
