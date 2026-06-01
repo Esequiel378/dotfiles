@@ -56,6 +56,7 @@ export TERM=xterm-256color
 # Aliases
 alias ls="lsd -l -hA --group-dirs first -a"
 alias stop='docker stop $(docker ps -aq)'
+alias claude='claude --allow-dangerously-skip-permissions'
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
