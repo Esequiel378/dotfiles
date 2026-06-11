@@ -1,11 +1,10 @@
+-- Hover a ```mermaid block to render it as ASCII (mermaid-ascii).
 return {
   {
-    "kevalin/mermaid.nvim",
-    ft = "mermaid",
-    cmd = { "MermaidPreview", "MermaidFormat" },
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    "Esequiel378/mermaid-hover.nvim",
+    ft = "markdown",
     config = function()
-      require("mermaid").setup()
+      require("mermaid-hover").setup()
     end,
   },
 }
