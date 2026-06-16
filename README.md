@@ -1,6 +1,6 @@
 # dotfiles
 
-Personal macOS dotfiles for zsh, tmux, kitty, Neovim, and Rectangle.
+Personal macOS dotfiles for zsh, tmux, kitty, Neovim, Claude Code, and Rectangle.
 
 ## Layout
 
@@ -13,6 +13,11 @@ Personal macOS dotfiles for zsh, tmux, kitty, Neovim, and Rectangle.
 ├── kitty/
 │   └── kitty.conf      # symlink target for ~/.config/kitty/kitty.conf
 ├── nvim/               # symlink target for ~/.config/nvim
+├── claude/             # global Claude Code config -> ~/.claude/
+│   ├── settings.json   #   model, hooks, enabled plugins
+│   ├── CLAUDE.md       #   global instructions (sources RTK.md)
+│   ├── RTK.md          #   rtk command reference
+│   └── hooks/notify.sh #   desktop notification hook (Stop/Notification)
 └── RectangleConfig.json # imported via Rectangle's UI
 ```
 
@@ -129,7 +134,18 @@ ln -sf "$PWD/kitty/kitty.conf" ~/.config/kitty/kitty.conf
 
 # Neovim
 ln -sf "$PWD/nvim" ~/.config/nvim
+
+# Claude Code (global config — link the files, leave runtime state untracked)
+mkdir -p ~/.claude/hooks
+ln -sf "$PWD/claude/settings.json"   ~/.claude/settings.json
+ln -sf "$PWD/claude/CLAUDE.md"       ~/.claude/CLAUDE.md
+ln -sf "$PWD/claude/RTK.md"          ~/.claude/RTK.md
+ln -sf "$PWD/claude/hooks/notify.sh" ~/.claude/hooks/notify.sh
 ```
+
+`settings.json` references the `rtk` and `ponytail` plugins plus the notify hook;
+the rest of `~/.claude/` (cache, sessions, history, plugins) is runtime state and
+stays out of the repo.
 
 Back up any pre-existing files first if you want to keep them.
 
