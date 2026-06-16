@@ -1,6 +1,6 @@
 {
   "model": "opus[1m]",
-  "statusLine": { "type": "command", "command": "bash \"/Users/arlequin/.claude/plugins/cache/ponytail/ponytail/4.6.0/hooks/ponytail-statusline.sh\"" },
+  "statusLine": { "type": "command", "command": "bash \"$HOME/.claude/hooks/statusline.sh\"" },
   "hooks": {
     "PreToolUse": [
       {
@@ -9,6 +9,16 @@
           {
             "type": "command",
             "command": "rtk hook claude"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/arlequin/.claude/hooks/notify.sh start"
           }
         ]
       }

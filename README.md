@@ -17,7 +17,8 @@ Personal macOS dotfiles for zsh, tmux, kitty, Neovim, Claude Code, and Rectangle
 │   ├── settings.json   #   model, hooks, enabled plugins
 │   ├── CLAUDE.md       #   global instructions (sources RTK.md)
 │   ├── RTK.md          #   rtk command reference
-│   └── hooks/notify.sh #   desktop notification hook (Stop/Notification)
+│   ├── hooks/notify.sh #   desktop notification hook (Stop/Notification)
+│   └── hooks/statusline.sh # status line: dir, git branch, model, ponytail tag
 └── RectangleConfig.json # imported via Rectangle's UI
 ```
 
@@ -140,7 +141,8 @@ mkdir -p ~/.claude/hooks
 ln -sf "$PWD/claude/settings.json"   ~/.claude/settings.json
 ln -sf "$PWD/claude/CLAUDE.md"       ~/.claude/CLAUDE.md
 ln -sf "$PWD/claude/RTK.md"          ~/.claude/RTK.md
-ln -sf "$PWD/claude/hooks/notify.sh" ~/.claude/hooks/notify.sh
+ln -sf "$PWD/claude/hooks/notify.sh"     ~/.claude/hooks/notify.sh
+ln -sf "$PWD/claude/hooks/statusline.sh" ~/.claude/hooks/statusline.sh
 ```
 
 `settings.json` references the `rtk` and `ponytail` plugins plus the notify hook;
