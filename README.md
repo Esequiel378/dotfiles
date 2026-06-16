@@ -107,6 +107,12 @@ After linking the config, install plugins from inside tmux with `prefix + I` (pr
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 ```
 
+Then install a Node version — nvm by itself puts no `node`/`npm` on PATH, and Neovim's Mason needs them to install the npm-based language servers (eslint, pyright, svelte, typescript, css, html), which otherwise fail with "failed to install":
+
+```sh
+nvm install --lts && nvm alias default 'lts/*'
+```
+
 ### Optional
 
 These are referenced in `.zshrc` only when present — install only what you actually use:
