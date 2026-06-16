@@ -1,12 +1,20 @@
 #!/usr/bin/env bash
 # Claude Code desktop notification hook (macOS).
-# Usage: notify.sh stop|notification   — hook JSON arrives on stdin.
+# Usage: notify.sh start|stop|notification   — hook JSON arrives on stdin.
 
 input=$(cat)
 event="$1"
 
 # --- diagnostic log: confirms the hook fired. Safe to delete this line later. ---
 echo "$(date '+%F %T')  event=$event" >> /Users/arlequin/.claude/hooks/notify.log
+
+# Per-session prompt timer read by statusline.sh: line1=start, line2=end.
+sid=$(printf '%s' "$input" | jq -r '.session_id // "default"' 2>/dev/null)
+timer="${TMPDIR:-/tmp}/claude-prompt-${sid}"
+case "$event" in
+  start) date +%s  > "$timer"; exit 0 ;;   # UserPromptSubmit: reset start
+  stop)  date +%s >> "$timer" ;;           # Stop: append end (freezes elapsed)
+esac
 
 cwd=$(printf '%s' "$input" | jq -r '.cwd // empty' 2>/dev/null)
 project=$(basename "${cwd:-$PWD}")
