@@ -114,17 +114,19 @@ These are referenced in `.zshrc` only when present — install only what you act
 - **Go** — `brew install go` (config exports `GOPATH=$HOME/go`)
 - **Rust / cargo** — `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - **pnpm** — `curl -fsSL https://get.pnpm.io/install.sh | sh -`
-- **Pulumi** — `curl -fsSL https://get.pulumi.com | sh`
-- **Google Cloud SDK** — install via the [official installer](https://cloud.google.com/sdk/docs/install) into `$HOME/google-cloud-sdk`
 
 ## Linking the configs
 
 From the repo root, `make` symlinks everything (existing files are overwritten — back them up first):
 
 ```sh
-make          # link all configs
-make zsh      # or link one group: zsh / tmux / kitty / nvim / claude
+make          # link all configs + apply macOS tweaks
+make zsh      # or run one group: zsh / tmux / kitty / nvim / claude / macos / keyswap
 ```
+
+`make macos` sets a fast key repeat (`KeyRepeat 2`, `InitialKeyRepeat 15`, and disables press-and-hold accents). Log out and back in for it to take effect.
+
+`make keyswap` swaps the left **Ctrl** and **Fn** keys. It installs a LaunchAgent (`macos/keyswap.plist`) that reapplies the `hidutil` mapping at every login, since the mapping is otherwise lost on reboot. Takes effect immediately.
 
 The targets just wrap the `ln -sf` commands below if you'd rather run them by hand:
 

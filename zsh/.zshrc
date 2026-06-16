@@ -32,7 +32,6 @@ path_add "/usr/local/go/bin"
 # Home binaries
 path_add "$HOME/.local/bin"
 path_add "$HOME/.cargo/bin"
-path_add "$HOME/.pulumi/bin"
 
 # oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
@@ -81,7 +80,3 @@ fi
 # zsh completion
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit -C
-
-# Google Cloud SDK
-src "$HOME/google-cloud-sdk/path.zsh.inc"
-src "$HOME/google-cloud-sdk/completion.zsh.inc"
