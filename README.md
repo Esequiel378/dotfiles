@@ -119,7 +119,14 @@ These are referenced in `.zshrc` only when present — install only what you act
 
 ## Linking the configs
 
-From the repo root:
+From the repo root, `make` symlinks everything (existing files are overwritten — back them up first):
+
+```sh
+make          # link all configs
+make zsh      # or link one group: zsh / tmux / kitty / nvim / claude
+```
+
+The targets just wrap the `ln -sf` commands below if you'd rather run them by hand:
 
 ```sh
 # zsh
