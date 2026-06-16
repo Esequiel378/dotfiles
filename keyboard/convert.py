@@ -196,23 +196,23 @@ def extract_layer_keys(layer_keys: list[str]) -> list[list[str]]:
 def inject_bt_keys(rows: list[list[str]]) -> list[list[str]]:
     """Inject Bluetooth profile keys into the function layer.
 
-    Replaces &none slots on the right side with BT management keys.
+    BT_CLR lives on the bottom-right corner (the ESC key on the base layer),
+    so lower+raise+ESC clears bonds. BT_SEL 0-4 run across the right home row
+    starting at H. Only overwrites &none slots.
     """
-    # Right side of row 1 (indices 6-11): replace &none slots with BT keys
-    bt_bindings = [
-        "&bt BT_CLR",
-        "&bt BT_SEL 0",
-        "&bt BT_SEL 1",
-        "&bt BT_SEL 2",
-        "&bt BT_SEL 3",
-        "&bt BT_SEL 4",
-    ]
-    bt_idx = 0
-    for row_idx in range(3):  # rows 0-2
-        for col_idx in range(6, 12):  # right side columns
-            if bt_idx < len(bt_bindings) and rows[row_idx][col_idx] == "&none":
-                rows[row_idx][col_idx] = bt_bindings[bt_idx]
-                bt_idx += 1
+    # (row, col) -> binding. Right home row cols 6-10 = H J K L ;
+    # Row 2 col 11 = the ESC corner.
+    placements = {
+        (1, 6): "&bt BT_SEL 0",   # H
+        (1, 7): "&bt BT_SEL 1",   # J
+        (1, 8): "&bt BT_SEL 2",   # K
+        (1, 9): "&bt BT_SEL 3",   # L
+        (1, 10): "&bt BT_SEL 4",  # ;
+        (2, 11): "&bt BT_CLR",    # ESC corner
+    }
+    for (row, col), binding in placements.items():
+        if rows[row][col] == "&none":
+            rows[row][col] = binding
     return rows
 
 
