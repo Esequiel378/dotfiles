@@ -1,6 +1,6 @@
 DOTFILES := $(CURDIR)
 
-.PHONY: all zsh tmux kitty nvim claude macos keyswap
+.PHONY: all zsh tmux kitty nvim claude macos keyswap keyswap-undo
 
 all: zsh tmux kitty nvim claude macos keyswap
 
@@ -39,3 +39,9 @@ keyswap:
 	ln -sf "$(DOTFILES)/macos/keyswap.plist" ~/Library/LaunchAgents/com.dotfiles.keyswap.plist
 	launchctl unload ~/Library/LaunchAgents/com.dotfiles.keyswap.plist 2>/dev/null || true
 	launchctl load ~/Library/LaunchAgents/com.dotfiles.keyswap.plist
+
+# Undo the swap: stop the LaunchAgent and reset hidutil to defaults. Takes effect immediately.
+keyswap-undo:
+	launchctl unload ~/Library/LaunchAgents/com.dotfiles.keyswap.plist 2>/dev/null || true
+	rm -f ~/Library/LaunchAgents/com.dotfiles.keyswap.plist
+	hidutil property --set '{"UserKeyMapping":[]}'
