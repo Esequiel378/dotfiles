@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/arlequin/.claude/hooks/notify.sh start"
+            "command": "bash \"$HOME/.claude/hooks/notify.sh\" start"
           }
         ]
       }
@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/arlequin/.claude/hooks/notify.sh stop"
+            "command": "bash \"$HOME/.claude/hooks/notify.sh\" stop"
           }
         ]
       }
@@ -38,7 +38,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/arlequin/.claude/hooks/notify.sh notification"
+            "command": "bash \"$HOME/.claude/hooks/notify.sh\" notification"
           }
         ]
       }
