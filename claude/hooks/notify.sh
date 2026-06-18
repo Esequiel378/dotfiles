@@ -6,7 +6,7 @@ input=$(cat)
 event="$1"
 
 # --- diagnostic log: confirms the hook fired. Safe to delete this line later. ---
-echo "$(date '+%F %T')  event=$event" >> /Users/arlequin/.claude/hooks/notify.log
+echo "$(date '+%F %T')  event=$event" >> "${HOME}/.claude/hooks/notify.log"
 
 # Per-session prompt timer read by statusline.sh: line1=start, line2=end.
 sid=$(printf '%s' "$input" | jq -r '.session_id // "default"' 2>/dev/null)
