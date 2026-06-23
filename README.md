@@ -121,6 +121,7 @@ These are referenced in `.zshrc` only when present — install only what you act
 - **Go** — `brew install go` (config exports `GOPATH=$HOME/go`)
 - **Rust / cargo** — `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - **pnpm** — `curl -fsSL https://get.pnpm.io/install.sh | sh -`
+- **Headroom** — `pipx install --python python3.13 "headroom-ai[all]"` (context compressor for AI agents). `.zshrc` exports `HEADROOM_OUTPUT_SHAPER=1` to trim output tokens; run agents with `headroom wrap claude`.
 
 ## Linking the configs
 

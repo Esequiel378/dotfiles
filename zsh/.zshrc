@@ -57,6 +57,9 @@ alias ls="lsd -l -hA --group-dirs first -a"
 alias stop='docker stop $(docker ps -aq)'
 alias claude='claude --allow-dangerously-skip-permissions'
 
+# Headroom — reduce output tokens (verbosity steering + effort routing)
+export HEADROOM_OUTPUT_SHAPER=1
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 src "$NVM_DIR/nvm.sh"
