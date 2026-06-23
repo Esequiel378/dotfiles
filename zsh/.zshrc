@@ -57,8 +57,9 @@ alias ls="lsd -l -hA --group-dirs first -a"
 alias stop='docker stop $(docker ps -aq)'
 alias claude='claude --allow-dangerously-skip-permissions'
 
-# Headroom — reduce output tokens (verbosity steering + effort routing)
-export HEADROOM_OUTPUT_SHAPER=1
+# Headroom — route Claude through the local proxy daemon (see `make headroom`).
+# The proxy itself carries HEADROOM_OUTPUT_SHAPER=1 via its LaunchAgent.
+export ANTHROPIC_BASE_URL=http://127.0.0.1:8787
 
 # nvm
 export NVM_DIR="$HOME/.nvm"

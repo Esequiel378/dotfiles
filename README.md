@@ -121,7 +121,7 @@ These are referenced in `.zshrc` only when present — install only what you act
 - **Go** — `brew install go` (config exports `GOPATH=$HOME/go`)
 - **Rust / cargo** — `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - **pnpm** — `curl -fsSL https://get.pnpm.io/install.sh | sh -`
-- **Headroom** — `pipx install --python python3.13 "headroom-ai[all]"` (context compressor for AI agents). `.zshrc` exports `HEADROOM_OUTPUT_SHAPER=1` to trim output tokens; run agents with `headroom wrap claude`.
+- **Headroom** — `pipx install --python python3.13 "headroom-ai[all]"` (context compressor for AI agents). `make headroom` runs `headroom proxy` as a persistent LaunchAgent (`macos/headroom.plist`, `KeepAlive`, `HEADROOM_OUTPUT_SHAPER=1`); `.zshrc` sets `ANTHROPIC_BASE_URL=http://127.0.0.1:8787` so Claude routes through it automatically — no `headroom wrap` per launch. `make headroom-undo` stops it; logs at `/tmp/headroom.log`.
 
 ## Linking the configs
 
