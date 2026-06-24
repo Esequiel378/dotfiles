@@ -1,6 +1,6 @@
 DOTFILES := $(CURDIR)
 
-.PHONY: all zsh tmux kitty nvim claude macos keyswap keyswap-undo headroom headroom-undo
+.PHONY: all zsh tmux kitty nvim claude macos keyswap keyswap-undo
 
 all: zsh tmux kitty nvim claude macos keyswap
 
@@ -45,18 +45,3 @@ keyswap-undo:
 	launchctl unload ~/Library/LaunchAgents/com.dotfiles.keyswap.plist 2>/dev/null || true
 	rm -f ~/Library/LaunchAgents/com.dotfiles.keyswap.plist
 	hidutil property --set '{"UserKeyMapping":[]}'
-
-# Run the Headroom proxy as a persistent daemon so Claude (ANTHROPIC_BASE_URL in
-# .zshrc) routes through it with no per-launch wrapper. KeepAlive restarts it if
-# it dies. The plist is generated (not symlinked) to bake in the headroom path.
-headroom:
-	@command -v headroom >/dev/null || { echo "headroom not found — pipx install \"headroom-ai[all]\""; exit 1; }
-	mkdir -p ~/Library/LaunchAgents
-	sed "s|@HEADROOM@|$$(command -v headroom)|" "$(DOTFILES)/macos/headroom.plist" > ~/Library/LaunchAgents/com.dotfiles.headroom.plist
-	launchctl unload ~/Library/LaunchAgents/com.dotfiles.headroom.plist 2>/dev/null || true
-	launchctl load ~/Library/LaunchAgents/com.dotfiles.headroom.plist
-
-# Stop the proxy daemon and remove its LaunchAgent.
-headroom-undo:
-	launchctl unload ~/Library/LaunchAgents/com.dotfiles.headroom.plist 2>/dev/null || true
-	rm -f ~/Library/LaunchAgents/com.dotfiles.headroom.plist
