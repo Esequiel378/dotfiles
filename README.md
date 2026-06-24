@@ -34,8 +34,16 @@ Install these before linking the configs — the shell, tmux, and editor configs
 
 ### 2. Core packages
 
+Everything below (plus the font and optional tools) lives in the [`Brewfile`](Brewfile) — install it all at once:
+
 ```sh
-brew install zsh tmux neovim kitty lsd git make gnupg rtk
+brew bundle   # or: make install
+```
+
+Or by hand:
+
+```sh
+brew install zsh tmux neovim kitty lsd git make gnupg ripgrep fd rtk
 brew install --cask rectangle
 ```
 
@@ -47,6 +55,8 @@ brew install --cask rectangle
 | `lsd` | `ls` alias in `.zshrc` |
 | `gnupg` | `GPG_TTY` export for signed commits |
 | `git`, `make` | telescope-fzf-native build inside Neovim |
+| `ripgrep` | Telescope `live_grep` / `grep_string` (no fallback — these break without it) |
+| `fd` | Faster Telescope `find_files` (optional; has a Lua fallback) |
 | `rtk` | `rtk hook claude` PreToolUse hook in `claude/settings.json` |
 | `rectangle` | `RectangleConfig.json` |
 
