@@ -52,6 +52,9 @@ export EDITOR='nvim'
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export TERM=xterm-256color
 
+# Let tmux keep scroll/copy-mode (ctrl+a [) instead of Claude Code capturing the mouse
+export CLAUDE_CODE_DISABLE_MOUSE=1
+
 # Aliases
 alias ls="lsd -l -hA --group-dirs first -a"
 alias stop='docker stop $(docker ps -aq)'
