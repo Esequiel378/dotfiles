@@ -200,3 +200,4 @@ That wraps `claude mcp add serena -s user -- uvx --from git+https://github.com/o
 - The `tmux` and `kitty` configs include a workaround that maps `Shift+Enter` to `ESC [13;2u` so apps like Claude Code receive a literal newline instead of submitting.
 - `kitty.conf` remaps `Ctrl+Shift+6` to `Ctrl+^` for Neovim alternate-buffer switching on Corne keyboards.
 - tmux prefix is `Ctrl-a` (not the default `Ctrl-b`).
+- **Claude Code + tmux scrolling**: if `Ctrl-a [` won't scroll past Claude Code's output, fullscreen rendering (alternate-screen buffer) is on — it has no scrollback. `.zshrc` exports `CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1` to force the classic renderer so output flows into tmux scrollback. The toggle persists per machine: if a box still misbehaves, run `/tui` inside Claude Code and turn fullscreen off.
