@@ -16,7 +16,8 @@ kitty:
 	ln -sf "$(DOTFILES)/kitty/kitty.conf" ~/.config/kitty/kitty.conf
 
 nvim:
-	ln -sf "$(DOTFILES)/nvim" ~/.config/nvim
+	mkdir -p ~/.config
+	ln -sfn "$(DOTFILES)/nvim" ~/.config/nvim
 
 claude:
 	mkdir -p ~/.claude/hooks
