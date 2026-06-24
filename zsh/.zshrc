@@ -55,8 +55,8 @@ export TERM=xterm-256color
 # Aliases
 alias ls="lsd -l -hA --group-dirs first -a"
 alias stop='docker stop $(docker ps -aq)'
-alias claude='claude --allow-dangerously-skip-permissions'
-alias claude-wrap='headroom wrap claude --allow-dangerously-skip-permissions'
+alias claude='claude --dangerously-skip-permissions'
+alias claude-wrap='headroom wrap claude --dangerously-skip-permissions'
 
 # Headroom — reduce output tokens (verbosity steering + effort routing)
 export HEADROOM_OUTPUT_SHAPER=1
