@@ -122,6 +122,7 @@ These are referenced in `.zshrc` only when present — install only what you act
 - **Rust / cargo** — `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - **pnpm** — `curl -fsSL https://get.pnpm.io/install.sh | sh -`
 - **Headroom** — `pipx install --python python3.13 "headroom-ai[all]"` (context compressor for AI agents). `.zshrc` exports `HEADROOM_OUTPUT_SHAPER=1` to trim output tokens; run agents with `headroom wrap claude`.
+- **uv** — `brew install uv` (provides `uvx`, required by `make serena` below to run the Serena MCP server).
 
 ## Linking the configs
 
@@ -171,6 +172,21 @@ Back up any pre-existing files first if you want to keep them.
 ### Rectangle
 
 Open Rectangle → preferences → **Import** → select `RectangleConfig.json`.
+
+### Serena (Claude Code MCP server)
+
+[Serena](https://github.com/oraios/serena) is a coding-agent toolkit that gives Claude Code
+semantic, LSP-backed code tools (find/edit symbols, references, project memories). It runs as a
+user-scope MCP server, so MCP config lives in `~/.claude.json` (runtime state, untracked) rather
+than in this repo. `make serena` re-registers it from scratch:
+
+```sh
+make serena   # needs uv (brew install uv); re-runnable
+```
+
+That wraps `claude mcp add serena -s user -- uvx --from git+https://github.com/oraios/serena …`.
+`uvx` fetches and runs Serena straight from the repo — nothing to install globally. Verify with
+`claude mcp list`.
 
 ## First launch
 
