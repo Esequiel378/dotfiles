@@ -1,6 +1,6 @@
 DOTFILES := $(CURDIR)
 
-.PHONY: all zsh tmux kitty nvim claude macos keyswap keyswap-undo
+.PHONY: all zsh tmux kitty nvim claude serena macos keyswap keyswap-undo
 
 all: zsh tmux kitty nvim claude macos keyswap
 
@@ -26,6 +26,12 @@ claude:
 	ln -sf "$(DOTFILES)/claude/RTK.md"             ~/.claude/RTK.md
 	ln -sf "$(DOTFILES)/claude/hooks/notify.sh"    ~/.claude/hooks/notify.sh
 	ln -sf "$(DOTFILES)/claude/hooks/statusline.sh" ~/.claude/hooks/statusline.sh
+
+# Register the Serena coding-agent toolkit as a user-scope MCP server (needs uv).
+# Re-runnable: the leading '-' ignores the remove failing when it isn't registered yet.
+serena:
+	-claude mcp remove serena -s user 2>/dev/null
+	claude mcp add serena -s user -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --project-from-cwd --context claude-code --open-web-dashboard False
 
 # Fast key repeat. Log out and back in for it to take effect.
 macos:
