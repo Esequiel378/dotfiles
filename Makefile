@@ -1,12 +1,16 @@
 DOTFILES := $(CURDIR)
 
-.PHONY: all zsh tmux kitty nvim claude serena macos keyswap keyswap-undo
+.PHONY: all zsh tmux kitty nvim claude git serena macos keyswap keyswap-undo
 
-all: zsh tmux kitty nvim claude macos keyswap
+all: zsh tmux kitty nvim claude git serena macos keyswap
 
 zsh:
 	ln -sf "$(DOTFILES)/zsh/.zshrc"    ~/.zshrc
 	ln -sf "$(DOTFILES)/zsh/.p10k.zsh" ~/.p10k.zsh
+
+git:
+	mkdir -p ~/.config/git
+	ln -sf "$(DOTFILES)/git/ignore" ~/.config/git/ignore
 
 tmux:
 	ln -sf "$(DOTFILES)/.tmux.conf" ~/.tmux.conf
