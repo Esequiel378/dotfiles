@@ -1,8 +1,12 @@
 DOTFILES := $(CURDIR)
 
-.PHONY: all zsh tmux kitty nvim claude git serena macos keyswap keyswap-undo
+.PHONY: all install zsh tmux kitty nvim claude git serena macos keyswap keyswap-undo
 
 all: zsh tmux kitty nvim claude git serena macos keyswap
+
+# Install all brew packages, casks, and fonts at once (needs Homebrew).
+install:
+	brew bundle --file="$(DOTFILES)/Brewfile"
 
 zsh:
 	ln -sf "$(DOTFILES)/zsh/.zshrc"    ~/.zshrc
