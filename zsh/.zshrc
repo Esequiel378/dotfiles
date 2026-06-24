@@ -83,3 +83,6 @@ fi
 # zsh completion
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit -C
+
+# Local, uncommitted overrides (secrets, machine-specific tweaks)
+src "$HOME/.zshrc.local"
