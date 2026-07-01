@@ -15,7 +15,10 @@ mid=$(printf '%s' "$input" | jq -r '.model.id // empty')
 case "$mid" in *1m*) climit=1000000; limlabel="1M";; *) climit=200000; limlabel="200k";; esac
 ctx=""
 if [ -n "$transcript" ] && [ -f "$transcript" ]; then
-    used=$(tail -r "$transcript" 2>/dev/null | jq -r 'select(.message.usage.input_tokens != null) | .message.usage | (.input_tokens + (.cache_read_input_tokens // 0) + (.cache_creation_input_tokens // 0))' 2>/dev/null | head -1)
+    # ponytail: read forward + tail -1, not `tail -r | head -1`. A half-written
+    # trailing line (status renders mid-write) is newest in tail -r, so jq aborts
+    # on it and emits nothing → token count silently drops. Forward, it errors last.
+    used=$(jq -r 'select(.message.usage.input_tokens != null) | .message.usage | (.input_tokens + (.cache_read_input_tokens // 0) + (.cache_creation_input_tokens // 0))' "$transcript" 2>/dev/null | tail -1)
     if [ -n "$used" ]; then
         ctx=$(printf '%dk/%s %d%%' $((used/1000)) "$limlabel" $((used*100/climit)))
     fi
