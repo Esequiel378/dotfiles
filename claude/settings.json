@@ -1,6 +1,5 @@
 {
   "model": "opus[1m]",
-  "statusLine": { "type": "command", "command": "bash \"$HOME/.claude/hooks/statusline.sh\"" },
   "hooks": {
     "PreToolUse": [
       {
@@ -43,6 +42,10 @@
         ]
       }
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"$HOME/.claude/hooks/statusline.sh\""
   },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
