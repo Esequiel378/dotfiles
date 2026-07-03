@@ -198,6 +198,17 @@ That wraps `claude mcp add serena -s user -- uvx --from git+https://github.com/o
 `uvx` fetches and runs Serena straight from the repo — nothing to install globally. Verify with
 `claude mcp list`.
 
+[Linear](https://linear.app)'s hosted MCP server gives Claude Code access to issues, projects, and
+comments. It runs over HTTP at `https://mcp.linear.app/mcp`, so like Serena its config lives in
+`~/.claude.json` rather than in this repo. `make linear` re-registers it:
+
+```sh
+make linear   # re-runnable; authenticate via OAuth on first use
+```
+
+That wraps `claude mcp add --transport http linear-server https://mcp.linear.app/mcp -s user`.
+Verify with `claude mcp list`.
+
 ## First launch
 
 1. **zsh**: open a new terminal. Powerlevel10k will start its config wizard on first run; settings are written to `~/.p10k.zsh` (already symlinked to this repo, so they'll persist).

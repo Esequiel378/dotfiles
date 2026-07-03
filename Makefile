@@ -1,8 +1,8 @@
 DOTFILES := $(CURDIR)
 
-.PHONY: all install zsh tmux kitty nvim claude git serena macos keyswap keyswap-undo
+.PHONY: all install zsh tmux kitty nvim claude git serena linear macos keyswap keyswap-undo
 
-all: zsh tmux kitty nvim claude git serena macos keyswap
+all: zsh tmux kitty nvim claude git serena linear macos keyswap
 
 # Install all brew packages, casks, and fonts at once (needs Homebrew).
 install:
@@ -40,6 +40,11 @@ claude:
 serena:
 	-claude mcp remove serena -s user 2>/dev/null
 	claude mcp add serena -s user -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --project-from-cwd --context claude-code --open-web-dashboard False
+
+# Register Linear's hosted MCP server (user scope, HTTP transport). Re-runnable.
+linear:
+	-claude mcp remove linear-server -s user 2>/dev/null
+	claude mcp add --transport http linear-server https://mcp.linear.app/mcp -s user
 
 # Fast key repeat. Log out and back in for it to take effect.
 macos:
