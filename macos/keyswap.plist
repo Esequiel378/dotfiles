@@ -8,10 +8,11 @@
   <array>
     <string>/usr/bin/hidutil</string>
     <string>property</string>
-    <!-- Limit to Apple keyboards so external keyboards (e.g. Corne) are untouched.
-         VendorID only, so it works on any Mac without editing per-model ProductID. -->
+    <!-- Match the built-in keyboard by product name so external keyboards (e.g. Corne)
+         are untouched. On Apple Silicon the internal keyboard enumerates with VendorID 0x0,
+         not 0x5ac, so a VendorID match never hits the keys you actually type on. -->
     <string>--matching</string>
-    <string>{"VendorID":0x5ac}</string>
+    <string>{"Product":"Apple Internal Keyboard / Trackpad"}</string>
     <string>--set</string>
     <!-- Swap left Ctrl (0x7000000E0) and Fn/Globe (0xFF00000003) -->
     <string>{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x7000000E0,"HIDKeyboardModifierMappingDst":0xFF00000003},{"HIDKeyboardModifierMappingSrc":0xFF00000003,"HIDKeyboardModifierMappingDst":0x7000000E0}]}</string>
