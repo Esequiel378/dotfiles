@@ -62,6 +62,5 @@
   },
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
-  "preferredNotifChannel": "kitty",
-  "skipAutoPermissionPrompt": true
+  "preferredNotifChannel": "kitty"
 }

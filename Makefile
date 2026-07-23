@@ -1,6 +1,6 @@
 DOTFILES := $(CURDIR)
 
-.PHONY: all install zsh tmux kitty nvim claude git serena linear macos keyswap keyswap-undo
+.PHONY: all install zsh tmux kitty nvim claude git serena linear headroom macos keyswap keyswap-undo
 
 all: zsh tmux kitty nvim claude git serena linear macos keyswap
 
@@ -45,6 +45,12 @@ serena:
 linear:
 	-claude mcp remove linear-server -s user 2>/dev/null
 	claude mcp add --transport http linear-server https://mcp.linear.app/mcp -s user
+
+# Install Headroom (context compressor) for the `claude-wrap` alias in .zshrc.
+# Bootstraps its own deps so it works without a full `make install`. --force makes it re-runnable.
+headroom:
+	brew install pipx python@3.13
+	pipx install --force --python python3.13 "headroom-ai[all]"
 
 # Fast key repeat. Log out and back in for it to take effect.
 macos:

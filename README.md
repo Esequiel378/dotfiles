@@ -131,7 +131,7 @@ These are referenced in `.zshrc` only when present — install only what you act
 - **Go** — `brew install go` (config exports `GOPATH=$HOME/go`)
 - **Rust / cargo** — `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - **pnpm** — `curl -fsSL https://get.pnpm.io/install.sh | sh -`
-- **Headroom** — `pipx install --python python3.13 "headroom-ai[all]"` (context compressor for AI agents). `.zshrc` exports `HEADROOM_OUTPUT_SHAPER=1` to trim output tokens; run agents with `headroom wrap claude`.
+- **Headroom** — `make headroom` (context compressor for AI agents; needs `pipx` + `python@3.13` from the Brewfile). `.zshrc` exports `HEADROOM_OUTPUT_SHAPER=1` to trim output tokens and aliases `claude-wrap` to `headroom wrap claude`.
 - **uv** — `brew install uv` (provides `uvx`, required by `make serena` below to run the Serena MCP server).
 
 ## Linking the configs
@@ -140,7 +140,7 @@ From the repo root, `make` symlinks everything (existing files are overwritten �
 
 ```sh
 make          # link all configs + apply macOS tweaks
-make zsh      # or run one group: zsh / tmux / kitty / nvim / claude / macos / keyswap
+make zsh      # or run one group: zsh / tmux / kitty / nvim / claude / headroom / macos / keyswap
 ```
 
 `make macos` sets a fast key repeat (`KeyRepeat 2`, `InitialKeyRepeat 15`, and disables press-and-hold accents). Log out and back in for it to take effect.
