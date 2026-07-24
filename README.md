@@ -32,7 +32,15 @@ Install these before linking the configs — the shell, tmux, and editor configs
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### 2. Core packages
+### 2. Claude Code
+
+Required — `make claude` links its config, and `make serena` / `make linear` register MCP servers through the `claude` CLI.
+
+```sh
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+### 3. Core packages
 
 Everything below (plus the font and optional tools) lives in the [`Brewfile`](Brewfile) — install it all at once:
 
@@ -60,7 +68,7 @@ brew install --cask rectangle
 | `rtk` | `rtk hook claude` PreToolUse hook in `claude/settings.json` |
 | `rectangle` | `RectangleConfig.json` |
 
-### 3. JetBrainsMono Nerd Font
+### 4. JetBrainsMono Nerd Font
 
 Required by `kitty.conf` and the Neovim UI icons.
 
@@ -68,7 +76,7 @@ Required by `kitty.conf` and the Neovim UI icons.
 brew install --cask font-jetbrains-mono-nerd-font
 ```
 
-### 4. oh-my-zsh
+### 5. oh-my-zsh
 
 `.zshrc` sets `export ZSH="$HOME/.oh-my-zsh"` and sources `$ZSH/oh-my-zsh.sh`. Without it, the shell will start but the theme and plugins below won't load.
 
@@ -78,7 +86,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 The `plugins=(...)` array in `.zshrc` enables these oh-my-zsh built-ins (no extra install needed): `git`, `node`, `tmux`. They ship with oh-my-zsh itself.
 
-### 5. Powerlevel10k (zsh theme)
+### 6. Powerlevel10k (zsh theme)
 
 `.zshrc` sets `ZSH_THEME="powerlevel10k/powerlevel10k"` and sources `~/.p10k.zsh` (which is symlinked from `zsh/.p10k.zsh` in this repo). The instant-prompt block at the top of `.zshrc` also depends on it.
 
@@ -87,7 +95,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
   "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 ```
 
-### 6. zsh-autosuggestions
+### 7. zsh-autosuggestions
 
 Listed in the `plugins=(...)` array in `.zshrc`. Provides fish-style "ghost text" suggestions from history as you type.
 
@@ -96,11 +104,11 @@ git clone https://github.com/zsh-users/zsh-autosuggestions \
   "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 ```
 
-### 7. zsh completion
+### 8. zsh completion
 
 `.zshrc` runs `autoload -Uz compinit && compinit -C` and adds `~/.zfunc` to `fpath`. `compinit` is built into zsh — nothing to install — but if you have custom completion functions, drop them in `~/.zfunc`.
 
-### 8. tmux plugin manager (TPM)
+### 9. tmux plugin manager (TPM)
 
 `.tmux.conf` ends with `run '~/.tmux/plugins/tpm/tpm'` and uses `tmux-sensible`, `tmux-yank`, `tmux-resurrect`, and `tmux-gruvbox`.
 
@@ -110,7 +118,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 After linking the config, install plugins from inside tmux with `prefix + I` (prefix is `Ctrl-a`).
 
-### 9. Node version manager (nvm)
+### 10. Node version manager (nvm)
 
 `.zshrc` sources `$HOME/.nvm/nvm.sh`.
 
