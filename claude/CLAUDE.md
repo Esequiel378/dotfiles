@@ -13,3 +13,9 @@ Good (keep): `// retry twice: upstream returns 503 on cold start`, `// O(n²) is
 Bad (never write): restating the code (`// increment i`, `// loop over users`), obvious docstrings on obvious getters, commented-out code (delete it, git remembers), decorative separators (`// ==== helpers ====`), and comments that narrate the change you just made (`// added null check`).
 
 A comment that can drift out of sync with the code is a liability — update it with the code or delete it.
+
+# Writing instructions for agents
+
+When writing text an agent will *execute* — skill files, `CLAUDE.md`/`AGENTS.md`, prompt templates, runbooks, ticket acceptance criteria — follow the rules below. They do not apply to conversational replies, rationale prose, or code comments.
+
+@/Users/arlequin/Projects/personal/skills/STYLE.md
