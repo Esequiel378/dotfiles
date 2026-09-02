@@ -90,3 +90,13 @@ autoload -Uz compinit && compinit -C
 
 # Local, uncommitted overrides (secrets, machine-specific tweaks)
 src "$HOME/.zshrc.local"
+
+# Token usage: current + last month, Claude only. `usage --all` = every agent, all time.
+usage() {
+  if [[ $1 == --all ]]; then
+    shift
+    npx -y ccusage@latest monthly --breakdown "$@"
+  else
+    npx -y ccusage@latest claude monthly --breakdown --since "$(date -v-1m +%Y%m01)" "$@"
+  fi
+}
