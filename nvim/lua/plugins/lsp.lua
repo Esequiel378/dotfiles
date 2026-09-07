@@ -85,6 +85,29 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
 
+      -- ponytail: sqls reuses DBUI's connection list and always talks to the first
+      -- entry; re-read only happens at startup. Add nanotee/sqls.nvim if switching
+      -- databases mid-session becomes a habit.
+      local function dbui_connections()
+        local file = io.open(vim.fn.expand '~/.local/share/db_ui/connections.json', 'r')
+        if not file then
+          return {}
+        end
+        local ok, conns = pcall(vim.json.decode, file:read '*a')
+        file:close()
+        if not ok then
+          return {}
+        end
+        local out = {}
+        for _, conn in ipairs(conns) do
+          -- sqls only accepts URL-form DSNs for postgres; mysql needs its own format
+          if conn.url and conn.url:match '^postgres' then
+            table.insert(out, { driver = 'postgresql', dataSourceName = conn.url })
+          end
+        end
+        return out
+      end
+
       local servers = {
         lua_ls = {
           settings = {
@@ -126,11 +149,32 @@ return {
         golangci_lint_ls = {
           filetypes = { "go", "gomod" },
         },
+        sqls = {
+          settings = {
+            sqls = { connections = dbui_connections() },
+          },
+          on_attach = function(client, bufnr)
+            vim.api.nvim_buf_create_user_command(bufnr, 'SqlsConn', function(opts)
+              -- sqls advertises no executeCommandProvider, so client:exec_cmd refuses
+              -- every command; send the raw request instead
+              local cmd = opts.args == '' and { command = 'showConnections' }
+                -- sqls wants the index as a numeric *string*, not a number
+                or { command = 'switchConnections', arguments = { opts.args } }
+              client:request('workspace/executeCommand', cmd, function(err, res)
+                vim.notify(err and err.message or (type(res) == 'string' and res or vim.inspect(res)))
+              end, bufnr)
+            end, { nargs = '?', desc = 'sqls: list connections, or switch to index N' })
+          end,
+        },
       }
 
       require('mason').setup()
 
-      local ensure_installed = vim.tbl_keys(servers or {})
+      -- `servers` is keyed by lspconfig name; mason installs by package name
+      local to_package = require('mason-lspconfig').get_mappings().lspconfig_to_package
+      local ensure_installed = vim.tbl_map(function(name)
+        return to_package[name] or name
+      end, vim.tbl_keys(servers))
       vim.list_extend(ensure_installed, {
         -- lua
         'stylua',
@@ -142,10 +186,8 @@ return {
         "typescript-language-server",
         "html-lsp",
         "css-lsp",
-        "eslint-lsp",
         "tailwindcss-language-server",
         -- Go
-        "gopls",
         "golangci-lint",
         -- Docker
         "dockerfile-language-server",
@@ -155,16 +197,14 @@ return {
         ensure_installed = ensure_installed,
       }
 
+      vim.lsp.config('*', { capabilities = capabilities })
+      for name, cfg in pairs(servers) do
+        vim.lsp.config(name, cfg)
+      end
+
       require('mason-lspconfig').setup {
         ensure_installed = {},
-        automatic_installation = true,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
+        automatic_enable = true,
       }
     end,
   },
