@@ -60,7 +60,17 @@
       }
     }
   },
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    },
+    "claude-fable-5-1": {
+      "effortLevel": "high"
+    }
+  },
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
-  "preferredNotifChannel": "kitty"
+  "preferredNotifChannel": "kitty",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
 }
