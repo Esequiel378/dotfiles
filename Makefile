@@ -1,4 +1,5 @@
 DOTFILES := $(CURDIR)
+OMZ := $(HOME)/.oh-my-zsh
 
 .PHONY: all install zsh tmux kitty nvim claude git serena linear headroom macos keyswap keyswap-undo
 
@@ -8,9 +9,21 @@ all: zsh tmux kitty nvim claude git serena linear macos keyswap
 install:
 	brew bundle --file="$(DOTFILES)/Brewfile"
 
-zsh:
+zsh: $(OMZ) $(OMZ)/custom/themes/powerlevel10k $(OMZ)/custom/plugins/zsh-autosuggestions
 	ln -sf "$(DOTFILES)/zsh/.zshrc"    ~/.zshrc
 	ln -sf "$(DOTFILES)/zsh/.p10k.zsh" ~/.p10k.zsh
+
+# .zshrc loads the theme and the plugin through oh-my-zsh, and these are the
+# paths it looks in. directory targets, so make skips a clone that is already
+# there and `make zsh` stays re-runnable
+$(OMZ):
+	git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git $@
+
+$(OMZ)/custom/themes/powerlevel10k: | $(OMZ)
+	git clone --depth 1 https://github.com/romkatv/powerlevel10k.git $@
+
+$(OMZ)/custom/plugins/zsh-autosuggestions: | $(OMZ)
+	git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $@
 
 git:
 	mkdir -p ~/.config/git
