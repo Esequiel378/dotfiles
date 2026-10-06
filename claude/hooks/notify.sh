@@ -16,6 +16,9 @@ case "$event" in
   stop)  date +%s >> "$timer" ;;           # Stop: append end (freezes elapsed)
 esac
 
+# The banner and sounds below are macOS-only; elsewhere the timer is the job.
+[ "$(uname -s)" = Darwin ] || exit 0
+
 cwd=$(printf '%s' "$input" | jq -r '.cwd // empty' 2>/dev/null)
 project=$(basename "${cwd:-$PWD}")
 

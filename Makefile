@@ -40,13 +40,9 @@ nvim:
 	mkdir -p ~/.config
 	ln -sfn "$(DOTFILES)/nvim" ~/.config/nvim
 
+# Also runs without make on Windows: `bash claude/install.sh` from Git Bash.
 claude:
-	mkdir -p ~/.claude/hooks
-	ln -sf "$(DOTFILES)/claude/settings.json"      ~/.claude/settings.json
-	ln -sf "$(DOTFILES)/claude/CLAUDE.md"          ~/.claude/CLAUDE.md
-	ln -sf "$(DOTFILES)/claude/RTK.md"             ~/.claude/RTK.md
-	ln -sf "$(DOTFILES)/claude/hooks/notify.sh"    ~/.claude/hooks/notify.sh
-	ln -sf "$(DOTFILES)/claude/hooks/statusline.sh" ~/.claude/hooks/statusline.sh
+	@"$(DOTFILES)/claude/install.sh"
 
 # Register the Serena coding-agent toolkit as a user-scope MCP server (needs uv).
 # Re-runnable: the leading '-' ignores the remove failing when it isn't registered yet.

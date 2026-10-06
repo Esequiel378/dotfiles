@@ -18,4 +18,4 @@ A comment that can drift out of sync with the code is a liability — update it 
 
 When writing text an agent will *execute* — skill files, `CLAUDE.md`/`AGENTS.md`, prompt templates, runbooks, ticket acceptance criteria — follow the rules below. They do not apply to conversational replies, rationale prose, or code comments.
 
-@/Users/arlequin/Projects/personal/skills/STYLE.md
+@~/.claude/STYLE.md

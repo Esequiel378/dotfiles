@@ -14,9 +14,11 @@ Personal macOS dotfiles for zsh, tmux, kitty, Neovim, Claude Code, and Rectangle
 │   └── kitty.conf      # symlink target for ~/.config/kitty/kitty.conf
 ├── nvim/               # symlink target for ~/.config/nvim
 ├── claude/             # global Claude Code config -> ~/.claude/
-│   ├── settings.json   #   model, hooks, enabled plugins
-│   ├── CLAUDE.md       #   global instructions (sources RTK.md)
+│   ├── install.sh      #   links it all (macOS, Linux, Windows Git Bash)
+│   ├── settings.json   #   model, attribution off, hooks, enabled plugins
+│   ├── CLAUDE.md       #   global instructions (sources RTK.md, STYLE.md)
 │   ├── RTK.md          #   rtk command reference
+│   ├── hooks/rtk.sh    #   rtk rewrite hook; no-op where rtk is missing
 │   ├── hooks/notify.sh #   desktop notification hook (Stop/Notification)
 │   └── hooks/statusline.sh # status line: dir, git branch, model, ponytail tag
 └── RectangleConfig.json # imported via Rectangle's UI
@@ -172,18 +174,26 @@ ln -sf "$PWD/kitty/kitty.conf" ~/.config/kitty/kitty.conf
 # Neovim
 ln -sf "$PWD/nvim" ~/.config/nvim
 
-# Claude Code (global config — link the files, leave runtime state untracked)
-mkdir -p ~/.claude/hooks
-ln -sf "$PWD/claude/settings.json"   ~/.claude/settings.json
-ln -sf "$PWD/claude/CLAUDE.md"       ~/.claude/CLAUDE.md
-ln -sf "$PWD/claude/RTK.md"          ~/.claude/RTK.md
-ln -sf "$PWD/claude/hooks/notify.sh"     ~/.claude/hooks/notify.sh
-ln -sf "$PWD/claude/hooks/statusline.sh" ~/.claude/hooks/statusline.sh
+# Claude Code (global config — links the files, leaves runtime state untracked)
+./claude/install.sh
 ```
 
+`claude/install.sh` links `settings.json`, `CLAUDE.md`, `RTK.md` and the hooks into
+`~/.claude/`, plus `STYLE.md` from the [skills](https://github.com/Esequiel378/skills) repo,
+which `CLAUDE.md` imports. It looks for skills next to this repo, then in
+`~/Projects/personal/skills`; set `SKILLS=<path>` to point it elsewhere.
 `settings.json` references the `rtk` and `ponytail` plugins plus the notify hook;
 the rest of `~/.claude/` (cache, sessions, history, plugins) is runtime state and
 stays out of the repo.
+
+`settings.json` turns off Claude Code's commit trailer and PR footer (`attribution`),
+which backs up the no-attribution rule in `CLAUDE.md`.
+
+**Windows**: there is no `make`, so run `bash claude/install.sh` from Git Bash. Plain
+symlinks need Developer Mode (Settings → System → For developers). Without it, the
+script copies the files instead and says so; re-run it after every pull. The hooks
+degrade: `rtk.sh` passes commands through when `rtk` is missing, `notify.sh` keeps only
+the prompt timer, and the status line drops to dir + branch without `jq`.
 
 Back up any pre-existing files first if you want to keep them.
 

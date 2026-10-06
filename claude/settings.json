@@ -1,5 +1,10 @@
 {
   "model": "opus[1m]",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "includeCoAuthoredBy": false,
   "hooks": {
     "PreToolUse": [
       {
@@ -7,7 +12,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "rtk hook claude"
+            "command": "bash \"$HOME/.claude/hooks/rtk.sh\""
           }
         ]
       }
@@ -66,11 +71,6 @@
         "source": "github",
         "repo": "anthropics/healthcare"
       }
-    }
-  },
-  "modelSettings": {
-    "claude-opus-5": {
-      "effortLevel": "high"
     }
   },
   "modelSettings": {
