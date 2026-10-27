@@ -11,6 +11,7 @@ install:
 
 zsh: $(OMZ) $(OMZ)/custom/themes/powerlevel10k $(OMZ)/custom/plugins/zsh-autosuggestions
 	ln -sf "$(DOTFILES)/zsh/.zshrc"    ~/.zshrc
+	ln -sf "$(DOTFILES)/zsh/.zshenv"   ~/.zshenv
 	ln -sf "$(DOTFILES)/zsh/.p10k.zsh" ~/.p10k.zsh
 
 # .zshrc loads the theme and the plugin through oh-my-zsh, and these are the
