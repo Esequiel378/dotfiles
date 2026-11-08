@@ -1,9 +1,9 @@
 DOTFILES := $(CURDIR)
 OMZ := $(HOME)/.oh-my-zsh
 
-.PHONY: all install zsh tmux kitty nvim claude git serena linear headroom macos keyswap keyswap-undo
+.PHONY: all install zsh tmux kitty nvim claude codex git serena linear headroom macos keyswap keyswap-undo
 
-all: zsh tmux kitty nvim claude git serena linear macos keyswap
+all: zsh tmux kitty nvim claude codex git serena linear macos keyswap
 
 # Install all brew packages, casks, and fonts at once (needs Homebrew).
 install:
@@ -44,6 +44,10 @@ nvim:
 # Also runs without make on Windows: `bash claude/install.sh` from Git Bash.
 claude:
 	@"$(DOTFILES)/claude/install.sh"
+
+codex:
+	mkdir -p ~/.codex
+	ln -sf "$(DOTFILES)/codex/AGENTS.md" ~/.codex/AGENTS.md
 
 # Register the Serena coding-agent toolkit as a user-scope MCP server (needs uv).
 # Re-runnable: the leading '-' ignores the remove failing when it isn't registered yet.
