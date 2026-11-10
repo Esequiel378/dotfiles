@@ -40,13 +40,3 @@ link "$DOTFILES/claude/RTK.md"               "$DEST/RTK.md"
 link "$DOTFILES/claude/hooks/rtk.sh"         "$DEST/hooks/rtk.sh"
 link "$DOTFILES/claude/hooks/notify.sh"      "$DEST/hooks/notify.sh"
 link "$DOTFILES/claude/hooks/statusline.sh"  "$DEST/hooks/statusline.sh"
-
-# CLAUDE.md imports ~/.claude/STYLE.md from the skills repo, which lives at a
-# different path on each machine. SKILLS overrides the search.
-for skills in "${SKILLS:-}" "$DOTFILES/../skills" "$HOME/Projects/personal/skills"; do
-  if [ -n "$skills" ] && [ -f "$skills/STYLE.md" ]; then
-    link "$(cd "$skills" && pwd)/STYLE.md" "$DEST/STYLE.md"
-    exit 0
-  fi
-done
-echo "warn: skills repo not found; clone Esequiel378/skills next to dotfiles or set SKILLS=<path>" >&2

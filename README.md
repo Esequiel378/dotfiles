@@ -179,9 +179,8 @@ ln -sf "$PWD/nvim" ~/.config/nvim
 ```
 
 `claude/install.sh` links `settings.json`, `CLAUDE.md`, `RTK.md` and the hooks into
-`~/.claude/`, plus `STYLE.md` from the [skills](https://github.com/Esequiel378/skills) repo,
-which `CLAUDE.md` imports. It looks for skills next to this repo, then in
-`~/Projects/personal/skills`; set `SKILLS=<path>` to point it elsewhere.
+`~/.claude/`. `CLAUDE.md` also imports `~/.claude/STYLE.md`, which comes from running
+`make install` in the [skills](https://github.com/Esequiel378/skills) repo.
 `settings.json` references the `rtk` and `ponytail` plugins plus the notify hook;
 the rest of `~/.claude/` (cache, sessions, history, plugins) is runtime state and
 stays out of the repo.
