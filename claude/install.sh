@@ -12,6 +12,13 @@ case "$(uname -s)" in
   *) windows=0 ;;
 esac
 
+if [ -t 1 ] && [ -z "${NO_COLOR:-}" ]; then
+  green=$'\033[32m' yellow=$'\033[33m' reset=$'\033[0m'
+else
+  green='' yellow='' reset=''
+fi
+ok() { echo "  ${green}✓${reset} ~${1#"$HOME"}"; }
+
 # Git Bash's plain `ln -s` silently copies, and a native symlink needs Developer
 # Mode or an admin shell. Without either, copy loudly: the copy goes stale on
 # every pull until this script runs again.
@@ -20,15 +27,15 @@ link() {
   target="$2"
   if [ "$windows" = 0 ]; then
     ln -sf "$src" "$target"
-    echo "linked $target"
+    ok "$target"
     return
   fi
   rm -f "$target"
   if MSYS=winsymlinks:nativestrict ln -s "$src" "$target" 2>/dev/null; then
-    echo "linked $target"
+    ok "$target"
   else
     cp "$src" "$target"
-    echo "copied $target (no symlink privilege: enable Developer Mode, or re-run after every pull)"
+    echo "  ${yellow}! copied ~${target#"$HOME"}: no symlink privilege. Enable Developer Mode, or re-run after every pull${reset}"
   fi
 }
 
