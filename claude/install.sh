@@ -40,3 +40,11 @@ link "$DOTFILES/claude/RTK.md"               "$DEST/RTK.md"
 link "$DOTFILES/claude/hooks/rtk.sh"         "$DEST/hooks/rtk.sh"
 link "$DOTFILES/claude/hooks/notify.sh"      "$DEST/hooks/notify.sh"
 link "$DOTFILES/claude/hooks/statusline.sh"  "$DEST/hooks/statusline.sh"
+
+# The vault MCP on zx (tailnet only). Re-runnable: remove first, then add.
+if command -v claude >/dev/null 2>&1; then
+  claude mcp remove vault -s user >/dev/null 2>&1 || true
+  claude mcp add --transport http vault http://zx:8765/mcp -s user
+else
+  echo "claude not on PATH: skipped the vault MCP entry"
+fi
