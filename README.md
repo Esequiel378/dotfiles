@@ -13,6 +13,9 @@ Personal macOS dotfiles for zsh, tmux, kitty, Neovim, Claude Code, and Rectangle
 ├── kitty/
 │   └── kitty.conf      # symlink target for ~/.config/kitty/kitty.conf
 ├── nvim/               # symlink target for ~/.config/nvim
+├── codex/              # global Codex instructions -> ~/.codex/AGENTS.md
+│   ├── install.sh      #   links AGENTS.md, registers the vault MCP
+│   └── AGENTS.md       #   global instructions
 ├── claude/             # global Claude Code config -> ~/.claude/
 │   ├── install.sh      #   links it all (macOS, Linux, Windows Git Bash)
 │   ├── settings.json   #   model, attribution off, hooks, enabled plugins
@@ -184,6 +187,12 @@ ln -sf "$PWD/nvim" ~/.config/nvim
 `settings.json` references the `rtk` and `ponytail` plugins plus the notify hook;
 the rest of `~/.claude/` (cache, sessions, history, plugins) is runtime state and
 stays out of the repo.
+
+Both install scripts also register the `vault` MCP (the second-brain vault on zx, tailnet
+only, `http://zx:8765/mcp`) with `claude mcp add` and `codex mcp add`, and skip it with a
+message when the CLI is not on PATH. `codex/install.sh` links `codex/AGENTS.md` to
+`~/.codex/AGENTS.md` and leaves `~/.codex/config.toml` unmanaged. Run it with `make codex`
+or, on Windows, `bash codex/install.sh` from Git Bash.
 
 `settings.json` turns off Claude Code's commit trailer and PR footer (`attribution`),
 which backs up the no-attribution rule in `CLAUDE.md`.
