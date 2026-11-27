@@ -42,3 +42,9 @@ Rules:
 - If the project name is unknown, run the `vault` tool `list_notes` on `projects`.
 - If you are about to re-investigate a problem, search past sessions first.
 - Search them with the `session-search` skill.
+
+# MercadoLibre lookups
+
+- If a task needs MercadoLibre search results or listing details, call the meli-proxy before scraping by hand.
+- Use `GET https://meli.litoral.lat/search?q=<query>&page=1` or `GET https://meli.litoral.lat/item/<MLA id>`. Both return JSON.
+- It answers only on the owner's Tailscale devices. Treat `page` above 1 as unreliable.
